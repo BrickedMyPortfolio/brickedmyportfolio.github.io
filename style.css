@@ -1,195 +1,202 @@
-/* Reset and Base Styles */
-*,
-*::before,
-*::after {
+/* style.css */
+
+/* Reset & Basics */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background-color: #111;
+  color: #ddd;
+  overflow-x: hidden;
 }
 
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background-color: #fff;
+img {
+  max-width: 100%;
+  display: block;
 }
 
 a {
-  color: #007acc;
+  color: #00baff;
   text-decoration: none;
+  transition: 0.3s;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: #ff0055;
 }
 
-/* Site Header */
-.site-header {
-  background-color: #111;
-  color: #fff;
-  padding: 1rem 2rem;
-}
-
-.header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
+/* Top Navigation */
+.top-bar {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1a1a1a;
+  border-bottom: 2px solid #333;
 }
 
-.logo-link {
-  display: inline-block;
-}
-
-.logo-image {
+.logo img {
   height: 50px;
-  width: auto;
 }
 
-/* Main Navigation */
-.nav-main .nav-list {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
+.main-nav a {
+  margin-left: 1.5rem;
+  font-weight: bold;
 }
 
-.nav-list li a {
-  color: #fff;
-  font-weight: 500;
-  padding: 0.5rem;
-  transition: color 0.3s ease;
-}
-
-.nav-list li a:hover,
-.nav-list li a.active {
-  color: #f90;
-}
-
-/* Brick Icon */
-.brick-icon {
-  cursor: pointer;
-  margin-left: 1rem;
-  transition: transform 0.2s ease;
-}
-
-.brick-icon:hover {
-  transform: scale(1.1);
-}
-
-.brick-image {
-  height: 30px;
-  width: auto;
+.main-nav .active {
+  color: #00ffcc;
 }
 
 /* Hero Section */
-.page-hero {
-  padding: 4rem 2rem;
+.hero {
   text-align: center;
+  padding: 5rem 1rem;
+  background: linear-gradient(to bottom, #222, #111);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #aaa;
+}
+
+/* Cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.game-card, .asset-card, .project-card {
+  background-color: #1c1c1c;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.game-card:hover, .asset-card:hover, .project-card:hover {
+  transform: scale(1.03);
+}
+
+.game-card h3, .asset-card h3, .project-card h3 {
+  padding: 1rem;
   color: #fff;
 }
 
-.terms-hero {
-  background-color: #222;
-  background-image: url("media/terms-hero.jpg");
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: multiply;
-}
-
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.section-heading {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.section-subtitle {
-  font-size: 1.2rem;
-  opacity: 0.85;
-}
-
-/* Main Terms Content */
-.terms-content {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-.terms-section {
-  margin-bottom: 2rem;
-}
-
-.terms-policy p {
-  margin-bottom: 1rem;
-  text-align: justify;
-}
-
-.terms-policy h2 {
-  font-size: 1.5rem;
-  margin: 1.5rem 0 0.75rem;
-}
-
-.terms-policy ul {
-  list-style: disc inside;
-  margin-left: 1rem;
-}
-
-.terms-policy li {
-  margin-bottom: 0.5rem;
-}
-
-/* Site Footer */
-.site-footer {
-  background-color: #111;
+.game-card p, .asset-card p, .project-card p {
+  padding: 0 1rem 1rem;
   color: #ccc;
-  padding: 2rem 1rem;
+}
+
+.play-btn, .buy-btn {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.75rem 1.5rem;
+  background-color: #00baff;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.play-btn:hover, .buy-btn:hover {
+  background-color: #ff0055;
+}
+
+/* Footer */
+footer {
+  background-color: #0a0a0a;
+  padding: 2rem;
+  color: #666;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 2px solid #222;
 }
 
 .footer-widgets {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto 1rem;
+  margin-bottom: 1rem;
+}
+
+.about-widget, .footer-links {
+  flex: 1;
+  padding: 1rem;
+  min-width: 200px;
+}
+
+.footer-links a {
+  display: inline-block;
+  margin: 0 0.5rem;
+  color: #999;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+/* Brick Gag */
+.brick-gag {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Carousel */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
   gap: 2rem;
 }
 
-.footer-about,
-.footer-legal {
-  flex: 1 1 200px;
+.carousel-slides {
+  display: flex;
+  transition: transform 0.5s ease;
 }
 
-.footer-about h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: #fff;
-}
-
-.footer-about p,
-.footer-legal p {
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
-}
-
-.footer-link {
-  color: #ccc;
-  transition: color 0.3s ease;
-}
-
-.footer-link:hover {
-  color: #fff;
-}
-
-.footer-copy {
+.slide {
+  min-width: 300px;
+  background: #1b1b1b;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 0 10px #000;
   text-align: center;
-  font-size: 0.9rem;
+}
+
+.carousel-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .main-nav a {
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
 }
