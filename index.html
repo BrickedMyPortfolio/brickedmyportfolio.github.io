@@ -1,128 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>brickedmyportfolio.com</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>brickedmyportfolio.com</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="header-left">
-      <a href="index.html" class="logo-circle" aria-label="Home">
-        <img src="media/logo.png" alt="Logo" />
-      </a>
-    </div>
+    <header>
+        <a href="index.html" class="logo-circle">🎮</a>
+        <nav class="nav-center">
+            <a href="index.html" class="current">Home</a>
+            <a href="about.html">About</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="games.html">Games</a>
+            <a href="shop.html">Shop</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <button id="brick-icon"></button>
+    </header>
 
-    <nav class="nav-center">
-      <a href="index.html" class="active">Home</a>
-      <a href="about.html">About Me</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="games.html">Games</a>
-      <a href="shop.html">Shop</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <h1 class="site-title">brickedmyportfolio.com</h1>
+    <p class="site-subtitle">Welcome to the chaos. Not everything survived.</p>
 
-    <div class="header-right">
-      <button id="brick-icon" aria-label="Break screen"></button>
-    </div>
-  </header>
-
-  <!-- Homepage Title -->
-  <h1 class="site-title">brickedmyportfolio.com</h1>
-  <p class="site-subtitle">Welcome to the chaos. Not everything survived.</p>
-
-  <!-- Carousel Section -->
-  <section class="carousel-container">
-    <h2 class="section-title">Work In Progress</h2>
-    <div class="carousel">
-      <div class="carousel-media">
-        <img src="media/carousel1.png" alt="Project Preview" />
-      </div>
-      <div class="carousel-description">
-        <h3>Placeholder Game Name</h3>
-        <p>Current things I’m doing</p>
-      </div>
-    </div>
-    <div class="carousel-dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
-  </section>
-
-  <!-- Featured Games -->
-  <section class="featured-games">
-    <h2 class="section-title">Featured Games</h2>
-    <div class="card-grid">
-      <div class="game-card">
-        <img src="media/game1.png" alt="Game 1" />
-        <div class="card-info">
-          <h3>Game Title 1</h3>
-          <p>Tags, reviews, etc.</p>
+    <!-- What I'm Working On Carousel -->
+    <section class="container">
+        <h2>What I'm Working On</h2>
+        <div class="carousel-container">
+            <div class="carousel-content" id="carousel-content">
+                <div class="carousel-media">
+                    <img src="media/work1.jpg" alt="Current Project" id="carousel-image">
+                    <button class="carousel-arrow left" id="carousel-left">‹</button>
+                    <button class="carousel-arrow right" id="carousel-right">›</button>
+                </div>
+                <div class="carousel-description">
+                    <h3 id="carousel-title">Physics Engine Nightmare</h3>
+                    <p id="carousel-desc">Currently tweaking the physics engine for my next game. It's wonky, but fun. Objects randomly decide to ignore gravity, but that's part of the charm.</p>
+                </div>
+            </div>
+            <div class="carousel-dots" id="carousel-dots">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
         </div>
-      </div>
-      <div class="game-card">
-        <img src="media/game2.png" alt="Game 2" />
-        <div class="card-info">
-          <h3>Game Title 2</h3>
-          <p>Tags, reviews, etc.</p>
-        </div>
-      </div>
-      <div class="game-card">
-        <img src="media/game3.png" alt="Game 3" />
-        <div class="card-info">
-          <h3>Game Title 3</h3>
-          <p>Tags, reviews, etc.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Featured Assets -->
-  <section class="featured-assets">
-    <h2 class="section-title">Featured Assets</h2>
-    <div class="card-grid">
-      <div class="asset-card">
-        <img src="media/asset1.png" alt="Asset 1" />
-        <div class="card-info">
-          <h3>Asset Pack 1</h3>
-          <p>Tags, reviews, etc.</p>
-        </div>
-      </div>
-      <div class="asset-card">
-        <img src="media/asset2.png" alt="Asset 2" />
-        <div class="card-info">
-          <h3>Asset Pack 2</h3>
-          <p>Tags, reviews, etc.</p>
-        </div>
-      </div>
-      <div class="asset-card">
-        <img src="media/asset3.png" alt="Asset 3" />
-        <div class="card-info">
-          <h3>Asset Pack 3</h3>
-          <p>Tags, reviews, etc.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- Featured Games -->
+    <section class="container">
+        <h2>Featured Games</h2>
+        <div class="cards-grid">
+            <div class="card game-card" data-title="Broken FPS" data-link="https://store.steampowered.com/app/123456" data-price="$14.99">
+                <img src="media/game1.png" alt="Broken FPS">
+                <div class="card-content">
+                    <h3>Broken FPS</h3>
+                    <p>A twitchy shooter where the only thing faster than the bullets is the number of bugs.</p>
+                    <div class="card-tags">
+                        <span class="tag">Action</span>
+                        <span class="tag">Indie</span>
+                        <span class="tag">Buggy</span>
+                    </div>
+                    <p class="rating">⭐⭐⭐☆☆ "It crashes in style."</p>
+                </div>
+            </div>
 
-  <!-- Footer -->
-  <footer>
-    <nav class="footer-links">
-      <a href="terms.html">Terms</a>
-      <a href="privacy.html">Privacy</a>
-    </nav>
-    <p class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</p>
-    <div class="footer-socials">
-      <a href="#">YouTube</a>
-      <a href="#">Twitter</a>
-      <a href="#">Discord</a>
-    </div>
-  </footer>
+            <div class="card game-card" data-title="Ragdoll Sandbox" data-link="https://jayswan.itch.io/ragdoll-sandbox" data-price="$9.99">
+                <img src="media/game2.png" alt="Ragdoll Sandbox">
+                <div class="card-content">
+                    <h3>Ragdoll Sandbox</h3>
+                    <p>A chaotic 3D environment where the only law is physics—and it doesn't care about your plans.</p>
+                    <div class="card-tags">
+                        <span class="tag">Sandbox</span>
+                        <span class="tag">Physics</span>
+                        <span class="tag">Fun</span>
+                    </div>
+                    <p class="rating">⭐⭐⭐⭐☆ "Hilariously unpredictable."</p>
+                </div>
+            </div>
 
-  <!-- Overlay message (from brick icon) handled in JS -->
-  <script src="main.js"></script>
+            <div class="card game-card" data-title="Quantum Glitch" data-link="https://store.steampowered.com/app/789012" data-price="$19.99">
+                <img src="media/game3.png" alt="Quantum Glitch">
+                <div class="card-content">
+                    <h3>Quantum Glitch</h3>
+                    <p>Mind-bending puzzle platformer where you manipulate time and space to solve challenges.</p>
+                    <div class="card-tags">
+                        <span class="tag">Puzzle</span>
+                        <span class="tag">Platformer</span>
+                        <span class="tag">Sci-fi</span>
+                    </div>
+                    <p class="rating">⭐⭐⭐⭐⭐ "Revolutionary gameplay!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Assets -->
+    <section class="container">
+        <h2>Featured Assets</h2>
+        <div class="cards-grid">
+            <div class="card asset-card" data-title="Sci-Fi Asset Kit" data-link="https://ironlanternstudios.itch.io/sci-fi-kit" data-price="$29.99">
+                <img src="media/asset1.png" alt="Sci-Fi Asset Kit">
+                <div class="card-content">
+                    <h3>Sci-Fi Asset Kit</h3>
+                    <p>High-poly 3D assets for space stations, panels, doors, and alien consoles.</p>
+                    <div class="card-tags">
+                        <span class="tag">3D</span>
+                        <span class="tag">Sci-Fi</span>
+                        <span class="tag">Kitbash</span>
+                    </div>
+                    <p class="rating">⭐⭐⭐⭐⭐ "Extremely usable in Unity & Unreal."</p>
+                </div>
+            </div>
+
+            <div class="card asset-card" data-title="Lowpoly City Pack" data-link="https://ironlanternstudios.itch.io/lowpoly-city" data-price="$19.99">
+                <img src="media/asset2.png" alt="Lowpoly City Pack">
+                <div class="card-content">
+                    <h3>Lowpoly City Pack</h3>
+                    <p>Modular buildings, roads, props—perfect for mobile or stylized projects.</p>
+                    <div class="card-tags">
+                        <span class="tag">Lowpoly</span>
+                        <span class="tag">Stylized</span>
+                        <span class="tag">Modular</span>
+                    </div>
+                    <p class="rating">⭐⭐⭐⭐☆ "Looks great and runs fast."</p>
+                </div>
+            </div>
+
+            <div class="card asset-card" data-title="Fantasy Character Pack" data-link="https://ironlanternstudios.itch.io/fantasy-chars" data-price="$35.00">
+                <img src="media/asset3.png" alt="Fantasy Character Pack">
+                <div class="card-content">
+                    <h3>Fantasy Character Pack</h3>
+                    <p>Animated character sprites for fantasy RPG games and adventures.</p>
+                    <div class="card-tags">
+                        <span class="tag">Sprites</span>
+                        <span class="tag">Fantasy</span>
+                        <span class="tag">Animated</span>
+                    </div>
+                    <p class="rating">⭐⭐⭐⭐☆ "Great animation quality!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Card Overlay for Expanded View -->
+    <div class="card-overlay" id="card-overlay"></div>
+    <div class="card-expanded" id="card-expanded">
+        <button class="close-btn" onclick="closeExpandedCard()">×</button>
+        <div class="expanded-content">
+            <img id="expanded-image" src="" alt="">
+            <div class="expanded-info">
+                <h3 id="expanded-title"></h3>
+                <p id="expanded-description"></p>
+                <div id="expanded-tags"></div>
+                <p id="expanded-rating"></p>
+                <p id="expanded-price"></p>
+                <a id="expanded-link" class="preview-button" target="_blank">Get It Now</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="terms.html">Terms of Service</a>
+            <a href="privacy.html">Privacy Policy</a>
+        </div>
+        <div class="footer-social">
+            <a href="https://youtube.com" target="_blank">YouTube</a>
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="#" target="_blank">Discord</a>
+        </div>
+        <div class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</div>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
