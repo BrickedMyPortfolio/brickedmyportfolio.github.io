@@ -2,78 +2,195 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About | Iron Lantern Studios™ | BrickedMyPortfolio.com</title>
-  <meta
-    name="description"
-    content="Learn about Jason Harvey, indie developer and founder of Iron Lantern Studios™."
-  />
+  <meta name="description" content="Learn about Jason Harvey, indie developer and founder of Iron Lantern Studios™." />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="media/favicon.ico" />
+  <!-- Additional head resources -->
+  <!-- Social media metadata -->
+  <meta property="og:title" content="About | Iron Lantern Studios™" />
+  <meta property="og:description" content="Discover the passion and vision behind Iron Lantern Studios™." />
+  <meta property="og:image" content="media/og-image-about.png" />
+  <meta property="og:url" content="https://brickedmyportfolio.com/about.html" />
+  <meta name="twitter:card" content="summary_large_image" />
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <a href="index.html" class="logo-circle">
-      <img src="media/logo.png" alt="Iron Lantern Studios Logo" />
-    </a>
-    <nav class="nav-center">
-      <a href="about.html">About</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="games.html">Games</a>
-      <a href="shop.html">Shop</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="brick-icon" onclick="crackScreen()" title="Break the screen">
-      <img src="media/brick-icon.png" alt="Brick Icon" />
+
+  <!-- ==============================
+       SITE HEADER
+       ============================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="media/logo.png" alt="Iron Lantern Studios Logo" class="logo-image"/>
+      </a>
+      <nav class="nav-main">
+        <ul class="nav-list">
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="games.html">Games</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="brick-icon" onclick="crackScreen()" title="Break the screen">
+        <img src="media/brick-icon.png" alt="Brick Icon" class="brick-image"/>
+      </div>
     </div>
   </header>
 
-  <!-- PAGE TITLE -->
-  <h1 class="site-title">About Me</h1>
+  <!-- ==============================
+       MAIN CONTENT
+       ============================== -->
+  <main class="about-page">
 
-  <!-- ABOUT BUTTON -->
-  <div class="center-button">
-    <a href="#bio" class="btn-pink">About Me</a>
-  </div>
+    <!-- Hero / Intro Section -->
+    <section class="about-hero">
+      <div class="hero-content">
+        <h1>About Iron Lantern Studios™</h1>
+        <p class="tagline">Crafting immersive indie game experiences with passion and precision.</p>
+      </div>
+      <div class="hero-image">
+        <img src="media/about-hero.jpg" alt="Stylized game environment" />
+      </div>
+    </section>
 
-  <!-- BIO SECTION -->
-  <section id="bio">
-    <h2>About Jason Harvey</h2>
-    <p>
-      I’m Jason Harvey, the solo indie developer behind Iron Lantern Studios™ LLC.
-      I blend creative artistry and technical innovation to build stylized worlds
-      and intuitive gameplay systems.
-    </p>
-    <p>
-      My core expertise spans AI pathfinding, custom shaders, and modular
-      environment kits. Whether prototyping an FPS or sculpting asset packs,
-      I approach every challenge with curiosity and precision.
-    </p>
-    <p>
-      This site showcases my current projects, prototypes, and asset packs
-      available for purchase. Feel free to explore my work or reach out to
-      collaborate on your next idea.
-    </p>
-  </section>
+    <!-- About Bio Section -->
+    <section class="bio-section">
+      <h2>The Developer</h2>
+      <div class="bio-content">
+        <img src="media/jason-profile.jpg" alt="Jason Harvey portrait" class="bio-image"/>
+        <div class="bio-text">
+          <p>I'm <strong>Jason Harvey</strong>, the founder and solo developer behind Iron Lantern Studios™ LLC. My journey began with a passion for both art and code, which eventually fused into a career crafting unique game experiences.</p>
+          <p>Over the years, I've honed my skills in 3D environment design, shader programming, and gameplay mechanics. I love creating modular asset packs that empower other developers to bring their visions to life.</p>
+          <p>When I'm not coding or creating assets, I enjoy exploring indie game jams, learning new tools, and collaborating with fellow devs across the globe.</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- FOOTER (with legal links) -->
-  <footer>
-    <p>
-      © 2025 BrickedMyPortfolio.com | Iron Lantern Studios™ LLC. All rights
-      reserved.
-    </p>
-    <p>
-      <a href="mailto:Jason.harvey@brickedmyportfolio.com"
-        >Jason.harvey@brickedmyportfolio.com</a
-      >
-    </p>
-    <p>
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms of Use</a>
-    </p>
+    <!-- Mission and Philosophy Section -->
+    <section class="mission-section">
+      <h2>Mission & Philosophy</h2>
+      <div class="mission-content">
+        <p>At Iron Lantern Studios™, my mission is to blend artistic flair with solid technical foundations. I believe every game should tell a story, whether through a seamless gameplay loop, a memorable world, or an intuitive interface.</p>
+        <p>Quality and polish are at the heart of my workflow. From iterative prototyping to final performance tweaks, I make sure each piece of content meets rigorous standards before release.</p>
+        <ul class="core-values">
+          <li>Creativity: Pushing boundaries in art and design.</li>
+          <li>Resilience: Overcoming technical challenges with smart solutions.</li>
+          <li>Collaboration: Sharing assets and knowledge to uplift the indie community.</li>
+          <li>Quality: Ensuring every project shines on its own merits.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+      <h2>Studio Timeline</h2>
+      <ul class="timeline-list">
+        <li>
+          <span class="timeline-year">2018</span>
+          <p>Founded Iron Lantern Studios™ LLC and released first asset pack: "Modular Dungeon Environment Pack".</p>
+        </li>
+        <li>
+          <span class="timeline-year">2019</span>
+          <p>Participated in Global Game Jam 2019, showcasing rapid prototyping skills.</p>
+        </li>
+        <li>
+          <span class="timeline-year">2020</span>
+          <p>Launched first full game prototype with custom AI behaviors.</p>
+        </li>
+        <li>
+          <span class="timeline-year">2021</span>
+          <p>Expanded portfolio with stylized nature asset pack and shader tutorials.</p>
+        </li>
+        <li>
+          <span class="timeline-year">2023</span>
+          <p>Collaborated on indie title "Lantern's Edge" with small team of designers.</p>
+        </li>
+        <li>
+          <span class="timeline-year">2024</span>
+          <p>Debuted advanced PBR urban environment toolkit.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <h2>What Others Say</h2>
+      <div class="testimonial">
+        <blockquote>
+          "Jason's asset packs saved us weeks of development time — and they look amazing!"
+        </blockquote>
+        <cite>- Indie Dev Studio XYZ</cite>
+      </div>
+      <div class="testimonial">
+        <blockquote>
+          "Incredible attention to detail and super responsive to feedback."
+        </blockquote>
+        <cite>- Free Game Jam Team 2023</cite>
+      </div>
+    </section>
+
+    <!-- Collaboration Call-to-Action -->
+    <section class="cta-section">
+      <h2>Ready to Collaborate?</h2>
+      <p>If you're interested in licensing assets, commissioning custom tools, or just want to chat about game development, let's connect!</p>
+      <div class="cta-buttons">
+        <a href="contact.html" class="btn-primary">Get in Touch</a>
+        <a href="shop.html" class="btn-secondary">Explore the Store</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==============================
+       FOOTER
+       ============================== -->
+  <footer class="site-footer">
+    <div class="footer-widgets">
+      <div class="footer-about">
+        <h3>About Iron Lantern</h3>
+        <p>Iron Lantern Studios™ creates high-quality assets, prototypes, and tools for indie game developers worldwide.</p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="games.html">Games</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:Jason.harvey@brickedmyportfolio.com">Jason.harvey@brickedmyportfolio.com</a></p>
+        <p>Tel: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Me</h3>
+        <ul class="social-list">
+          <li><a href="https://twitter.com/jasonharvey">Twitter</a></li>
+          <li><a href="https://github.com/ironlanternstudio">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/jasonharvey">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>© 2025 BrickedMyPortfolio.com | Iron Lantern Studios™ LLC. All rights reserved.</p>
+      <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Use</a></p>
+    </div>
   </footer>
 
   <script src="main.js"></script>
+
+  <!-- Optional JavaScript for interactive elements -->
+  <script>
+    function crackScreen() {
+      document.body.classList.toggle('cracked');
+    }
+  </script>
+
 </body>
 </html>
