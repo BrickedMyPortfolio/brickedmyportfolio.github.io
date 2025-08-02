@@ -2,384 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-  <title>Iron Lantern Studios | BrickedMyPortfolio.com</title>
-
-  <!-- Primary stylesheet -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>brickedmyportfolio.com</title>
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Favicon -->
-  <link rel="icon" href="media/favicon.ico" />
-
+  <link rel="icon" href="media/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-
-  <!-- ================================================
-       SITE HEADER
-       Contains logo, navigation links, and brick icon
-       ================================================ -->
-  <header class="site-header">
-    <!-- Logo / Home Link -->
-    <a href="index.html" class="logo-link">
-      <img
-        src="media/logo.png"
-        alt="Iron Lantern Studios Logo"
-        class="logo-image"
-      />
-    </a>
-
-    <!-- Main Navigation -->
-    <nav class="nav-main">
-      <ul class="nav-list">
-        <li><a href="about.html">About</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="games.html">Games</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-
-    <!-- Brick break icon -->
-    <div
-      class="brick-icon"
-      title="Break the screen"
-      onclick="crackScreen()"
-    >
-      <img
-        src="media/brick-icon.png"
-        alt="Brick Break Icon"
-        class="brick-image"
-      />
+  <header>
+    <div class="top-bar">
+      <div class="logo">
+        <img src="media/logo.png" alt="Logo" />
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="games.html">Games</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+      <div class="brick-gag" id="brick">🪨</div>
+    </div>
+    <div class="site-title">
+      <h1>brickedmyportfolio.com</h1>
     </div>
   </header>
 
-  <!-- ================================================
-       HERO SECTION / WORK-IN-PROGRESS CAROUSEL
-       Two columns: left = carousel media,
-                    right = project title & description
-       ================================================ -->
-  <section class="hero-wip">
-    <div class="hero-container">
-
-      <!-- LEFT: Carousel Media, Arrows, Dots -->
-      <div class="carousel-left">
-
-        <!-- Previous arrow -->
-        <button
-          class="carousel-arrow left-arrow"
-          onclick="prevWipSlide()"
-          aria-label="Previous Work-in-Progress"
-        >
-          &#10094;
-        </button>
-
-        <!-- Carousel Slides Wrapper -->
-        <div class="wip-slides">
-
-          <!-- Slide #1 -->
-          <div class="wip-slide active" data-title="AI Pathfinding Demo">
-            <img
-              src="media/wip-pathfinding.jpg"
-              alt="AI Pathfinding Demo Screenshot"
-              class="wip-image"
-            />
-          </div>
-
-          <!-- Slide #2 -->
-          <div class="wip-slide" data-title="Procedural Dungeon Generator">
-            <img
-              src="media/wip-dungeon.jpg"
-              alt="Procedural Dungeon Generator Screenshot"
-              class="wip-image"
-            />
-          </div>
-
-          <!-- Slide #3 -->
-          <div class="wip-slide" data-title="Real-Time Shader Editor">
-            <img
-              src="media/wip-shader.jpg"
-              alt="Real-Time Shader Editor Screenshot"
-              class="wip-image"
-            />
-          </div>
-
-          <!-- Add more WIP slides here as needed -->
-
-        </div> <!-- /.wip-slides -->
-
-        <!-- Next arrow -->
-        <button
-          class="carousel-arrow right-arrow"
-          onclick="nextWipSlide()"
-          aria-label="Next Work-in-Progress"
-        >
-          &#10095;
-        </button>
-
-        <!-- Dots Navigation -->
-        <div class="carousel-dots">
-          <span
-            class="dot active"
-            onclick="goToWipSlide(0)"
-          ></span>
-          <span
-            class="dot"
-            onclick="goToWipSlide(1)"
-          ></span>
-          <span
-            class="dot"
-            onclick="goToWipSlide(2)"
-          ></span>
-          <!-- Add more dots matching slide count -->
+  <main>
+    <section id="wip-carousel" class="carousel">
+      <div class="carousel-box">
+        <button class="carousel-btn left" onclick="prevSlide()">&#10094;</button>
+        <div class="media-box">
+          <img id="carousel-image" src="media/placeholder1.jpg" alt="WIP Media" />
+          <div class="carousel-dots" id="carousel-dots"></div>
         </div>
-
-      </div> <!-- /.carousel-left -->
-
-      <!-- RIGHT: Title and Description for current WIP slide -->
-      <div class="carousel-right">
-
-        <!-- Project Title -->
-        <h2 class="wip-title">AI Pathfinding Demo</h2>
-
-        <!-- Project Description -->
-        <p class="wip-description">
-          Experimenting with a custom A* algorithm to navigate dynamic
-          obstacle courses in real time. Integrating flow fields and
-          behavior trees for smarter NPC movement.
-        </p>
-
-        <!-- You can add action buttons or links here -->
-        <div class="wip-actions">
-          <a
-            href="wip-details.html"
-            class="btn-primary"
-          >
-            See Details
-          </a>
+        <div class="description-box">
+          <h2>What I’m Working On</h2>
+          <p id="carousel-description">Loading project description...</p>
         </div>
+        <button class="carousel-btn right" onclick="nextSlide()">&#10095;</button>
+      </div>
+    </section>
 
-      </div> <!-- /.carousel-right -->
-
-    </div> <!-- /.hero-container -->
-  </section>
-
-  <!-- Spacer -->
-  <div class="section-spacer"></div>
-
-  <!-- ================================================
-       FEATURED GAMES CAROUSEL
-       Horizontal card carousel with arrows and dots
-       ================================================ -->
-  <section class="games-carousel-section">
-    <h2 class="section-heading">Featured Games</h2>
-    <div class="games-carousel-wrapper">
-
-      <!-- Left arrow -->
-      <button
-        class="carousel-arrow left-arrow games-left-arrow"
-        onclick="prevGameSlide()"
-        aria-label="Previous Game"
-      >
-        &#10094;
-      </button>
-
-      <!-- Game Cards Container -->
-      <div class="game-cards-container">
-
-        <!-- Game Card #1 -->
-        <div class="game-card active">
-          <img
-            src="media/game-voidrunner.jpg"
-            alt="VoidRunner Screenshot"
-            class="game-image"
-          />
-          <div class="game-info">
-            <h3 class="game-title">VoidRunner</h3>
-            <p class="game-description">
-              Fast-paced sci-fi FPS set in deep space. Dodge asteroids,
-              collect power-ups, and survive against waves of drones.
-            </p>
-            <p class="game-tags">Tags: Shooter, Sci-fi, Fast-Paced</p>
-            <div class="game-reviews">★★★★☆</div>
-            <a
-              href="games/voidrunner.html"
-              class="btn-secondary"
-            >
-              Play Now
-            </a>
-          </div>
-        </div>
-
-        <!-- Game Card #2 -->
+    <section id="featured-games">
+      <h2>Featured Games</h2>
+      <div class="card-grid">
         <div class="game-card">
-          <img
-            src="media/game-cryptcrawler.jpg"
-            alt="CryptCrawler Screenshot"
-            class="game-image"
-          />
-          <div class="game-info">
-            <h3 class="game-title">CryptCrawler</h3>
-            <p class="game-description">
-              A gothic horror roguelike. Explore procedurally generated
-              crypts, manage your sanity, and unlock hidden treasures.
-            </p>
-            <p class="game-tags">Tags: Roguelike, Horror</p>
-            <div class="game-reviews">★★★★★</div>
-            <a
-              href="games/cryptcrawler.html"
-              class="btn-secondary"
-            >
-              Play Now
-            </a>
-          </div>
+          <img src="media/placeholder2.jpg" alt="Game 1" />
+          <h3>Project Nova</h3>
+          <p>Fast-paced FPS with movement tech.</p>
+          <button class="play-btn">Play</button>
         </div>
-
-        <!-- Game Card #3 -->
         <div class="game-card">
-          <img
-            src="media/game-ecoquest.jpg"
-            alt="EcoQuest Screenshot"
-            class="game-image"
-          />
-          <div class="game-info">
-            <h3 class="game-title">EcoQuest</h3>
-            <p class="game-description">
-              Educational simulation about ecosystem balance. Plant trees,
-              introduce species, and watch the continent flourish.
-            </p>
-            <p class="game-tags">Tags: Simulation, Educational</p>
-            <div class="game-reviews">★★★☆☆</div>
-            <a
-              href="games/ecoquest.html"
-              class="btn-secondary"
-            >
-              Play Now
-            </a>
-          </div>
+          <img src="media/placeholder3.jpg" alt="Game 2" />
+          <h3>Iron Siege</h3>
+          <p>Top-down RTS with destructible terrain.</p>
+          <button class="play-btn">Play</button>
         </div>
-
-        <!-- Add more game cards as needed -->
-
-      </div> <!-- /.game-cards-container -->
-
-      <!-- Right arrow -->
-      <button
-        class="carousel-arrow right-arrow games-right-arrow"
-        onclick="nextGameSlide()"
-        aria-label="Next Game"
-      >
-        &#10095;
-      </button>
-
-      <!-- Dots nav for games -->
-      <div class="carousel-dots games-dots">
-        <span
-          class="dot active"
-          onclick="goToGameSlide(0)"
-        ></span>
-        <span
-          class="dot"
-          onclick="goToGameSlide(1)"
-        ></span>
-        <span
-          class="dot"
-          onclick="goToGameSlide(2)"
-        ></span>
-        <!-- Add more dots matching game card count -->
-      </div>
-
-    </div> <!-- /.games-carousel-wrapper -->
-  </section>
-
-  <!-- Spacer -->
-  <div class="section-spacer"></div>
-
-  <!-- ================================================
-       FEATURED ASSETS PREVIEW
-       Simple grid of featured assets / store items
-       ================================================ -->
-  <section class="assets-preview">
-    <h2 class="section-heading">Featured Assets</h2>
-    <div class="assets-grid">
-
-      <!-- Asset Card #1 -->
-      <div class="asset-card">
-        <img
-          src="media/asset-trees.jpg"
-          alt="Stylized Trees Pack"
-          class="asset-image"
-        />
-        <div class="asset-info">
-          <h4 class="asset-title">Stylized Trees Pack</h4>
-          <p class="asset-tags">Tags: Nature, Stylized</p>
-          <p class="asset-price">$9.99</p>
-          <a
-            href="https://itch.io"
-            class="btn-pink"
-          >
-            Buy Now
-          </a>
+        <div class="game-card">
+          <img src="media/placeholder4.jpg" alt="Game 3" />
+          <h3>Mecha Strike</h3>
+          <p>3v3 arena mech shooter prototype.</p>
+          <button class="play-btn">Play</button>
         </div>
       </div>
+    </section>
 
-      <!-- Asset Card #2 -->
-      <div class="asset-card">
-        <img
-          src="media/asset-sci-fiprops.jpg"
-          alt="Sci-Fi Props Bundle"
-          class="asset-image"
-        />
-        <div class="asset-info">
-          <h4 class="asset-title">Sci-Fi Props Bundle</h4>
-          <p class="asset-tags">Tags: Sci-Fi, Low Poly</p>
-          <p class="asset-price">$14.99</p>
-          <a
-            href="https://itch.io"
-            class="btn-pink"
-          >
-            Buy Now
-          </a>
+    <section id="featured-assets">
+      <h2>Featured Assets</h2>
+      <div class="card-grid">
+        <div class="asset-card">
+          <img src="media/asset1.jpg" alt="Asset 1" />
+          <h3>Stylized UI Pack</h3>
+          <p>Neon-styled UI elements for sci-fi games.</p>
+        </div>
+        <div class="asset-card">
+          <img src="media/asset2.jpg" alt="Asset 2" />
+          <h3>Low-Poly Rocks</h3>
+          <p>Optimized rock models with PBR textures.</p>
+        </div>
+        <div class="asset-card">
+          <img src="media/asset3.jpg" alt="Asset 3" />
+          <h3>Combat Animations</h3>
+          <p>High-quality melee combat animation set.</p>
         </div>
       </div>
+    </section>
+  </main>
 
-      <!-- Add more asset cards here -->
-
-    </div> <!-- /.assets-grid -->
-  </section>
-
-  <!-- Spacer -->
-  <div class="section-spacer"></div>
-
-  <!-- ================================================
-       SITE FOOTER
-       Contains copyright, email, privacy & terms
-       ================================================ -->
-  <footer class="site-footer">
-    <p class="footer-text">
-      © 2025 BrickedMyPortfolio.com | Iron Lantern Studios™ LLC. All rights reserved.
-    </p>
-    <p class="footer-contact">
-      <a
-        href="mailto:Jason.harvey@brickedmyportfolio.com"
-        class="footer-email"
-      >
-        Jason.harvey@brickedmyportfolio.com
-      </a>
-    </p>
-    <p class="footer-legal">
-      <a href="privacy.html" class="footer-link">Privacy Policy</a> |
-      <a href="terms.html" class="footer-link">Terms of Use</a>
-    </p>
+  <footer>
+    <p>&copy; 2025 Jason | Iron Lantern Studios™</p>
+    <div class="socials">
+      <a href="#"><img src="media/youtube-icon.png" alt="YouTube" /></a>
+      <!-- Add more social links -->
+    </div>
   </footer>
 
-  <!-- ================================================
-       MAIN JAVASCRIPT FILE
-       Carousel logic, event handlers, utilities
-       ================================================ -->
   <script src="main.js"></script>
-
 </body>
 </html>
