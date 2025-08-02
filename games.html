@@ -1,8 +1,12 @@
+<!-- games.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta 
+    name="viewport" 
+    content="width=device-width, initial-scale=1.0"
+  />
   <title>Games | Iron Lantern Studios™ | BrickedMyPortfolio.com</title>
   <meta
     name="description"
@@ -10,75 +14,258 @@
   />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="media/favicon.ico" />
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Games | Iron Lantern Studios™" />
+  <meta property="og:description" content="Check out my latest game projects and prototypes." />
+  <meta property="og:image" content="media/og-image-games.png" />
+  <meta property="og:url" content="https://brickedmyportfolio.com/games.html" />
+  <meta name="twitter:card" content="summary_large_image" />
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <a href="index.html" class="logo-circle">
-      <img src="media/logo.png" alt="Iron Lantern Studios Logo" />
-    </a>
-    <nav class="nav-center">
-      <a href="about.html">About</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="games.html">Games</a>
-      <a href="shop.html">Shop</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="brick-icon" onclick="crackScreen()" title="Break the screen">
-      <img src="media/brick-icon.png" alt="Brick Icon" />
+
+  <!-- ==============================
+       SITE HEADER
+       ============================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="media/logo.png" alt="Iron Lantern Studios Logo" class="logo-image"/>
+      </a>
+      <nav class="nav-main">
+        <ul class="nav-list">
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="games.html" class="active">Games</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="brick-icon" onclick="crackScreen()" title="Break the screen">
+        <img src="media/brick-icon.png" alt="Brick Icon" class="brick-image"/>
+      </div>
     </div>
   </header>
 
-  <!-- PAGE TITLE -->
-  <h1 class="site-title">Games</h1>
-
-  <!-- GAMES GRID -->
-  <section class="games-grid">
-    <div class="game-card">
-      <img src="media/game1.jpg" alt="Gravity Puzzle Prototype" />
-      <div class="hover-box">
-        <h4>Gravity Puzzle Prototype</h4>
-        <p>Manipulate planets to solve spatial challenges.</p>
-        <p>Tags: Physics, Puzzle</p>
-      </div>
-    </div>
-
-    <div class="game-card">
-      <img src="media/game2.jpg" alt="Endless Runner Circuit" />
-      <div class="hover-box">
-        <h4>Endless Runner Circuit</h4>
-        <p>Test your reflexes in a procedurally generated track.</p>
-        <p>Tags: Runner, Systems</p>
-      </div>
-    </div>
-
-    <div class="game-card">
-      <img src="media/game3.jpg" alt="Top-Down Shooter Prototype" />
-      <div class="hover-box">
-        <h4>Top-Down Shooter Prototype</h4>
-        <p>Dynamic AI enemies in a neon-lit arena.</p>
-        <p>Tags: Shooter, AI</p>
-      </div>
+  <!-- ==============================
+       HERO / PAGE TITLE
+       ============================== -->
+  <section class="page-hero games-hero">
+    <div class="hero-content">
+      <h1 class="section-heading">Games</h1>
+      <p class="section-subtitle">
+        Dive into my collection of prototypes, demos, and fully playable builds.
+      </p>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>
-      © 2025 BrickedMyPortfolio.com | Iron Lantern Studios™ LLC. All rights
-      reserved.
-    </p>
-    <p>
-      <a href="mailto:Jason.harvey@brickedmyportfolio.com"
-        >Jason.harvey@brickedmyportfolio.com</a
+  <!-- ==============================
+       FEATURED GAMES CAROUSEL
+       ============================== -->
+  <section class="games-carousel-section">
+    <h2 class="section-heading">Featured Games</h2>
+    <div class="games-carousel-wrapper">
+
+      <!-- Left arrow -->
+      <button
+        class="carousel-arrow left-arrow games-left-arrow"
+        onclick="prevGameSlide()"
+        aria-label="Previous Game"
       >
-    </p>
-    <p>
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms of Use</a>
+        &#10094;
+      </button>
+
+      <!-- Container for sliding cards -->
+      <div class="game-cards-container">
+
+        <!-- Card 1 -->
+        <div class="game-card active" data-link="https://store.steampowered.com/app/voidrunner">
+          <img
+            src="media/game-voidrunner.jpg"
+            alt="VoidRunner Screenshot"
+            class="game-image"
+          />
+          <div class="game-info">
+            <h3 class="game-title">VoidRunner</h3>
+            <p class="game-description">
+              Fast-paced sci-fi FPS set in deep space. Dodge asteroids, collect power-ups, and survive against waves of drones.
+            </p>
+            <p class="game-tags">Tags: Shooter, Sci-fi, Fast-Paced</p>
+            <div class="game-reviews">★★★★☆</div>
+            <a
+              href="#"
+              class="more-info"
+            >
+              More Info
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="game-card" data-link="https://store.steampowered.com/app/cryptcrawler">
+          <img
+            src="media/game-cryptcrawler.jpg"
+            alt="CryptCrawler Screenshot"
+            class="game-image"
+          />
+          <div class="game-info">
+            <h3 class="game-title">CryptCrawler</h3>
+            <p class="game-description">
+              A gothic horror roguelike. Explore procedurally generated crypts, manage your sanity, and unlock hidden treasures.
+            </p>
+            <p class="game-tags">Tags: Roguelike, Horror</p>
+            <div class="game-reviews">★★★★★</div>
+            <a
+              href="#"
+              class="more-info"
+            >
+              More Info
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="game-card" data-link="https://store.steampowered.com/app/ecoquest">
+          <img
+            src="media/game-ecoquest.jpg"
+            alt="EcoQuest Screenshot"
+            class="game-image"
+          />
+          <div class="game-info">
+            <h3 class="game-title">EcoQuest</h3>
+            <p class="game-description">
+              Educational simulation about ecosystem balance. Plant trees, introduce species, and watch the continent flourish.
+            </p>
+            <p class="game-tags">Tags: Simulation, Educational</p>
+            <div class="game-reviews">★★★☆☆</div>
+            <a
+              href="#"
+              class="more-info"
+            >
+              More Info
+            </a>
+          </div>
+        </div>
+
+        <!-- Add more .game-card blocks for additional slides -->
+
+      </div> <!-- /.game-cards-container -->
+
+      <!-- Right arrow -->
+      <button
+        class="carousel-arrow right-arrow games-right-arrow"
+        onclick="nextGameSlide()"
+        aria-label="Next Game"
+      >
+        &#10095;
+      </button>
+
+      <!-- Dots navigation -->
+      <div class="carousel-dots games-dots">
+        <span
+          class="dot active"
+          onclick="goToGameSlide(0)"
+        ></span>
+        <span
+          class="dot"
+          onclick="goToGameSlide(1)"
+        ></span>
+        <span
+          class="dot"
+          onclick="goToGameSlide(2)"
+        ></span>
+        <!-- Add more .dot spans as needed -->
+      </div>
+
+    </div> <!-- /.games-carousel-wrapper -->
+  </section>
+
+  <!-- ==============================
+       ADDITIONAL GAMES GRID
+       ============================== -->
+  <section class="additional-games">
+    <h2 class="section-heading">Other Projects & Prototypes</h2>
+    <div class="games-grid">
+
+      <!-- Grid Item 1 -->
+      <div class="grid-card">
+        <img src="media/game-puzzler.jpg" alt="Gravity Puzzler" class="grid-image"/>
+        <h4 class="grid-title">Gravity Puzzler</h4>
+        <p class="grid-tags">Tags: Physics, Puzzle</p>
+        <a 
+          href="games/gravity-puzzler.html" 
+          class="btn-secondary"
+        >
+          View Details
+        </a>
+      </div>
+
+      <!-- Grid Item 2 -->
+      <div class="grid-card">
+        <img src="media/game-topdown.jpg" alt="Neon Top-Down Shooter" class="grid-image"/>
+        <h4 class="grid-title">Neon Top-Down Shooter</h4>
+        <p class="grid-tags">Tags: Shooter, AI</p>
+        <a 
+          href="games/neon-shooter.html" 
+          class="btn-secondary"
+        >
+          View Details
+        </a>
+      </div>
+
+      <!-- Grid Item 3 -->
+      <div class="grid-card">
+        <img src="media/game-runner.jpg" alt="Circuit Runner" class="grid-image"/>
+        <h4 class="grid-title">Circuit Runner</h4>
+        <p class="grid-tags">Tags: Runner, Procedural</p>
+        <a 
+          href="games/circuit-runner.html" 
+          class="btn-secondary"
+        >
+          View Details
+        </a>
+      </div>
+
+      <!-- Add more grid cards as desired -->
+
+    </div> <!-- /.games-grid -->
+  </section>
+
+  <!-- ==============================
+       FOOTER
+       ============================== -->
+  <footer class="site-footer">
+    <div class="footer-widgets">
+      <div class="footer-about">
+        <h3>About Iron Lantern</h3>
+        <p>Crafting unique game prototypes and tools for the indie dev community.</p>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <p>
+          <a 
+            href="mailto:Jason.harvey@brickedmyportfolio.com" 
+            class="footer-email"
+          >
+            Jason.harvey@brickedmyportfolio.com
+          </a>
+        </p>
+      </div>
+      <div class="footer-legal">
+        <p>
+          <a href="privacy.html" class="footer-link">Privacy Policy</a> |
+          <a href="terms.html" class="footer-link">Terms of Use</a>
+        </p>
+      </div>
+    </div>
+    <p class="footer-copy">
+      © 2025 BrickedMyPortfolio.com | Iron Lantern Studios™ LLC. All rights reserved.
     </p>
   </footer>
 
+  <!-- ==============================
+       MAIN JAVASCRIPT
+       Carousel logic & interactions
+       ============================== -->
   <script src="main.js"></script>
 </body>
 </html>
