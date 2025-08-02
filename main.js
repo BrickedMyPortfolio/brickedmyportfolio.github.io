@@ -1,37 +1,101 @@
-// main.js
+// main.js - Core interaction logic for brickedmyportfolio.com
 
-(() => {
-  // Preload crack sound
-  const crackSound = new Audio('media/glass-crack.mp3');
-  crackSound.preload = 'auto';
+// =============================
+// CrackModule
+// =============================
+const CrackModule = (() => {
+  const brickBtn = document.getElementById("brick");
+  let overlay = null;
+  let audio = new Audio("media/glass-crack.mp3");
 
-  // Create a full-screen overlay for the crack effect
-  const overlay = document.createElement('div');
-  overlay.id = 'crack-overlay';
-  Object.assign(overlay.style, {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100vw',
-    height: '100vh',
-    backgroundImage: 'url("media/screen-crack.png")',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    backgroundSize: 'contain',
-    pointerEvents: 'none',
-    opacity: 0,
-    transition: 'opacity 0.5s ease',
-    zIndex: 9999
-  });
-  document.body.appendChild(overlay);
+  const createOverlay = () => {
+    overlay = document.createElement("div");
+    overlay.className = "crack-overlay";
+    overlay.innerHTML = '<img src="media/screen-crack.png" alt="crack" />';
+    document.body.appendChild(overlay);
+  };
 
-  // Toggle the crack overlay and play sound
-  window.crackScreen = () => {
-    const isVisible = overlay.style.opacity === '1';
-    overlay.style.opacity = isVisible ? '0' : '1';
-    crackSound.currentTime = 0;
-    crackSound.play().catch(() => {
-      // Sound playback might be blocked until user interacts
+  const triggerCrack = () => {
+    if (!overlay) createOverlay();
+    overlay.classList.add("visible");
+    audio.currentTime = 0;
+    audio.play();
+    setTimeout(() => {
+      overlay.classList.remove("visible");
+    }, 1500);
+  };
+
+  const setup = () => {
+    if (brickBtn) brickBtn.addEventListener("click", triggerCrack);
+  };
+
+  return { setup };
+})();
+
+
+// =============================
+// CarouselModule
+// =============================
+const CarouselModule = (() => {
+  let current = 0;
+  let slides = [];
+
+  const showSlide = (index) => {
+    slides.forEach((slide, i) => {
+      slide.style.display = i === index ? "block" : "none";
     });
   };
+
+  const next = () => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  };
+
+  const prev = () => {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  };
+
+  const setup = () => {
+    slides = Array.from(document.querySelectorAll(".carousel-slide"));
+    if (slides.length === 0) return;
+    document.querySelector(".carousel-next")?.addEventListener("click", next);
+    document.querySelector(".carousel-prev")?.addEventListener("click", prev);
+    showSlide(current);
+  };
+
+  return { setup };
 })();
+
+
+// =============================
+// TooltipModule
+// =============================
+const TooltipModule = (() => {
+  const setup = () => {
+    const tips = document.querySelectorAll("[data-tooltip]");
+    tips.forEach((el) => {
+      const tooltip = document.createElement("span");
+      tooltip.className = "tooltip";
+      tooltip.innerText = el.dataset.tooltip;
+      el.addEventListener("mouseenter", () => {
+        el.appendChild(tooltip);
+      });
+      el.addEventListener("mouseleave", () => {
+        el.removeChild(tooltip);
+      });
+    });
+  };
+
+  return { setup };
+})();
+
+
+// =============================
+// Init All Modules on Load
+// =============================
+document.addEventListener("DOMContentLoaded", () => {
+  CrackModule.setup();
+  CarouselModule.setup();
+  TooltipModule.setup();
+});
