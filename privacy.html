@@ -2,86 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy | brickedmyportfolio.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy - brickedmyportfolio.com</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="media/favicon.ico" type="image/x-icon" />
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <div class="top-bar">
-      <div class="logo">
-        <a href="index.html"><img src="media/logo.png" alt="Logo" /></a>
-      </div>
-      <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="games.html">Games</a>
-        <a href="shop.html">Shop</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html" class="active">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </nav>
-      <div class="brick-gag" id="brick">🪨</div>
+    <div class="header-left">
+      <a href="index.html" class="logo-circle" aria-label="Home">
+        <img src="media/logo.png" alt="Logo" />
+      </a>
+    </div>
+
+    <nav class="nav-center">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="games.html">Games</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="header-right">
+      <button id="brick-icon" aria-label="Break screen"></button>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-bg privacy-bg">
-        <h1>Privacy Policy</h1>
-        <p>How your information is collected, used, and protected.</p>
-      </div>
+  <!-- Privacy Content -->
+  <main class="privacy-policy">
+    <h1>Privacy Policy</h1>
+
+    <section>
+      <h2>1. Data Collection</h2>
+      <p>We do not collect any personally identifiable information unless you choose to contact us. Any information you provide will only be used to respond to your inquiries.</p>
     </section>
 
-    <section class="policy-content">
-      <div class="container">
-        <h2>1. Introduction</h2>
-        <p>This Privacy Policy explains how BrickedMyPortfolio.com and Iron Lantern Studios™ collect, use, and protect your data when you use this website.</p>
+    <section>
+      <h2>2. Cookies</h2>
+      <p>This site does not use cookies or tracking scripts.</p>
+    </section>
 
-        <h2>2. Information We Collect</h2>
-        <ul>
-          <li><strong>Voluntarily Provided:</strong> Your name, email address, or other contact details submitted via the contact form.</li>
-          <li><strong>Automatically Collected:</strong> Basic site analytics (e.g., pages visited, browser type, referring links).</li>
-        </ul>
+    <section>
+      <h2>3. Third-Party Services</h2>
+      <p>External links or embeds (e.g. YouTube, Itch.io) may have their own privacy policies. Please refer to those platforms for details.</p>
+    </section>
 
-        <h2>3. How We Use Information</h2>
-        <p>Your information is used solely to respond to inquiries, improve site functionality, and protect against spam or abuse.</p>
-
-        <h2>4. Cookies</h2>
-        <p>This site uses basic cookies for functional and performance purposes. No third-party tracking is in place.</p>
-
-        <h2>5. Third-Party Services</h2>
-        <p>No user data is shared with outside services except where legally required.</p>
-
-        <h2>6. Data Protection</h2>
-        <p>We take reasonable steps to protect your data, including SSL encryption and limiting data access.</p>
-
-        <h2>7. User Rights</h2>
-        <p>You may request data deletion or clarification by contacting us via the form on the Contact page.</p>
-
-        <h2>8. Changes to Policy</h2>
-        <p>This policy may change. Updates will be posted on this page with revision dates.</p>
-
-        <h2>9. Contact</h2>
-        <p>For questions about privacy or data handling, use the <a href="contact.html">Contact</a> page to reach out.</p>
-      </div>
+    <section>
+      <h2>4. Contact</h2>
+      <p>If you have questions or requests regarding your data, contact us through the form on the Contact page.</p>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <div class="footer-widgets">
-      <div class="about-widget">
-        <h4>About Iron Lantern Studios™</h4>
-        <p>Solo-dev projects by Jason, focusing on performant design and unique mechanics.</p>
-      </div>
-      <div class="footer-links">
-        <a href="privacy.html" class="active">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </div>
+    <nav class="footer-links">
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html" class="active">Privacy</a>
+    </nav>
+    <p class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</p>
+    <div class="footer-socials">
+      <a href="#">YouTube</a>
+      <a href="#">Twitter</a>
+      <a href="#">Discord</a>
     </div>
-    <p class="copyright">&copy; 2025 Jason | Iron Lantern Studios™</p>
   </footer>
 
   <script src="main.js"></script>
