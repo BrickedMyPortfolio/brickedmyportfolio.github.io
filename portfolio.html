@@ -2,94 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio | BrickedMyPortfolio.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio - brickedmyportfolio.com</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="media/favicon.ico" type="image/x-icon" />
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <div class="top-bar">
-      <div class="logo">
-        <a href="index.html"><img src="media/logo.png" alt="Logo" /></a>
-      </div>
-      <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="portfolio.html" class="active">Portfolio</a>
-        <a href="games.html">Games</a>
-        <a href="shop.html">Shop</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </nav>
-      <div class="brick-gag" id="brick">🪨</div>
+    <div class="header-left">
+      <a href="index.html" class="logo-circle" aria-label="Home">
+        <img src="media/logo.png" alt="Logo" />
+      </a>
     </div>
-    <div class="site-title">
-      <h1>My Development Portfolio</h1>
+
+    <nav class="nav-center">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="portfolio.html" class="active">Portfolio</a>
+      <a href="games.html">Games</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="header-right">
+      <button id="brick-icon" aria-label="Break screen"></button>
     </div>
   </header>
 
-  <main>
-    <section class="portfolio-intro">
-      <h2>Project Highlights</h2>
-      <p>Explore a collection of prototypes, shaders, UX/UI mockups, and completed dev projects from Iron Lantern Studios.</p>
-    </section>
+  <!-- Portfolio Section -->
+  <main class="portfolio-section">
+    <h1>Dev Projects & Prototypes</h1>
+    <div class="project-grid">
 
-    <section class="project-grid">
-      <div class="portfolio-card">
-        <img src="media/project1.jpg" alt="Project 1" />
-        <h3>Node-Based Dialogue Tool</h3>
-        <p>A custom editor plugin for branching dialogue trees with runtime logic and preview mode.</p>
-        <a href="#" class="more-btn">Learn More</a>
+      <div class="project-card">
+        <img src="media/placeholder1.png" alt="Project Thumbnail" />
+        <h2>Shader Toy Clone</h2>
+        <p>Custom fragment shader editor with real-time GLSL preview. Built using WebGL2 and monospaced love.</p>
       </div>
-      <div class="portfolio-card">
-        <img src="media/project2.jpg" alt="Project 2" />
-        <h3>Stylized Water Shader</h3>
-        <p>Built in HLSL for use in Unity URP and optimized for low-end GPUs with depth-based foam.</p>
-        <a href="#" class="more-btn">View Shader</a>
-      </div>
-      <div class="portfolio-card">
-        <img src="media/project3.jpg" alt="Project 3" />
-        <h3>3D UI Navigation</h3>
-        <p>Interactive UI system in 3D space, drag+drop, tooltips, input validation, and VR/AR support.</p>
-        <a href="#" class="more-btn">Watch Demo</a>
-      </div>
-    </section>
 
-    <section class="prototype-archive">
-      <h2>Prototype Archive</h2>
-      <ul>
-        <li><strong>HoverTanks Arena:</strong> Multiplayer twin-stick shooter with AI bot logic and navmesh.
-        </li>
-        <li><strong>GridHack:</strong> Procedural grid-based cyberpunk RPG prototype with tile-to-tile abilities.
-        </li>
-        <li><strong>Scorched Soil:</strong> Voxel terrain experiment with destruction and rebuilding.</li>
-        <li><strong>CyberStack:</strong> Vertical infinite runner built entirely in HTML5 Canvas + JS.</li>
-      </ul>
-    </section>
+      <div class="project-card">
+        <img src="media/placeholder2.png" alt="Project Thumbnail" />
+        <h2>UI Animations</h2>
+        <p>Dynamic UI kits made for games and apps. Built with CSS + JS, ready for drag-and-drop.</p>
+      </div>
 
-    <section class="ui-showcase">
-      <h2>UI & UX Samples</h2>
-      <div class="ui-card">
-        <img src="media/ui1.jpg" alt="UI Sample 1" />
-        <p>Mobile menu interface with haptic feedback and button logic tests.</p>
+      <div class="project-card">
+        <img src="media/placeholder3.png" alt="Project Thumbnail" />
+        <h2>Tooling Dev</h2>
+        <p>Prototype tools like pixel sorting, map generators, editor extensions — mostly broken, but they work.</p>
       </div>
-      <div class="ui-card">
-        <img src="media/ui2.jpg" alt="UI Sample 2" />
-        <p>Health and stamina bar component for top-down adventure systems.</p>
-      </div>
-      <div class="ui-card">
-        <img src="media/ui3.jpg" alt="UI Sample 3" />
-        <p>Futuristic HUD concept using radial input wheels and layered overlays.</p>
-      </div>
-    </section>
+
+    </div>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Jason | Iron Lantern Studios™</p>
-    <div class="socials">
-      <a href="#"><img src="media/youtube-icon.png" alt="YouTube" /></a>
+    <nav class="footer-links">
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+    <p class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</p>
+    <div class="footer-socials">
+      <a href="#">YouTube</a>
+      <a href="#">Twitter</a>
+      <a href="#">Discord</a>
     </div>
   </footer>
 
