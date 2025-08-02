@@ -1,87 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | brickedmyportfolio.com</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="media/favicon.ico" type="image/x-icon" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - brickedmyportfolio.com</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="top-bar">
-      <div class="logo">
-        <a href="index.html"><img src="media/logo.png" alt="Logo" /></a>
-      </div>
-      <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="games.html">Games</a>
-        <a href="shop.html">Shop</a>
-        <a href="contact.html" class="active">Contact</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </nav>
-      <div class="brick-gag" id="brick">🪨</div>
+    <header>
+        <a href="index.html" class="logo-circle">🎮</a>
+        <nav class="nav-center">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="games.html">Games</a>
+            <a href="shop.html">Shop</a>
+            <a href="contact.html" class="current">Contact</a>
+        </nav>
+        <button id="brick-icon"></button>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Contact</h1>
+        <p class="page-subtitle">Get in touch (if you dare)</p>
+        
+        <div class="contact-form">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Write your message here..." required rows="6"></textarea>
+                </div>
+                
+                <button type="submit" class="preview-button">Send Message</button>
+            </form>
+            
+            <p class="email-contact">Or email me directly at: <code>404@brickedmail.dev</code></p>
+        </div>
     </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-bg contact-bg">
-        <h1>Contact Me</h1>
-        <p>Send a message to Iron Lantern Studios™</p>
-      </div>
-    </section>
-
-    <section class="contact-form-section">
-      <h2>Let&rsquo;s Get in Touch</h2>
-      <form class="contact-form" action="#" method="POST">
-        <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" required />
+    <footer>
+        <div class="footer-links">
+            <a href="terms.html">Terms of Service</a>
+            <a href="privacy.html">Privacy Policy</a>
         </div>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required />
+        <div class="footer-social">
+            <a href="https://youtube.com" target="_blank">YouTube</a>
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="#" target="_blank">Discord</a>
         </div>
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" name="subject" />
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="6" required></textarea>
-        </div>
-        <button type="submit" class="submit-btn">Send Message</button>
-      </form>
-    </section>
+        <div class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</div>
+    </footer>
 
-    <section class="other-contacts">
-      <h2>Other Ways to Reach Me</h2>
-      <ul>
-        <li>Email: <a href="mailto:jason@ironlantern.dev">jason@ironlantern.dev</a></li>
-        <li>GitHub: <a href="https://github.com/jayswansocool48" target="_blank">jayswansocool48</a></li>
-        <li>Discord: <span>JaySwan#0849</span></li>
-      </ul>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-widgets">
-      <div class="about-widget">
-        <h4>About Iron Lantern Studios™</h4>
-        <p>Solo-dev projects by Jason, focusing on performant design and unique mechanics.</p>
-      </div>
-      <div class="footer-links">
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </div>
-    </div>
-    <p class="copyright">&copy; 2025 Jason | Iron Lantern Studios™</p>
-  </footer>
-
-  <script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
