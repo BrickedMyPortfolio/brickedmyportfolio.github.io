@@ -1,561 +1,195 @@
-/* ==========================================================================
-   VARIABLES & GLOBAL THEME
-   ========================================================================== */
-:root {
-  --bg-color: #0f0f0f;
-  --text-color: #eee;
-  --subtext-color: #ccc;
-  --accent-color: #ff33aa;
-  --accent-hover: #cc0077;
-  --card-bg: #1a1a1a;
-  --border-radius: 8px;
-  --font-family: "Courier New", Courier, monospace;
-  --font-weight: 700;
+/* Reset and Base Styles */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-  font-size: 18px; /* 1rem = 18px */
+  font-size: 16px;
   scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg-color);
-  color: var(--text-color);
-  font-family: var(--font-family);
-  font-weight: var(--font-weight);
+  font-family: "Segoe UI", Arial, sans-serif;
   line-height: 1.6;
-  text-align: center;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  color: #333;
+  background-color: #fff;
 }
 
-/* ==========================================================================
-   RESET & BOX-SIZING
-   ========================================================================== */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* ==========================================================================
-   UTILITY CLASSES
-   ========================================================================== */
-.light-text {
-  font-weight: 400;
-  color: var(--subtext-color);
-}
-
-.small-text {
-  font-size: 0.9rem;
-}
-
-.italic-text {
-  font-style: italic;
-}
-
-/* ==========================================================================
-   HEADER & NAVIGATION
-   ========================================================================== */
-header {
-  position: relative;
-  padding: 1rem;
-  background: var(--bg-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-}
-
-.logo-circle {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.logo-circle img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.nav-center {
-  display: flex;
-  gap: 1rem;
-}
-
-.nav-center a {
-  background: var(--accent-color);
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius);
-  text-transform: uppercase;
-  font-weight: var(--font-weight);
+a {
+  color: #007acc;
   text-decoration: none;
-  transition: background 0.2s;
 }
 
-.nav-center a:hover {
-  background: var(--accent-hover);
+a:hover {
+  text-decoration: underline;
+}
+
+/* Site Header */
+.site-header {
+  background-color: #111;
+  color: #fff;
+  padding: 1rem 2rem;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-link {
+  display: inline-block;
+}
+
+.logo-image {
+  height: 50px;
+  width: auto;
+}
+
+/* Main Navigation */
+.nav-main .nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-list li a {
+  color: #fff;
+  font-weight: 500;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.nav-list li a:hover,
+.nav-list li a.active {
+  color: #f90;
 }
 
 /* Brick Icon */
 .brick-icon {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 40px;
-  height: 40px;
   cursor: pointer;
-}
-
-.brick-icon img {
-  width: 100%;
-  height: 100%;
+  margin-left: 1rem;
   transition: transform 0.2s ease;
 }
 
-.brick-icon:hover img {
+.brick-icon:hover {
   transform: scale(1.1);
 }
 
-/* ==========================================================================
-   SITE TITLES & BUTTONS
-   ========================================================================== */
-.site-title {
-  font-size: 2.5rem;
-  margin: 1rem 0;
+.brick-image {
+  height: 30px;
+  width: auto;
 }
 
-.center-button {
-  margin: 1rem 0 2rem;
-}
-
-.btn-pink {
-  background: var(--accent-color);
+/* Hero Section */
+.page-hero {
+  padding: 4rem 2rem;
+  text-align: center;
   color: #fff;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--border-radius);
-  font-size: 1rem;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.2s;
 }
 
-.btn-pink:hover {
-  background: var(--accent-hover);
+.terms-hero {
+  background-color: #222;
+  background-image: url("media/terms-hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
 }
 
-/* ==========================================================================
-   SECTION WRAPPERS
-   ========================================================================== */
-section {
-  width: 90%;
-  max-width: 1000px;
-  margin: 2rem auto;
-}
-
-/* ==========================================================================
-   INDEX CAROUSEL (DOT NAV)
-   ========================================================================== */
-#carousel {
-  width: 100%;
-}
-
-.carousel-box {
-  position: relative;
+.hero-content {
+  max-width: 800px;
   margin: 0 auto;
 }
 
-.carousel-media {
-  position: relative;
+.section-heading {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
-.carousel-media img {
-  width: 100%;
-  border-radius: var(--border-radius);
+.section-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.85;
 }
 
-.carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--accent-color);
-  font-size: 2rem;
-  cursor: pointer;
-  user-select: none;
-}
-
-.carousel-arrow.left {
-  left: 10px;
-}
-
-.carousel-arrow.right {
-  right: 10px;
-}
-
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.75rem;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  background: #444;
-  border-radius: 50%;
-  margin: 0 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.dot.active {
-  background: var(--accent-color);
-}
-
-/* ==========================================================================
-   FEATURED GAMES & ASSETS CARDS
-   ========================================================================== */
-.preview-card {
-  position: relative;
-  background: var(--card-bg);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  margin: 1rem auto;
-  max-width: 600px;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.preview-card img {
-  width: 100%;
-  display: block;
-}
-
-.preview-card:hover {
-  transform: scale(1.02);
-}
-
-.hover-box {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 100%;
-  background: var(--card-bg);
-  padding: 1rem;
-  border: 1px solid #444;
-  width: 240px;
-  z-index: 5;
-}
-
-.preview-card:hover .hover-box {
-  display: block;
-}
-
-/* ==========================================================================
-   PORTFOLIO GRID
-   ========================================================================== */
-.portfolio-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.portfolio-grid .preview-card {
-  flex: 0 0 calc(33% - 2rem);
-  max-width: calc(33% - 2rem);
-}
-
-@media (max-width: 768px) {
-  .portfolio-grid .preview-card {
-    flex: 0 0 90%;
-    max-width: 90%;
-  }
-}
-
-/* ==========================================================================
-   GAMES CAROUSEL (SLIDING CARDS)
-   ========================================================================== */
-.games-carousel {
-  position: relative;
-  overflow: hidden;
-  margin: 2rem auto;
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.slide {
-  flex: 0 0 280px;
-  margin: 0 10px;
-  position: relative;
-  transition: transform 0.3s ease;
-}
-
-.slide img {
-  width: 100%;
-  border-radius: var(--border-radius);
-}
-
-.carousel-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: var(--accent-color);
-  cursor: pointer;
-  user-select: none;
-}
-
-.carousel-button.prev {
-  left: 0;
-}
-
-.carousel-button.next {
-  right: 0;
-}
-
-.slide.active {
-  transform: scale(1.05);
-}
-
-.details {
-  display: none;
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 100%;
-  background: var(--card-bg);
-  color: var(--subtext-color);
-  padding: 1rem;
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
-  text-align: left;
-}
-
-.slide.expanded {
-  transform: scale(1.2);
-  z-index: 100;
-}
-
-.slide.expanded .details {
-  display: block;
-}
-
-.more-info {
-  display: inline-block;
-  margin-top: 0.5rem;
-  background: var(--accent-color);
-  color: #fff;
-  padding: 0.3rem 0.8rem;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-/* ==========================================================================
-   SHOP GRID & CARDS
-   ========================================================================== */
-.shop-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.shop-card {
-  position: relative;
-  background: var(--card-bg);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  flex: 0 0 calc(25% - 2rem);
-  max-width: calc(25% - 2rem);
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.shop-card img {
-  width: 100%;
-  display: block;
-}
-
-.shop-card:hover {
-  transform: scale(1.02);
-}
-
-.shop-card .hover-box {
-  top: 0;
-  left: 100%;
-}
-
-/* ==========================================================================
-   CONTACT FORM
-   ========================================================================== */
-.contact-section {
-  display: flex;
-  justify-content: center;
-}
-
-.contact-form {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: var(--border-radius);
-  width: 90%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #444;
-  border-radius: 4px;
-  background: #111;
-  color: var(--text-color);
-  font-family: var(--font-family);
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--accent-color);
-}
-
-/* ==========================================================================
-   PRIVACY & TERMS PAGES
-   ========================================================================== */
-.privacy-section,
-.terms-section {
-  width: 90%;
+/* Main Terms Content */
+.terms-content {
   max-width: 800px;
   margin: 2rem auto;
+  padding: 0 1rem;
 }
 
-.privacy-policy,
-.terms-content {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: var(--border-radius);
-  color: var(--subtext-color);
-  text-align: left;
+.terms-section {
+  margin-bottom: 2rem;
 }
 
-.privacy-policy h2,
-.terms-content h2 {
-  color: var(--accent-color);
-  margin-top: 1.5rem;
+.terms-policy p {
+  margin-bottom: 1rem;
+  text-align: justify;
 }
 
-/* ==========================================================================
-   SCREEN CRACK EFFECT
-   ========================================================================== */
-.screen-crack {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('media/crack.png') center/contain no-repeat;
-  pointer-events: none;
-  z-index: 9999;
-  animation: shake 0.3s ease-in-out;
+.terms-policy h2 {
+  font-size: 1.5rem;
+  margin: 1.5rem 0 0.75rem;
 }
 
-@keyframes shake {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(-4px, 3px); }
-  50% { transform: translate(4px, -3px); }
-  75% { transform: translate(-3px, 2px); }
-  100% { transform: translate(0, 0); }
+.terms-policy ul {
+  list-style: disc inside;
+  margin-left: 1rem;
 }
 
-/* ==========================================================================
-   CARD MODAL OVERLAY
-   ========================================================================== */
-.card-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.85);
+.terms-policy li {
+  margin-bottom: 0.5rem;
+}
+
+/* Site Footer */
+.site-footer {
+  background-color: #111;
+  color: #ccc;
+  padding: 2rem 1rem;
+}
+
+.footer-widgets {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto 1rem;
+  gap: 2rem;
 }
 
-.card-modal-content {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: var(--border-radius);
-  max-width: 90%;
-  max-height: 90%;
-  overflow: auto;
-  position: relative;
-  text-align: left;
+.footer-about,
+.footer-legal {
+  flex: 1 1 200px;
 }
 
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 2rem;
-  color: var(--text-color);
-  cursor: pointer;
+.footer-about h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
 }
 
-/* ==========================================================================
-   RESPONSIVE BREAKPOINTS
-   ========================================================================== */
-@media (max-width: 1024px) {
-  .shop-card, .portfolio-grid .preview-card {
-    flex: 0 0 calc(50% - 2rem);
-    max-width: calc(50% - 2rem);
-  }
+.footer-about p,
+.footer-legal p {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
 }
 
-@media (max-width: 768px) {
-  .nav-center { flex-wrap: wrap; }
-
-  .slide {
-    flex: 0 0 70%;
-  }
-
-  .shop-card, .portfolio-grid .preview-card {
-    flex: 0 0 90%;
-    max-width: 90%;
-  }
+.footer-link {
+  color: #ccc;
+  transition: color 0.3s ease;
 }
 
-@media (max-width: 480px) {
-  html {
-    font-size: 16px;
-  }
-  .carousel-arrow {
-    font-size: 1.5rem;
-  }
-  .carousel-button {
-    font-size: 1.5rem;
-  }
-  .site-title {
-    font-size: 2rem;
-  }
+.footer-link:hover {
+  color: #fff;
+}
+
+.footer-copy {
+  text-align: center;
+  font-size: 0.9rem;
 }
