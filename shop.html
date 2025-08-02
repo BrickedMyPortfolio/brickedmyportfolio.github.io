@@ -2,92 +2,248 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta 
+    name="viewport" 
+    content="width=device-width, initial-scale=1.0"
+  />
   <title>Shop | Iron Lantern Studios™ | BrickedMyPortfolio.com</title>
   <meta
     name="description"
-    content="Grab official Iron Lantern Studios™ merch: tees, hoodies, mugs, and posters."
+    content="Browse and purchase official Iron Lantern Studios™ asset packs, merch, and digital goods."
   />
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Shop | Iron Lantern Studios™" />
+  <meta property="og:description" content="Get your hands on our latest assets, merch, and tools." />
+  <meta property="og:image" content="media/og-image-shop.png" />
+  <meta property="og:url" content="https://brickedmyportfolio.com/shop.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="media/favicon.ico" />
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <a href="index.html" class="logo-circle">
-      <img src="media/logo.png" alt="Iron Lantern Studios Logo" />
-    </a>
-    <nav class="nav-center">
-      <a href="about.html">About</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="games.html">Games</a>
-      <a href="shop.html">Shop</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="brick-icon" onclick="crackScreen()" title="Break the screen">
-      <img src="media/brick-icon.png" alt="Brick Icon" />
+
+  <!-- ==============================
+       SITE HEADER
+       Contains logo, navigation, and brick icon
+       ============================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img 
+          src="media/logo.png" 
+          alt="Iron Lantern Studios Logo" 
+          class="logo-image"
+        />
+      </a>
+      <nav class="nav-main">
+        <ul class="nav-list">
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="games.html">Games</a></li>
+          <li><a href="shop.html" class="active">Shop</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div 
+        class="brick-icon" 
+        onclick="crackScreen()" 
+        title="Break the screen"
+      >
+        <img 
+          src="media/brick-icon.png" 
+          alt="Brick Break Icon" 
+          class="brick-image"
+        />
+      </div>
     </div>
   </header>
 
-  <!-- PAGE TITLE -->
-  <h1 class="site-title">Shop</h1>
-
-  <!-- SHOP GRID -->
-  <section class="shop-grid">
-    <div class="shop-card">
-      <img src="media/tee.jpg" alt="Iron Lantern Studios T-Shirt" />
-      <div class="hover-box">
-        <h4>Iron Lantern T-Shirt</h4>
-        <p>Premium cotton tee in charcoal black</p>
-        <p>$24.99</p>
-      </div>
+  <!-- ==============================
+       HERO / SHOP INTRO
+       ============================== -->
+  <section class="page-hero shop-hero">
+    <div class="hero-content">
+      <h1 class="section-heading">Shop</h1>
+      <p class="section-subtitle">
+        Explore our curated selection of asset packs, tools, and merch 
+        designed to level up your indie game projects.
+      </p>
     </div>
-
-    <div class="shop-card">
-      <img src="media/hoodie.jpg" alt="Iron Lantern Studios Hoodie" />
-      <div class="hover-box">
-        <h4>Iron Lantern Hoodie</h4>
-        <p>Cozy fleece-lined pullover with logo patch</p>
-        <p>$49.99</p>
-      </div>
-    </div>
-
-    <div class="shop-card">
-      <img src="media/mug.jpg" alt="Iron Lantern Studios Coffee Mug" />
-      <div class="hover-box">
-        <h4>Iron Lantern Coffee Mug</h4>
-        <p>Ceramic 12oz mug with heat-reactive print</p>
-        <p>$14.99</p>
-      </div>
-    </div>
-
-    <div class="shop-card">
-      <img src="media/poster.jpg" alt="Iron Lantern Studios Art Poster" />
-      <div class="hover-box">
-        <h4>Art Poster</h4>
-        <p>18"x24" giclée print of our studio concept art</p>
-        <p>$19.99</p>
-      </div>
+    <div class="hero-image">
+      <img 
+        src="media/shop-hero.jpg" 
+        alt="Assortment of asset thumbnails" 
+      />
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>
-      © 2025 BrickedMyPortfolio.com | Iron Lantern Studios™ LLC. All rights
-      reserved.
-    </p>
-    <p>
-      <a href="mailto:Jason.harvey@brickedmyportfolio.com"
-        >Jason.harvey@brickedmyportfolio.com</a
-      >
-    </p>
-    <p>
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms of Use</a>
+  <!-- ==============================
+       SHOP CATEGORIES FILTER
+       ============================== -->
+  <section class="shop-categories">
+    <h2 class="section-heading">Filter By Category</h2>
+    <div class="categories-list">
+      <button class="category-btn active" data-filter="all">All</button>
+      <button class="category-btn" data-filter="assets">Assets</button>
+      <button class="category-btn" data-filter="tools">Tools</button>
+      <button class="category-btn" data-filter="merch">Merch</button>
+      <button class="category-btn" data-filter="bundles">Bundles</button>
+    </div>
+  </section>
+
+  <!-- ==============================
+       SHOP GRID
+       ============================== -->
+  <section class="shop-grid">
+    <h2 class="section-heading">Our Products</h2>
+    <div class="shop-grid-container">
+
+      <!-- Asset Pack Card -->
+      <div class="shop-card" data-category="assets" data-link="https://itch.io/asset-packs/trees">
+        <img 
+          src="media/asset-trees.jpg" 
+          alt="Stylized Trees Pack" 
+          class="shop-image"
+        />
+        <div class="shop-info">
+          <h3 class="shop-title">Stylized Trees Pack</h3>
+          <p class="shop-tags">Tags: Nature, Stylized</p>
+          <p class="shop-price">$9.99</p>
+          <a href="#" class="btn-pink purchase-btn">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- Shader Tool Card -->
+      <div class="shop-card" data-category="tools" data-link="https://github.com/ironlanternstudio/shader-tool">
+        <img 
+          src="media/tool-shadergraph.jpg" 
+          alt="Shader Graph Tool" 
+          class="shop-image"
+        />
+        <div class="shop-info">
+          <h3 class="shop-title">Real-Time Shader Editor</h3>
+          <p class="shop-tags">Tags: Shader, Tool</p>
+          <p class="shop-price">Free</p>
+          <a href="#" class="btn-pink purchase-btn">Download</a>
+        </div>
+      </div>
+
+      <!-- T-Shirt Merchandise Card -->
+      <div class="shop-card" data-category="merch" data-link="https://shopify.com/ironlantern/tshirt">
+        <img 
+          src="media/merch-tee.jpg" 
+          alt="Iron Lantern Studios T-Shirt" 
+          class="shop-image"
+        />
+        <div class="shop-info">
+          <h3 class="shop-title">Iron Lantern Tee</h3>
+          <p class="shop-tags">Merch: Apparel</p>
+          <p class="shop-price">$24.99</p>
+          <a href="#" class="btn-pink purchase-btn">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- Bundle Offer Card -->
+      <div class="shop-card" data-category="bundles" data-link="https://itch.io/bundle/ultimate-pack">
+        <img 
+          src="media/bundle-ultimate.jpg" 
+          alt="Ultimate Asset Bundle" 
+          class="shop-image"
+        />
+        <div class="shop-info">
+          <h3 class="shop-title">Ultimate Asset Bundle</h3>
+          <p class="shop-tags">Assets + Tools Bundle</p>
+          <p class="shop-price">$29.99</p>
+          <a href="#" class="btn-pink purchase-btn">Get Bundle</a>
+        </div>
+      </div>
+
+      <!-- Add more .shop-card blocks as needed -->
+
+    </div> <!-- /.shop-grid-container -->
+  </section>
+
+  <!-- ==============================
+       SPECIAL OFFERS
+       ============================== -->
+  <section class="special-offers">
+    <h2 class="section-heading">Special Offers</h2>
+    <div class="offer-cards">
+
+      <div class="offer-card">
+        <h3>Bundle Sale</h3>
+        <p>Save 20% when you buy any two asset packs together.</p>
+        <a href="#" class="btn-secondary">Learn More</a>
+      </div>
+
+      <div class="offer-card">
+        <h3>Early Access</h3>
+        <p>Join our discord for early access to upcoming tools and demos.</p>
+        <a href="#" class="btn-secondary">Join Now</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==============================
+       NEWSLETTER CTA
+       ============================== -->
+  <section class="newsletter-cta">
+    <h2 class="section-heading">Stay Updated</h2>
+    <p>Subscribe to our newsletter for new pack drops, demos, and studio news.</p>
+    <form 
+      class="newsletter-form" 
+      action="https://formspree.io/f/xyyzz" 
+      method="POST"
+    >
+      <input 
+        type="email" 
+        name="email" 
+        placeholder="Your Email Address" 
+        required
+      />
+      <button type="submit" class="btn-pink">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- ==============================
+       FOOTER
+       Contains contact, legal links
+       ============================== -->
+  <footer class="site-footer">
+    <div class="footer-widgets">
+      <div class="footer-about">
+        <h3>About Iron Lantern</h3>
+        <p>Creating top-quality assets, tools, and merch for indie developers worldwide.</p>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <p>
+          <a 
+            href="mailto:Jason.harvey@brickedmyportfolio.com" 
+            class="footer-email"
+          >
+            Jason.harvey@brickedmyportfolio.com
+          </a>
+        </p>
+      </div>
+      <div class="footer-legal">
+        <p>
+          <a href="privacy.html" class="footer-link">Privacy Policy</a> |
+          <a href="terms.html" class="footer-link">Terms of Use</a>
+        </p>
+      </div>
+    </div>
+    <p class="footer-copy">
+      © 2025 BrickedMyPortfolio.com | Iron Lantern Studios™ LLC. All rights reserved.
     </p>
   </footer>
 
+  <!-- ==============================
+       MAIN JAVASCRIPT
+       Shop filter & interactions
+       ============================== -->
   <script src="main.js"></script>
 </body>
 </html>
