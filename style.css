@@ -1,55 +1,87 @@
 /* ==========================================================================
-   RESET & GLOBAL STYLES
+   VARIABLES & GLOBAL THEME
+   ========================================================================== */
+:root {
+  --bg-color: #0f0f0f;
+  --text-color: #eee;
+  --subtext-color: #ccc;
+  --accent-color: #ff33aa;
+  --accent-hover: #cc0077;
+  --card-bg: #1a1a1a;
+  --border-radius: 8px;
+  --font-family: "Courier New", Courier, monospace;
+  --font-weight: 700;
+}
+
+html {
+  font-size: 18px; /* 1rem = 18px */
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  line-height: 1.6;
+  text-align: center;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   RESET & BOX-SIZING
    ========================================================================== */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+.light-text {
+  font-weight: 400;
+  color: var(--subtext-color);
 }
 
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  color: #333333;
-  background-color: #fafafa;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.small-text {
+  font-size: 0.9rem;
+}
+
+.italic-text {
+  font-style: italic;
 }
 
 /* ==========================================================================
    HEADER & NAVIGATION
    ========================================================================== */
 header {
+  position: relative;
+  padding: 1rem;
+  background: var(--bg-color);
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  z-index: 10;
 }
 
 .logo-circle {
-  display: inline-block;
-  width: 3rem;
-  height: 3rem;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid #333333;
 }
 
 .logo-circle img {
-  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -57,42 +89,473 @@ header {
 
 .nav-center {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .nav-center a {
+  background: var(--accent-color);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  text-transform: uppercase;
+  font-weight: var(--font-weight);
   text-decoration: none;
-  color: #333333;
-  font-weight: 500;
-  transition: color 0.2s ease-in-out;
+  transition: background 0.2s;
 }
 
 .nav-center a:hover {
-  color: #e94560;
+  background: var(--accent-hover);
 }
 
+/* Brick Icon */
 .brick-icon {
-  width: 2.5rem;
-  height: 2.5rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
 }
 
 .brick-icon img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.brick-icon:hover img {
+  transform: scale(1.1);
 }
 
 /* ==========================================================================
-   PAGE TITLES
+   SITE TITLES & BUTTONS
    ========================================================================== */
 .site-title {
   font-size: 2.5rem;
-  text-align: center;
-  margin: 2rem 0;
-  color: #e94560;
+  margin: 1rem 0;
+}
+
+.center-button {
+  margin: 1rem 0 2rem;
+}
+
+.btn-pink {
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-pink:hover {
+  background: var(--accent-hover);
 }
 
 /* ==========================================================================
    SECTION WRAPPERS
-   =================================================================
+   ========================================================================== */
+section {
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+/* ==========================================================================
+   INDEX CAROUSEL (DOT NAV)
+   ========================================================================== */
+#carousel {
+  width: 100%;
+}
+
+.carousel-box {
+  position: relative;
+  margin: 0 auto;
+}
+
+.carousel-media {
+  position: relative;
+}
+
+.carousel-media img {
+  width: 100%;
+  border-radius: var(--border-radius);
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent-color);
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.carousel-arrow.left {
+  left: 10px;
+}
+
+.carousel-arrow.right {
+  right: 10px;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: #444;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dot.active {
+  background: var(--accent-color);
+}
+
+/* ==========================================================================
+   FEATURED GAMES & ASSETS CARDS
+   ========================================================================== */
+.preview-card {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin: 1rem auto;
+  max-width: 600px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.preview-card img {
+  width: 100%;
+  display: block;
+}
+
+.preview-card:hover {
+  transform: scale(1.02);
+}
+
+.hover-box {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background: var(--card-bg);
+  padding: 1rem;
+  border: 1px solid #444;
+  width: 240px;
+  z-index: 5;
+}
+
+.preview-card:hover .hover-box {
+  display: block;
+}
+
+/* ==========================================================================
+   PORTFOLIO GRID
+   ========================================================================== */
+.portfolio-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.portfolio-grid .preview-card {
+  flex: 0 0 calc(33% - 2rem);
+  max-width: calc(33% - 2rem);
+}
+
+@media (max-width: 768px) {
+  .portfolio-grid .preview-card {
+    flex: 0 0 90%;
+    max-width: 90%;
+  }
+}
+
+/* ==========================================================================
+   GAMES CAROUSEL (SLIDING CARDS)
+   ========================================================================== */
+.games-carousel {
+  position: relative;
+  overflow: hidden;
+  margin: 2rem auto;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 280px;
+  margin: 0 10px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.slide img {
+  width: 100%;
+  border-radius: var(--border-radius);
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--accent-color);
+  cursor: pointer;
+  user-select: none;
+}
+
+.carousel-button.prev {
+  left: 0;
+}
+
+.carousel-button.next {
+  right: 0;
+}
+
+.slide.active {
+  transform: scale(1.05);
+}
+
+.details {
+  display: none;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  background: var(--card-bg);
+  color: var(--subtext-color);
+  padding: 1rem;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  text-align: left;
+}
+
+.slide.expanded {
+  transform: scale(1.2);
+  z-index: 100;
+}
+
+.slide.expanded .details {
+  display: block;
+}
+
+.more-info {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background: var(--accent-color);
+  color: #fff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   SHOP GRID & CARDS
+   ========================================================================== */
+.shop-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.shop-card {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  flex: 0 0 calc(25% - 2rem);
+  max-width: calc(25% - 2rem);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.shop-card img {
+  width: 100%;
+  display: block;
+}
+
+.shop-card:hover {
+  transform: scale(1.02);
+}
+
+.shop-card .hover-box {
+  top: 0;
+  left: 100%;
+}
+
+/* ==========================================================================
+   CONTACT FORM
+   ========================================================================== */
+.contact-section {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-form {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background: #111;
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+/* ==========================================================================
+   PRIVACY & TERMS PAGES
+   ========================================================================== */
+.privacy-section,
+.terms-section {
+  width: 90%;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.privacy-policy,
+.terms-content {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  color: var(--subtext-color);
+  text-align: left;
+}
+
+.privacy-policy h2,
+.terms-content h2 {
+  color: var(--accent-color);
+  margin-top: 1.5rem;
+}
+
+/* ==========================================================================
+   SCREEN CRACK EFFECT
+   ========================================================================== */
+.screen-crack {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('media/crack.png') center/contain no-repeat;
+  pointer-events: none;
+  z-index: 9999;
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-4px, 3px); }
+  50% { transform: translate(4px, -3px); }
+  75% { transform: translate(-3px, 2px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ==========================================================================
+   CARD MODAL OVERLAY
+   ========================================================================== */
+.card-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.card-modal-content {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+  position: relative;
+  text-align: left;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .shop-card, .portfolio-grid .preview-card {
+    flex: 0 0 calc(50% - 2rem);
+    max-width: calc(50% - 2rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-center { flex-wrap: wrap; }
+
+  .slide {
+    flex: 0 0 70%;
+  }
+
+  .shop-card, .portfolio-grid .preview-card {
+    flex: 0 0 90%;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 16px;
+  }
+  .carousel-arrow {
+    font-size: 1.5rem;
+  }
+  .carousel-button {
+    font-size: 1.5rem;
+  }
+  .site-title {
+    font-size: 2rem;
+  }
+}
