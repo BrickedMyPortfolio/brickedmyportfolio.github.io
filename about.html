@@ -2,70 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About | brickedmyportfolio.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About - brickedmyportfolio.com</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <div class="top-bar">
-      <div class="logo">
+    <div class="header-left">
+      <a href="index.html" class="logo-circle" aria-label="Home">
         <img src="media/logo.png" alt="Logo" />
-      </div>
-      <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html" class="active">About</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="games.html">Games</a>
-        <a href="shop.html">Shop</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </nav>
-      <div class="brick-gag">🧱</div>
+      </a>
     </div>
-    <div class="site-title">
-      <h1>About Jason & Iron Lantern Studios™</h1>
+
+    <nav class="nav-center">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About Me</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="games.html">Games</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="header-right">
+      <button id="brick-icon" aria-label="Break screen"></button>
     </div>
   </header>
 
-  <main>
-    <section class="bio-section">
-      <h2>Who I Am</h2>
-      <p>Hey, I’m Jason. I started Iron Lantern Studios™ to create the kinds of games I always wanted to play—fast-paced, low-spec, innovative, and built with intent.</p>
-      <p>I work solo or with micro teams to build functional prototypes, asset kits, shaders, and eventually publishable titles. Whether it’s UI design or engine scripting, I’m hands-on with every aspect.</p>
-    </section>
+  <!-- About Content -->
+  <main class="about-content">
+    <h1>About Jason & Iron Lantern Studios™</h1>
+    <p>
+      Hey, I'm Jason — a designer and developer who bricked his portfolio on purpose.  
+      Iron Lantern Studios™ is my creative space where I build games, UI/UX, shaders, and more.
+    </p>
+    <p>
+      Whether it's making weird prototypes, assets for creators, or just breaking things  
+      for fun, this is where it all lives.
+    </p>
 
-    <section class="history-section">
-      <h2>Studio History</h2>
-      <ul>
-        <li><strong>2022:</strong> Founded Iron Lantern Studios™.</li>
-        <li><strong>2023:</strong> Released first asset pack & internal prototype.</li>
-        <li><strong>2024:</strong> Game jam finalist and shader library launch.</li>
-      </ul>
-    </section>
-
-    <section class="philosophy-section">
-      <h2>Dev Philosophy</h2>
-      <p>Design first. Optimize later. Fun is the core feature. I try not to overengineer and always aim to support lower-end hardware while exploring niche mechanics or movement tech.</p>
-      <blockquote>"Bricked? Perfect. Iterate smarter next time."</blockquote>
-    </section>
-
-    <section class="studio-images">
-      <h2>Snapshots</h2>
-      <div class="image-gallery">
-        <img src="media/about1.jpg" alt="Studio Workbench" />
-        <img src="media/about2.jpg" alt="Prototype Demo" />
-        <img src="media/about3.jpg" alt="Dev Setup" />
-      </div>
-    </section>
+    <a href="portfolio.html" class="styled-button">View My Work</a>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Jason | Iron Lantern Studios™</p>
-    <div class="socials">
-      <a href="#"><img src="media/youtube-icon.png" alt="YouTube" /></a>
+    <nav class="footer-links">
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+    <p class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</p>
+    <div class="footer-socials">
+      <a href="#">YouTube</a>
+      <a href="#">Twitter</a>
+      <a href="#">Discord</a>
     </div>
   </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>
