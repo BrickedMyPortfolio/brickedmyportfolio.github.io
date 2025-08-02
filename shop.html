@@ -3,117 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop | BrickedMyPortfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #0f0f0f;
-      color: #f0f0f0;
-    }
-    header {
-      background-color: #1a1a1a;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav a {
-      color: #f0f0f0;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #00ffcc;
-    }
-    .shop-section {
-      padding: 3rem 2rem;
-    }
-    .shop-section h1 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #00ffcc;
-      text-align: center;
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .product-card {
-      background-color: #1f1f1f;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px #00ffcc33;
-    }
-    .product-card h3 {
-      margin-top: 0;
-      color: #00ffcc;
-    }
-    .product-card p {
-      color: #ccc;
-    }
-    .price {
-      font-weight: bold;
-      color: #00ffcc;
-      margin-top: 0.5rem;
-    }
-    .buy-link {
-      display: inline-block;
-      margin-top: 1rem;
-      color: #00ffcc;
-      text-decoration: underline;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #1a1a1a;
-      color: #888;
-    }
-  </style>
+  <title>Shop | Iron Lantern Studios™ | BrickedMyPortfolio.com</title>
+  <meta
+    name="description"
+    content="Grab official Iron Lantern Studios™ merch: tees, hoodies, mugs, and posters."
+  />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="media/favicon.ico" />
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <h2>BrickedMyPortfolio</h2>
-    <nav>
-      <a href="index.html">Home</a>
+    <a href="index.html" class="logo-circle">
+      <img src="media/logo.png" alt="Iron Lantern Studios Logo" />
+    </a>
+    <nav class="nav-center">
       <a href="about.html">About</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="games.html">Games</a>
       <a href="shop.html">Shop</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <div class="brick-icon" onclick="crackScreen()" title="Break the screen">
+      <img src="media/brick-icon.png" alt="Brick Icon" />
+    </div>
   </header>
 
-  <section class="shop-section">
-    <h1>Shop My Assets</h1>
-    <div class="product-grid">
-      <div class="product-card">
-        <h3>Neon Runner Sprite Pack</h3>
-        <p>Cyberpunk-themed character sprites, tilesets, and effects. Perfect for platformers.</p>
-        <p class="price">$5.00</p>
-        <a class="buy-link" href="downloads/neonrunner-sprites.zip">Download Pack</a>
+  <!-- PAGE TITLE -->
+  <h1 class="site-title">Shop</h1>
+
+  <!-- SHOP GRID -->
+  <section class="shop-grid">
+    <div class="shop-card">
+      <img src="media/tee.jpg" alt="Iron Lantern Studios T-Shirt" />
+      <div class="hover-box">
+        <h4>Iron Lantern T-Shirt</h4>
+        <p>Premium cotton tee in charcoal black</p>
+        <p>$24.99</p>
       </div>
-      <div class="product-card">
-        <h3>8-Bit Sound FX Bundle</h3>
-        <p>Classic arcade-style sound effects for jumps, hits, coins, and more.</p>
-        <p class="price">$3.00</p>
-        <a class="buy-link" href="downloads/8bit-sfx.zip">Download Bundle</a>
+    </div>
+
+    <div class="shop-card">
+      <img src="media/hoodie.jpg" alt="Iron Lantern Studios Hoodie" />
+      <div class="hover-box">
+        <h4>Iron Lantern Hoodie</h4>
+        <p>Cozy fleece-lined pullover with logo patch</p>
+        <p>$49.99</p>
       </div>
-      <div class="product-card">
-        <h3>IR Remote Dev Kit</h3>
-        <p>Includes sample IR codes, microcontroller scripts, and schematics for custom LED control.</p>
-        <p class="price">Free</p>
-        <a class="buy-link" href="downloads/ir-dev-kit.zip">Download Kit</a>
+    </div>
+
+    <div class="shop-card">
+      <img src="media/mug.jpg" alt="Iron Lantern Studios Coffee Mug" />
+      <div class="hover-box">
+        <h4>Iron Lantern Coffee Mug</h4>
+        <p>Ceramic 12oz mug with heat-reactive print</p>
+        <p>$14.99</p>
+      </div>
+    </div>
+
+    <div class="shop-card">
+      <img src="media/poster.jpg" alt="Iron Lantern Studios Art Poster" />
+      <div class="hover-box">
+        <h4>Art Poster</h4>
+        <p>18"x24" giclée print of our studio concept art</p>
+        <p>$19.99</p>
       </div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Jason | BrickedMyPortfolio.com</p>
+    <p>
+      © 2025 BrickedMyPortfolio.com | Iron Lantern Studios™ LLC. All rights
+      reserved.
+    </p>
+    <p>
+      <a href="mailto:Jason.harvey@brickedmyportfolio.com"
+        >Jason.harvey@brickedmyportfolio.com</a
+      >
+    </p>
+    <p>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms of Use</a>
+    </p>
   </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>
