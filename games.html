@@ -3,116 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Games | BrickedMyPortfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #0f0f0f;
-      color: #f0f0f0;
-    }
-    header {
-      background-color: #1a1a1a;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav a {
-      color: #f0f0f0;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #00ffcc;
-    }
-    .games-section {
-      padding: 3rem 2rem;
-    }
-    .games-section h1 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #00ffcc;
-      text-align: center;
-    }
-    .game-card {
-      background-color: #1f1f1f;
-      padding: 1rem;
-      margin-bottom: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px #00ffcc33;
-    }
-    .game-card h3 {
-      margin-top: 0;
-      color: #00ffcc;
-    }
-    .game-card p {
-      color: #ccc;
-    }
-    .game-frame {
-      width: 100%;
-      height: 400px;
-      border: none;
-      margin-top: 1rem;
-      background-color: #000;
-    }
-    .download-link {
-      display: inline-block;
-      margin-top: 1rem;
-      color: #00ffcc;
-      text-decoration: underline;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #1a1a1a;
-      color: #888;
-    }
-  </style>
+  <title>Games | Iron Lantern Studios™ | BrickedMyPortfolio.com</title>
+  <meta
+    name="description"
+    content="Explore game prototypes, demos, and tech showcases from Iron Lantern Studios™."
+  />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="media/favicon.ico" />
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <h2>BrickedMyPortfolio</h2>
-    <nav>
-      <a href="index.html">Home</a>
+    <a href="index.html" class="logo-circle">
+      <img src="media/logo.png" alt="Iron Lantern Studios Logo" />
+    </a>
+    <nav class="nav-center">
       <a href="about.html">About</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="games.html">Games</a>
       <a href="shop.html">Shop</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <div class="brick-icon" onclick="crackScreen()" title="Break the screen">
+      <img src="media/brick-icon.png" alt="Brick Icon" />
+    </div>
   </header>
 
-  <section class="games-section">
-    <h1>Play My Games</h1>
+  <!-- PAGE TITLE -->
+  <h1 class="site-title">Games</h1>
 
+  <!-- GAMES GRID -->
+  <section class="games-grid">
     <div class="game-card">
-      <h3>Pixel Blaster</h3>
-      <p>Retro arcade shooter built with Phaser.js. Dodge, blast, and survive waves of pixel enemies.</p>
-      <iframe class="game-frame" src="games/pixelblaster/index.html"></iframe>
-      <a class="download-link" href="downloads/pixelblaster.zip">Download Game</a>
+      <img src="media/game1.jpg" alt="Gravity Puzzle Prototype" />
+      <div class="hover-box">
+        <h4>Gravity Puzzle Prototype</h4>
+        <p>Manipulate planets to solve spatial challenges.</p>
+        <p>Tags: Physics, Puzzle</p>
+      </div>
     </div>
 
     <div class="game-card">
-      <h3>Escape the Grid</h3>
-      <p>Minimalist puzzle platformer with glitchy aesthetics and logic-based challenges.</p>
-      <iframe class="game-frame" src="games/escapethegrid/index.html"></iframe>
-      <a class="download-link" href="downloads/escapethegrid.zip">Download Game</a>
+      <img src="media/game2.jpg" alt="Endless Runner Circuit" />
+      <div class="hover-box">
+        <h4>Endless Runner Circuit</h4>
+        <p>Test your reflexes in a procedurally generated track.</p>
+        <p>Tags: Runner, Systems</p>
+      </div>
     </div>
 
     <div class="game-card">
-      <h3>IR Controller Simulator</h3>
-      <p>Simulated interface for testing IR signal logic and LED control patterns.</p>
-      <iframe class="game-frame" src="games/ircontroller/index.html"></iframe>
-      <a class="download-link" href="downloads/ircontroller.zip">Download Tool</a>
+      <img src="media/game3.jpg" alt="Top-Down Shooter Prototype" />
+      <div class="hover-box">
+        <h4>Top-Down Shooter Prototype</h4>
+        <p>Dynamic AI enemies in a neon-lit arena.</p>
+        <p>Tags: Shooter, AI</p>
+      </div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Jason | BrickedMyPortfolio.com</p>
+    <p>
+      © 2025 BrickedMyPortfolio.com | Iron Lantern Studios™ LLC. All rights
+      reserved.
+    </p>
+    <p>
+      <a href="mailto:Jason.harvey@brickedmyportfolio.com"
+        >Jason.harvey@brickedmyportfolio.com</a
+      >
+    </p>
+    <p>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms of Use</a>
+    </p>
   </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>
