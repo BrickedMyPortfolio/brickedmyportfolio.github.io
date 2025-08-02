@@ -1,123 +1,98 @@
-<!-- portfolio.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jason’s Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | BrickedMyPortfolio.com</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="media/favicon.ico" type="image/x-icon" />
 </head>
 <body>
   <header>
-    <h1>Jason’s Portfolio</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="portfolio.html" class="active">Portfolio</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="top-bar">
+      <div class="logo">
+        <a href="index.html"><img src="media/logo.png" alt="Logo" /></a>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html" class="active">Portfolio</a>
+        <a href="games.html">Games</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+      <div class="brick-gag" id="brick">🪨</div>
+    </div>
+    <div class="site-title">
+      <h1>My Development Portfolio</h1>
+    </div>
   </header>
 
   <main>
-    <!-- Category Filter -->
-    <section id="filter">
-      <button data-filter="all" class="filter-btn active">All</button>
-      <button data-filter="web" class="filter-btn">Web Development</button>
-      <button data-filter="mobile" class="filter-btn">Mobile Apps</button>
-      <button data-filter="data" class="filter-btn">Data Science</button>
-      <button data-filter="ux" class="filter-btn">UX/UI Design</button>
+    <section class="portfolio-intro">
+      <h2>Project Highlights</h2>
+      <p>Explore a collection of prototypes, shaders, UX/UI mockups, and completed dev projects from Iron Lantern Studios.</p>
     </section>
 
-    <!-- Featured Projects -->
-    <section id="featured-projects">
-      <h2>Featured Projects</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Project</th>
-            <th>Description</th>
-            <th>Technologies</th>
-            <th>Links</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="project-item" data-category="web">
-            <td>Project Alpha</td>
-            <td>Responsive app for real-time collaboration & file sharing</td>
-            <td>React, Node.js, Firebase</td>
-            <td>
-              <a href="#">Live Demo</a> /
-              <a href="#">GitHub</a>
-            </td>
-          </tr>
-          <tr class="project-item" data-category="mobile">
-            <td>Beta App</td>
-            <td>Cross-platform mobile gamified habit tracker</td>
-            <td>Flutter, Dart, SQLite</td>
-            <td>
-              <a href="#">App Store</a> /
-              <a href="#">Play Store</a>
-            </td>
-          </tr>
-          <tr class="project-item" data-category="data">
-            <td>DataViz Pro</td>
-            <td>Interactive dashboard for financial data analysis</td>
-            <td>Python, Dash, PostgreSQL</td>
-            <td>
-              <a href="#">View Demo</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <section class="project-grid">
+      <div class="portfolio-card">
+        <img src="media/project1.jpg" alt="Project 1" />
+        <h3>Node-Based Dialogue Tool</h3>
+        <p>A custom editor plugin for branching dialogue trees with runtime logic and preview mode.</p>
+        <a href="#" class="more-btn">Learn More</a>
+      </div>
+      <div class="portfolio-card">
+        <img src="media/project2.jpg" alt="Project 2" />
+        <h3>Stylized Water Shader</h3>
+        <p>Built in HLSL for use in Unity URP and optimized for low-end GPUs with depth-based foam.</p>
+        <a href="#" class="more-btn">View Shader</a>
+      </div>
+      <div class="portfolio-card">
+        <img src="media/project3.jpg" alt="Project 3" />
+        <h3>3D UI Navigation</h3>
+        <p>Interactive UI system in 3D space, drag+drop, tooltips, input validation, and VR/AR support.</p>
+        <a href="#" class="more-btn">Watch Demo</a>
+      </div>
     </section>
 
-    <!-- Other Notable Work -->
-    <section id="other-work">
-      <h2>Other Notable Work</h2>
+    <section class="prototype-archive">
+      <h2>Prototype Archive</h2>
       <ul>
-        <li>
-          <strong>Portfolio Website Redesign</strong><br />
-          User research, wireframes, implementation with HTML5, CSS3, JS.
+        <li><strong>HoverTanks Arena:</strong> Multiplayer twin-stick shooter with AI bot logic and navmesh.
         </li>
-        <li>
-          <strong>Chatbot Integration</strong><br />
-          Customer-support chatbot with NLP, cut response times by 40%.
+        <li><strong>GridHack:</strong> Procedural grid-based cyberpunk RPG prototype with tile-to-tile abilities.
         </li>
+        <li><strong>Scorched Soil:</strong> Voxel terrain experiment with destruction and rebuilding.</li>
+        <li><strong>CyberStack:</strong> Vertical infinite runner built entirely in HTML5 Canvas + JS.</li>
       </ul>
     </section>
 
-    <!-- Case Studies -->
-    <section id="case-studies">
-      <h2>Case Studies</h2>
-      <article class="case-study">
-        <h3>Project Alpha Deep Dive</h3>
-        <p><strong>Role:</strong> Lead Front-end Developer</p>
-        <p><strong>Timeline:</strong> Jan 2024 – Apr 2024</p>
-        <ul>
-          <li>Real-time sync with WebSockets</li>
-          <li>Custom file-upload component</li>
-          <li>Accessibility compliance</li>
-        </ul>
-      </article>
-      <article class="case-study">
-        <h3>DataViz Pro Analysis</h3>
-        <p><strong>Role:</strong> Full-stack Engineer</p>
-        <p><strong>Timeline:</strong> Jun 2023 – Dec 2023</p>
-        <ul>
-          <li>Optimized query performance</li>
-          <li>Interactive charts with D3.js</li>
-          <li>Containerized, scalable deployment</li>
-        </ul>
-      </article>
+    <section class="ui-showcase">
+      <h2>UI & UX Samples</h2>
+      <div class="ui-card">
+        <img src="media/ui1.jpg" alt="UI Sample 1" />
+        <p>Mobile menu interface with haptic feedback and button logic tests.</p>
+      </div>
+      <div class="ui-card">
+        <img src="media/ui2.jpg" alt="UI Sample 2" />
+        <p>Health and stamina bar component for top-down adventure systems.</p>
+      </div>
+      <div class="ui-card">
+        <img src="media/ui3.jpg" alt="UI Sample 3" />
+        <p>Futuristic HUD concept using radial input wheels and layered overlays.</p>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Jason. All rights reserved.</p>
+    <p>&copy; 2025 Jason | Iron Lantern Studios™</p>
+    <div class="socials">
+      <a href="#"><img src="media/youtube-icon.png" alt="YouTube" /></a>
+    </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
