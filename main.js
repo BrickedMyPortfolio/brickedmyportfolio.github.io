@@ -1,98 +1,37 @@
-/* ==========================================================================
-   RESET & GLOBAL STYLES
-   ========================================================================== */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+// main.js
 
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
-}
+(() => {
+  // Preload crack sound
+  const crackSound = new Audio('media/glass-crack.mp3');
+  crackSound.preload = 'auto';
 
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  color: #333333;
-  background-color: #fafafa;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+  // Create a full-screen overlay for the crack effect
+  const overlay = document.createElement('div');
+  overlay.id = 'crack-overlay';
+  Object.assign(overlay.style, {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100vw',
+    height: '100vh',
+    backgroundImage: 'url("media/screen-crack.png")',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    backgroundSize: 'contain',
+    pointerEvents: 'none',
+    opacity: 0,
+    transition: 'opacity 0.5s ease',
+    zIndex: 9999
+  });
+  document.body.appendChild(overlay);
 
-/* ==========================================================================
-   HEADER & NAVIGATION
-   ========================================================================== */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.logo-circle {
-  display: inline-block;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid #333333;
-}
-
-.logo-circle img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.nav-center {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-center a {
-  text-decoration: none;
-  color: #333333;
-  font-weight: 500;
-  transition: color 0.2s ease-in-out;
-}
-
-.nav-center a:hover {
-  color: #e94560;
-}
-
-.brick-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  cursor: pointer;
-}
-
-.brick-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* ==========================================================================
-   PAGE TITLES
-   ========================================================================== */
-.site-title {
-  font-size: 2.5rem;
-  text-align: center;
-  margin: 2rem 0;
-  color: #e94560;
-}
-
-/* ==========================================================================
-   SECTION WRAPPERS
-   =================================================================
+  // Toggle the crack overlay and play sound
+  window.crackScreen = () => {
+    const isVisible = overlay.style.opacity === '1';
+    overlay.style.opacity = isVisible ? '0' : '1';
+    crackSound.currentTime = 0;
+    crackSound.play().catch(() => {
+      // Sound playback might be blocked until user interacts
+    });
+  };
+})();
