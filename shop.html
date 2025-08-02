@@ -1,80 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shop - brickedmyportfolio.com</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - brickedmyportfolio.com</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="header-left">
-      <a href="index.html" class="logo-circle" aria-label="Home">
-        <img src="media/logo.png" alt="Logo" />
-      </a>
+    <header>
+        <a href="index.html" class="logo-circle">🎮</a>
+        <nav class="nav-center">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="games.html">Games</a>
+            <a href="shop.html" class="current">Shop</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <button id="brick-icon"></button>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Asset Shop</h1>
+        <p class="page-subtitle">3D assets you probably won't regret buying.</p>
+        
+        <div class="shop-grid">
+            <div class="card shop-item" data-title="Sci-Fi Asset Kit" data-link="https://ironlanternstudios.itch.io/sci-fi-kit" data-price="$29.99">
+                <img src="media/asset1.png" alt="Sci-Fi Asset Kit">
+                <div class="card-content">
+                    <h3>Sci-Fi Asset Kit</h3>
+                    <p>High-poly 3D assets for space stations, panels, doors, and alien consoles.</p>
+                    <div class="card-tags">
+                        <span class="tag">3D</span>
+                        <span class="tag">Sci-Fi</span>
+                        <span class="tag">Kitbash</span>
+                    </div>
+                    <p class="rating">⭐⭐⭐⭐⭐ "Extremely usable in Unity & Unreal."</p>
+                    <div class="price">$29.99</div>
+                    <button class="preview-button" onclick="window.open('https://ironlanternstudios.itch.io/sci-fi-kit', '_blank')">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="card shop-item" data-title="Lowpoly City Pack" data-link="https://ironlanternstudios.itch.io/lowpoly-city" data-price="$19.99">
+                <img src="media/asset2.png" alt="Lowpoly City Pack">
+                <div class="card-content">
+                    <h3>Lowpoly City Pack</h3>
+                    <p>Modular buildings, roads, props—perfect for mobile or stylized projects.</p>
+                    <div class="card-tags">
+                        <span class="tag">Lowpoly</span>
+                        <span class="tag">Stylized</span>
+                        <span class="tag">Modular</span>
+                    </div>
+                    <p class="rating">⭐⭐⭐⭐☆ "Looks great and runs fast."</p>
+                    <div class="price">$19.99</div>
+                    <button class="preview-button" onclick="window.open('https://ironlanternstudios.itch.io/lowpoly-city', '_blank')">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="card shop-item" data-title="Fantasy Character Pack" data-link="https://ironlanternstudios.itch.io/fantasy-chars" data-price="$35.00">
+                <img src="media/asset3.png" alt="Fantasy Character Pack">
+                <div class="card-content">
+                    <h3>Fantasy Character Pack</h3>
+                    <p>Animated character sprites for fantasy RPG games and adventures.</p>
+                    <div class="card-tags">
+                        <span class="tag">Sprites</span>
+                        <span class="tag">Fantasy</span>
+                        <span class="tag">Animated</span>
+                    </div>
+                    <p class="rating">⭐⭐⭐⭐☆ "Great animation quality!"</p>
+                    <div class="price">$35.00</div>
+                    <button class="preview-button" onclick="window.open('https://ironlanternstudios.itch.io/fantasy-chars', '_blank')">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="card shop-item" data-title="Retro Sound Effects" data-link="https://ironlanternstudios.itch.io/retro-sounds" data-price="$25.00">
+                <img src="media/asset4.png" alt="Retro Sound Effects">
+                <div class="card-content">
+                    <h3>Retro Sound Effects</h3>
+                    <p>Nostalgic 8-bit and 16-bit sound effects for retro-style games.</p>
+                    <div class="card-tags">
+                        <span class="tag">Audio</span>
+                        <span class="tag">Retro</span>
+                        <span class="tag">8-bit</span>
+                    </div>
+                    <p class="rating">⭐⭐⭐⭐⭐ "Perfect for indie games!"</p>
+                    <div class="price">$25.00</div>
+                    <button class="preview-button" onclick="window.open('https://ironlanternstudios.itch.io/retro-sounds', '_blank')">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="card shop-item" data-title="Modern UI Pack" data-link="https://ironlanternstudios.itch.io/ui-pack" data-price="$15.00">
+                <img src="media/asset5.png" alt="Modern UI Pack">
+                <div class="card-content">
+                    <h3>Modern UI Pack</h3>
+                    <p>Complete UI elements for modern game interfaces and applications.</p>
+                    <div class="card-tags">
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">Vector</span>
+                        <span class="tag">Modern</span>
+                    </div>
+                    <p class="rating">⭐⭐⭐⭐⭐ "High quality assets!"</p>
+                    <div class="price">$15.00</div>
+                    <button class="preview-button" onclick="window.open('https://ironlanternstudios.itch.io/ui-pack', '_blank')">Buy Now</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <nav class="nav-center">
-      <a href="index.html">Home</a>
-      <a href="about.html">About Me</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="games.html">Games</a>
-      <a href="shop.html" class="active">Shop</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-
-    <div class="header-right">
-      <button id="brick-icon" aria-label="Break screen"></button>
-    </div>
-  </header>
-
-  <!-- Shop Section -->
-  <main class="shop-section">
-    <h1>Asset Packs</h1>
-    <div class="shop-items">
-
-      <div class="shop-card">
-        <img src="media/assetpack1.png" alt="Asset Pack Preview" />
-        <h2>Cyber UI Pack</h2>
-        <p class="price">$9.99</p>
-        <p class="desc">Glitch-inspired UI pack with hover FX, menu sounds, and pixel borders. Includes Figma + PNG.</p>
-        <a href="#" class="buy-btn">Buy on Itch.io</a>
-      </div>
-
-      <div class="shop-card">
-        <img src="media/assetpack2.png" alt="Asset Pack Preview" />
-        <h2>Neo Grid Tileset</h2>
-        <p class="price">$6.00</p>
-        <p class="desc">Modular tileset with grid-based layouts and shader-ready emission maps.</p>
-        <a href="#" class="buy-btn">Buy on Itch.io</a>
-      </div>
-
-      <div class="shop-card">
-        <img src="media/assetpack3.png" alt="Asset Pack Preview" />
-        <h2>Retro Sound FX</h2>
-        <p class="price">$3.00</p>
-        <p class="desc">Over 100 synthesized sound effects for menus, UI, combat, and more.</p>
-        <a href="#" class="buy-btn">Buy on Itch.io</a>
-      </div>
-
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <nav class="footer-links">
-      <a href="terms.html">Terms</a>
-      <a href="privacy.html">Privacy</a>
-    </nav>
-    <p class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</p>
-    <div class="footer-socials">
-      <a href="#">YouTube</a>
-      <a href="#">Twitter</a>
-      <a href="#">Discord</a>
-    </div>
-  </footer>
-
-  <script src="main.js"></script>
-</body>
-</html>
+    <!-- Card Overlay for Expanded View -->
+    <div class="card-overlay" id="card-overlay"></div>
+    <div class="card-expanded" id="card-expanded">
+        <button class="close-btn" onclick="closeExpandedCard()">×</button>
+        <div class="expanded-content">
+            <img id="expanded-image" src="" alt="">
+            <div class="expanded-info">
+                <h3 id="expanded-title"></h3>
+                <p id="expanded-description"></p>
+                <div id="expanded-tags"></div>
+                <p id="expanded-rating"></p>
