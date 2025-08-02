@@ -3,79 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About | BrickedMyPortfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #0f0f0f;
-      color: #f0f0f0;
-    }
-    header {
-      background-color: #1a1a1a;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav a {
-      color: #f0f0f0;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #00ffcc;
-    }
-    .about-section {
-      padding: 3rem 2rem;
-      max-width: 800px;
-      margin: auto;
-    }
-    .about-section h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #00ffcc;
-    }
-    .about-section p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #ccc;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #1a1a1a;
-      color: #888;
-    }
-  </style>
+  <title>About | Iron Lantern Studios™ | BrickedMyPortfolio.com</title>
+  <meta
+    name="description"
+    content="Learn about Jason Harvey, indie developer and founder of Iron Lantern Studios™."
+  />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="media/favicon.ico" />
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <h2>BrickedMyPortfolio</h2>
-    <nav>
-      <a href="index.html">Home</a>
+    <a href="index.html" class="logo-circle">
+      <img src="media/logo.png" alt="Iron Lantern Studios Logo" />
+    </a>
+    <nav class="nav-center">
       <a href="about.html">About</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="games.html">Games</a>
       <a href="shop.html">Shop</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <div class="brick-icon" onclick="crackScreen()" title="Break the screen">
+      <img src="media/brick-icon.png" alt="Brick Icon" />
+    </div>
   </header>
 
-  <section class="about-section">
-    <h1>About Me</h1>
-    <p>Hey, I'm Jason — a curious and resourceful tinkerer with a passion for game development and hardware hacking. I thrive on hands-on experimentation, whether it's reverse engineering IR signals, building smart LED control systems, or exploring unconventional setups like running Linux on microcontrollers.</p>
+  <!-- PAGE TITLE -->
+  <h1 class="site-title">About Me</h1>
 
-    <p>My projects blend creativity with technical depth. I love repurposing components, integrating microcontrollers like Raspberry Pi Pico and Arduino, and pushing the boundaries of what's possible with DIY electronics. Whether it's crafting immersive audio experiences or designing custom control systems, I’m always chasing the next challenge.</p>
+  <!-- ABOUT BUTTON -->
+  <div class="center-button">
+    <a href="#bio" class="btn-pink">About Me</a>
+  </div>
 
-    <p>This site is my digital playground — a space to showcase my games, share my assets, and document the journey. Thanks for stopping by!</p>
+  <!-- BIO SECTION -->
+  <section id="bio">
+    <h2>About Jason Harvey</h2>
+    <p>
+      I’m Jason Harvey, the solo indie developer behind Iron Lantern Studios™ LLC.
+      I blend creative artistry and technical innovation to build stylized worlds
+      and intuitive gameplay systems.
+    </p>
+    <p>
+      My core expertise spans AI pathfinding, custom shaders, and modular
+      environment kits. Whether prototyping an FPS or sculpting asset packs,
+      I approach every challenge with curiosity and precision.
+    </p>
+    <p>
+      This site showcases my current projects, prototypes, and asset packs
+      available for purchase. Feel free to explore my work or reach out to
+      collaborate on your next idea.
+    </p>
   </section>
 
+  <!-- FOOTER (with legal links) -->
   <footer>
-    <p>&copy; 2025 Jason | BrickedMyPortfolio.com</p>
+    <p>
+      © 2025 BrickedMyPortfolio.com | Iron Lantern Studios™ LLC. All rights
+      reserved.
+    </p>
+    <p>
+      <a href="mailto:Jason.harvey@brickedmyportfolio.com"
+        >Jason.harvey@brickedmyportfolio.com</a
+      >
+    </p>
+    <p>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms of Use</a>
+    </p>
   </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>
