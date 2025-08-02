@@ -3,120 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | BrickedMyPortfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #0f0f0f;
-      color: #f0f0f0;
-    }
-    header {
-      background-color: #1a1a1a;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav a {
-      color: #f0f0f0;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #00ffcc;
-    }
-    .contact-section {
-      padding: 3rem 2rem;
-      max-width: 600px;
-      margin: auto;
-    }
-    .contact-section h1 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #00ffcc;
-      text-align: center;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-    input, textarea {
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 4px;
-      background-color: #1f1f1f;
-      color: #f0f0f0;
-    }
-    input::placeholder, textarea::placeholder {
-      color: #888;
-    }
-    button {
-      padding: 0.8rem;
-      background-color: #00ffcc;
-      color: #0f0f0f;
-      font-weight: bold;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #00ccaa;
-    }
-    .social-links {
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .social-links a {
-      margin: 0 1rem;
-      color: #00ffcc;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #1a1a1a;
-      color: #888;
-    }
-  </style>
+  <title>Contact | Iron Lantern Studios™ | BrickedMyPortfolio.com</title>
+  <meta
+    name="description"
+    content="Get in touch with Jason Harvey of Iron Lantern Studios™ via the contact form."
+  />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="media/favicon.ico" />
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <h2>BrickedMyPortfolio</h2>
-    <nav>
-      <a href="index.html">Home</a>
+    <a href="index.html" class="logo-circle">
+      <img src="media/logo.png" alt="Iron Lantern Studios Logo" />
+    </a>
+    <nav class="nav-center">
       <a href="about.html">About</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="games.html">Games</a>
       <a href="shop.html">Shop</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <div class="brick-icon" onclick="crackScreen()" title="Break the screen">
+      <img src="media/brick-icon.png" alt="Brick Icon" />
+    </div>
   </header>
 
-  <section class="contact-section">
-    <h1>Contact Me</h1>
-    <form action="mailto:your.email@example.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+  <!-- PAGE TITLE -->
+  <h1 class="site-title">Contact</h1>
 
-    <div class="social-links">
-      <p>Or find me on:</p>
-      <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-      <a href="https://twitter.com/yourhandle" target="_blank">Twitter</a>
-      <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
-    </div>
+  <!-- CONTACT FORM -->
+  <section class="contact-section">
+    <form
+      class="contact-form"
+      action="mailto:Jason.harvey@brickedmyportfolio.com"
+      method="POST"
+      enctype="text/plain"
+    >
+      <input
+        type="text"
+        name="name"
+        placeholder="Your Name"
+        required
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Your Email"
+        required
+      />
+      <textarea
+        name="message"
+        placeholder="Your Message"
+        rows="6"
+      ></textarea>
+      <button type="submit" class="btn-pink">Send Message</button>
+    </form>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Jason | BrickedMyPortfolio.com</p>
+    <p>
+      © 2025 BrickedMyPortfolio.com | Iron Lantern Studios™ LLC. All
+      rights reserved.
+    </p>
+    <p>
+      <a href="mailto:Jason.harvey@brickedmyportfolio.com"
+        >Jason.harvey@brickedmyportfolio.com</a
+      >
+    </p>
+    <p>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms of Use</a>
+    </p>
   </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>
