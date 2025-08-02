@@ -1,80 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Games - brickedmyportfolio.com</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games - brickedmyportfolio.com</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="header-left">
-      <a href="index.html" class="logo-circle" aria-label="Home">
-        <img src="media/logo.png" alt="Logo" />
-      </a>
+    <header>
+        <a href="index.html" class="logo-circle">🎮</a>
+        <nav class="nav-center">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="games.html" class="current">Games</a>
+            <a href="shop.html">Shop</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <button id="brick-icon"></button>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Games</h1>
+        <p class="page-subtitle">Playable disasters. Some of them even run.</p>
+        
+        <div class="cards-grid">
+            <div class="card game-card" data-title="Broken FPS" data-link="https://store.steampowered.com/app/123456" data-price="$14.99">
+                <img src="media/game1.png" alt="Broken FPS">
+                <div class="card-content">
+                    <h3>Broken FPS</h3>
+                    <p>A twitchy shooter where the only thing faster than the bullets is the number of bugs.</p>
+                    <div class="card-tags">
+                        <span class="tag">Action</span>
+                        <span class="tag">Indie</span>
+                        <span class="tag">Buggy</span>
+                    </div>
+                    <p class="rating">⭐⭐⭐☆☆ "It crashes in style."</p>
+                    <button class="preview-button">Play on Steam</button>
+                </div>
+            </div>
+
+            <div class="card game-card" data-title="Ragdoll Sandbox" data-link="https://jayswan.itch.io/ragdoll-sandbox" data-price="$9.99">
+                <img src="media/game2.png" alt="Ragdoll Sandbox">
+                <div class="card-content">
+                    <h3>Ragdoll Sandbox</h3>
+                    <p>A chaotic 3D environment where the only law is physics—and it doesn't care about your plans.</p>
+                    <div class="card-tags">
+                        <span class="tag">Sandbox</span>
+                        <span class="tag">Physics</span>
+                        <span class="tag">Fun</span>
+                    </div>
+                    <p class="rating">⭐⭐⭐⭐☆ "Hilariously unpredictable."</p>
+                    <button class="preview-button">Play on Itch.io</button>
+                </div>
+            </div>
+
+            <div class="card game-card" data-title="Quantum Glitch" data-link="https://store.steampowered.com/app/789012" data-price="$19.99">
+                <img src="media/game3.png" alt="Quantum Glitch">
+                <div class="card-content">
+                    <h3>Quantum Glitch</h3>
+                    <p>Mind-bending puzzle platformer where you manipulate time and space to solve challenges.</p>
+                    <div class="card-tags">
+                        <span class="tag">Puzzle</span>
+                        <span class="tag">Platformer</span>
+                        <span class="tag">Sci-fi</span>
+                    </div>
+                    <p class="rating">⭐⭐⭐⭐⭐ "Revolutionary gameplay!"</p>
+                    <button class="preview-button">Play on Steam</button>
+                </div>
+            </div>
+
+            <div class="card game-card" data-title="Neon Runner" data-link="https://store.steampowered.com/app/456789" data-price="$12.99">
+                <img src="media/game4.png" alt="Neon Runner">
+                <div class="card-content">
+                    <h3>Neon Runner</h3>
+                    <p>High-speed cyberpunk racing through neon-lit cityscapes with electronic soundtrack.</p>
+                    <div class="card-tags">
+                        <span class="tag">Racing</span>
+                        <span class="tag">Cyberpunk</span>
+                        <span class="tag">Fast-paced</span>
+                    </div>
+                    <p class="rating">⭐⭐⭐⭐☆ "Adrenaline rush!"</p>
+                    <button class="preview-button">Play on Steam</button>
+                </div>
+            </div>
+
+            <div class="card game-card" data-title="Project Void" data-link="#" data-price="Coming Soon">
+                <img src="media/game5.png" alt="Project Void">
+                <div class="card-content">
+                    <h3>Project Void</h3>
+                    <p>Atmospheric horror exploration game set in abandoned space stations. Coming Q3 2025.</p>
+                    <div class="card-tags">
+                        <span class="tag">Horror</span>
+                        <span class="tag">Exploration</span>
+                        <span class="tag">Atmosphere</span>
+                    </div>
+                    <p class="rating">Coming Soon</p>
+                    <button class="preview-button">Wishlist</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <nav class="nav-center">
-      <a href="index.html">Home</a>
-      <a href="about.html">About Me</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="games.html" class="active">Games</a>
-      <a href="shop.html">Shop</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-
-    <div class="header-right">
-      <button id="brick-icon" aria-label="Break screen"></button>
+    <!-- Card Overlay for Expanded View -->
+    <div class="card-overlay" id="card-overlay"></div>
+    <div class="card-expanded" id="card-expanded">
+        <button class="close-btn" onclick="closeExpandedCard()">×</button>
+        <div class="expanded-content">
+            <img id="expanded-image" src="" alt="">
+            <div class="expanded-info">
+                <h3 id="expanded-title"></h3>
+                <p id="expanded-description"></p>
+                <div id="expanded-tags"></div>
+                <p id="expanded-rating"></p>
+                <p id="expanded-price"></p>
+                <a id="expanded-link" class="preview-button" target="_blank">Play Now</a>
+            </div>
+        </div>
     </div>
-  </header>
 
-  <!-- Games Section -->
-  <main class="games-section">
-    <h1>Game Previews</h1>
-    <div class="game-list">
+    <footer>
+        <div class="footer-links">
+            <a href="terms.html">Terms of Service</a>
+            <a href="privacy.html">Privacy Policy</a>
+        </div>
+        <div class="footer-social">
+            <a href="https://youtube.com" target="_blank">YouTube</a>
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="#" target="_blank">Discord</a>
+        </div>
+        <div class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</div>
+    </footer>
 
-      <div class="game-card">
-        <img src="media/game1.png" alt="Game Thumbnail" />
-        <h2>Lost in Transmission</h2>
-        <p class="tags">Sci-Fi · Puzzle · Singleplayer</p>
-        <p class="desc">Decode alien frequencies in a vaporwave radio world. Features full audio-reactive visuals.</p>
-        <button class="expand-btn">Play Demo</button>
-      </div>
-
-      <div class="game-card">
-        <img src="media/game2.png" alt="Game Thumbnail" />
-        <h2>Hardwired Dungeon</h2>
-        <p class="tags">Roguelike · Pixel · Action</p>
-        <p class="desc">Fast-paced combat with perma-death. Built in Godot using ECS and shader FX.</p>
-        <button class="expand-btn">Learn More</button>
-      </div>
-
-      <div class="game-card">
-        <img src="media/game3.png" alt="Game Thumbnail" />
-        <h2>404 Speedway</h2>
-        <p class="tags">Racing · Synthwave · Multiplayer</p>
-        <p class="desc">Race corrupted data packets through neon cyberspace. Split-screen and LAN supported.</p>
-        <button class="expand-btn">Watch Trailer</button>
-      </div>
-
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <nav class="footer-links">
-      <a href="terms.html">Terms</a>
-      <a href="privacy.html">Privacy</a>
-    </nav>
-    <p class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</p>
-    <div class="footer-socials">
-      <a href="#">YouTube</a>
-      <a href="#">Twitter</a>
-      <a href="#">Discord</a>
-    </div>
-  </footer>
-
-  <script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
