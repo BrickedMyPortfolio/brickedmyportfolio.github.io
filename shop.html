@@ -2,85 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop | brickedmyportfolio.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop - brickedmyportfolio.com</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="media/favicon.ico" type="image/x-icon" />
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <div class="top-bar">
-      <div class="logo">
-        <a href="index.html"><img src="media/logo.png" alt="Logo" /></a>
-      </div>
-      <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="games.html">Games</a>
-        <a href="shop.html" class="active">Shop</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </nav>
-      <div class="brick-gag" id="brick">🪨</div>
+    <div class="header-left">
+      <a href="index.html" class="logo-circle" aria-label="Home">
+        <img src="media/logo.png" alt="Logo" />
+      </a>
+    </div>
+
+    <nav class="nav-center">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="games.html">Games</a>
+      <a href="shop.html" class="active">Shop</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="header-right">
+      <button id="brick-icon" aria-label="Break screen"></button>
     </div>
   </header>
 
-  <main>
-    <section class="hero shop-hero">
-      <h1>Game Assets & Tools</h1>
-      <p>Buy my custom-made packs, all optimized for performance.</p>
-    </section>
+  <!-- Shop Section -->
+  <main class="shop-section">
+    <h1>Asset Packs</h1>
+    <div class="shop-items">
 
-    <section class="product-grid">
-      <h2>Available Packs</h2>
-      <div class="card-grid">
-        <div class="asset-card">
-          <img src="media/asset1.jpg" alt="Stylized UI Pack" />
-          <h3>Stylized UI Pack</h3>
-          <p>Perfect for sci-fi games. Includes buttons, panels, icons.</p>
-          <button class="buy-btn">Buy - $10</button>
-        </div>
-        <div class="asset-card">
-          <img src="media/asset2.jpg" alt="Low-Poly Rocks" />
-          <h3>Low-Poly Rocks</h3>
-          <p>Set of 20+ rocks with baked PBR textures.</p>
-          <button class="buy-btn">Buy - $8</button>
-        </div>
-        <div class="asset-card">
-          <img src="media/asset3.jpg" alt="Combat Animations" />
-          <h3>Combat Animations</h3>
-          <p>8-directional melee animations with root motion.</p>
-          <button class="buy-btn">Buy - $12</button>
-        </div>
-        <div class="asset-card">
-          <img src="media/asset4.jpg" alt="Shader FX Pack" />
-          <h3>Shader FX Pack</h3>
-          <p>Dozens of VFX shaders for energy weapons and UI.</p>
-          <button class="buy-btn">Buy - $15</button>
-        </div>
+      <div class="shop-card">
+        <img src="media/assetpack1.png" alt="Asset Pack Preview" />
+        <h2>Cyber UI Pack</h2>
+        <p class="price">$9.99</p>
+        <p class="desc">Glitch-inspired UI pack with hover FX, menu sounds, and pixel borders. Includes Figma + PNG.</p>
+        <a href="#" class="buy-btn">Buy on Itch.io</a>
       </div>
-    </section>
 
-    <section class="note">
-      <h2>Licensing</h2>
-      <p>All assets are royalty-free for use in commercial and personal projects. Redistribution without modification is prohibited.</p>
-    </section>
+      <div class="shop-card">
+        <img src="media/assetpack2.png" alt="Asset Pack Preview" />
+        <h2>Neo Grid Tileset</h2>
+        <p class="price">$6.00</p>
+        <p class="desc">Modular tileset with grid-based layouts and shader-ready emission maps.</p>
+        <a href="#" class="buy-btn">Buy on Itch.io</a>
+      </div>
+
+      <div class="shop-card">
+        <img src="media/assetpack3.png" alt="Asset Pack Preview" />
+        <h2>Retro Sound FX</h2>
+        <p class="price">$3.00</p>
+        <p class="desc">Over 100 synthesized sound effects for menus, UI, combat, and more.</p>
+        <a href="#" class="buy-btn">Buy on Itch.io</a>
+      </div>
+
+    </div>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <div class="footer-widgets">
-      <div class="about-widget">
-        <h4>About the Creator</h4>
-        <p>Jason creates optimized tools for indie devs with a focus on visual quality and low performance cost.</p>
-      </div>
-      <div class="footer-links">
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </div>
+    <nav class="footer-links">
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+    <p class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</p>
+    <div class="footer-socials">
+      <a href="#">YouTube</a>
+      <a href="#">Twitter</a>
+      <a href="#">Discord</a>
     </div>
-    <p class="copyright">&copy; 2025 Jason | Iron Lantern Studios™</p>
   </footer>
 
   <script src="main.js"></script>
