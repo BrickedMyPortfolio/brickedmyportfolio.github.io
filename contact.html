@@ -2,198 +2,86 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta 
-    name="viewport" 
-    content="width=device-width, initial-scale=1.0"
-  />
-  <title>Contact | Iron Lantern Studios™ | BrickedMyPortfolio.com</title>
-  <meta
-    name="description"
-    content="Get in touch with Jason Harvey of Iron Lantern Studios™ via our contact form."
-  />
-  <!-- Open Graph / Social metadata -->
-  <meta property="og:title" content="Contact | Iron Lantern Studios™" />
-  <meta property="og:description" content="Have a question or project idea? Reach out today!" />
-  <meta property="og:image" content="media/og-image-contact.png" />
-  <meta property="og:url" content="https://brickedmyportfolio.com/contact.html" />
-  <meta name="twitter:card" content="summary_large_image" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | brickedmyportfolio.com</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="media/favicon.ico" />
+  <link rel="icon" href="media/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-
-  <!-- ==============================
-       SITE HEADER
-       ============================== -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="index.html" class="logo-link">
-        <img 
-          src="media/logo.png" 
-          alt="Iron Lantern Studios Logo" 
-          class="logo-image"
-        />
-      </a>
-      <nav class="nav-main">
-        <ul class="nav-list">
-          <li><a href="about.html">About</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="games.html">Games</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="contact.html" class="active">Contact</a></li>
-        </ul>
-      </nav>
-      <div 
-        class="brick-icon" 
-        onclick="crackScreen()" 
-        title="Break the screen"
-      >
-        <img 
-          src="media/brick-icon.png" 
-          alt="Brick Break Icon" 
-          class="brick-image"
-        />
+  <header>
+    <div class="top-bar">
+      <div class="logo">
+        <a href="index.html"><img src="media/logo.png" alt="Logo" /></a>
       </div>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="games.html">Games</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+      <div class="brick-gag" id="brick">🪨</div>
     </div>
   </header>
 
-  <!-- ==============================
-       HERO / PAGE TITLE
-       ============================== -->
-  <section class="page-hero contact-hero">
-    <div class="hero-content">
-      <h1 class="section-heading">Contact</h1>
-      <p class="section-subtitle">
-        Have questions or a project in mind? Fill out the form and I'll get back to you soon.
-      </p>
-    </div>
-    <div class="hero-image">
-      <img 
-        src="media/contact-illustration.png" 
-        alt="Contact Illustration" 
-      />
-    </div>
-  </section>
-
-  <!-- ==============================
-       CONTACT FORM SECTION
-       ============================== -->
-  <section class="contact-section">
-    <div class="contact-container">
-
-      <!-- Contact Info -->
-      <div class="contact-info">
-        <h2 class="section-heading small-text">Reach Out Directly</h2>
-        <p>If you prefer, email me directly at:</p>
-        <p>
-          <a 
-            href="mailto:Jason.harvey@brickedmyportfolio.com" 
-            class="footer-email"
-          >
-            Jason.harvey@brickedmyportfolio.com
-          </a>
-        </p>
-        <p class="small-text">
-          I typically respond within 1–2 business days.
-        </p>
+  <main>
+    <section class="hero">
+      <div class="hero-bg contact-bg">
+        <h1>Contact Me</h1>
+        <p>Send a message to Iron Lantern Studios™</p>
       </div>
+    </section>
 
-      <!-- Form -->
-      <form 
-        class="contact-form" 
-        action="mailto:Jason.harvey@brickedmyportfolio.com" 
-        method="POST" 
-        enctype="text/plain"
-      >
-        <label for="name">Name</label>
-        <input 
-          type="text" 
-          id="name" 
-          name="name" 
-          placeholder="Your Name" 
-          required
-        />
-
-        <label for="email">Email</label>
-        <input 
-          type="email" 
-          id="email" 
-          name="email" 
-          placeholder="Your Email" 
-          required
-        />
-
-        <label for="subject">Subject</label>
-        <input 
-          type="text" 
-          id="subject" 
-          name="subject" 
-          placeholder="Subject" 
-        />
-
-        <label for="message">Message</label>
-        <textarea 
-          id="message" 
-          name="message" 
-          rows="6" 
-          placeholder="Write your message here…" 
-          required
-        ></textarea>
-
-        <button type="submit" class="btn-pink">
-          Send Message
-        </button>
+    <section class="contact-form-section">
+      <h2>Let&rsquo;s Get in Touch</h2>
+      <form class="contact-form" action="#" method="POST">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
       </form>
+    </section>
 
-    </div> <!-- /.contact-container -->
-  </section>
+    <section class="other-contacts">
+      <h2>Other Ways to Reach Me</h2>
+      <ul>
+        <li>Email: <a href="mailto:jason@ironlantern.dev">jason@ironlantern.dev</a></li>
+        <li>GitHub: <a href="https://github.com/jayswansocool48" target="_blank">jayswansocool48</a></li>
+        <li>Discord: <span>JaySwan#0849</span></li>
+      </ul>
+    </section>
+  </main>
 
-  <!-- ==============================
-       OPTIONAL MAP / LOCATION
-       ============================== -->
-  <section class="map-section">
-    <h2 class="section-heading small-text">Studio Location</h2>
-    <div class="map-embed">
-      <!-- Replace src with your Google Maps embed link -->
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18…"
-        width="100%" 
-        height="300" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy"
-      ></iframe>
-    </div>
-  </section>
-
-  <!-- ==============================
-       FOOTER
-       ============================== -->
-  <footer class="site-footer">
+  <footer>
     <div class="footer-widgets">
-      <div class="footer-about">
-        <h3>About Iron Lantern</h3>
-        <p>
-          Crafting high-quality assets, demos, and prototypes for indie developers.
-        </p>
+      <div class="about-widget">
+        <h4>About Iron Lantern Studios™</h4>
+        <p>Solo-dev projects by Jason, focusing on performant design and unique mechanics.</p>
       </div>
-      <div class="footer-legal">
-        <p>
-          <a href="privacy.html" class="footer-link">Privacy Policy</a> |
-          <a href="terms.html" class="footer-link">Terms of Use</a>
-        </p>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
       </div>
     </div>
-    <p class="footer-copy">
-      © 2025 BrickedMyPortfolio.com | Iron Lantern Studios™ LLC. All rights reserved.
-    </p>
+    <p class="copyright">&copy; 2025 Jason | Iron Lantern Studios™</p>
   </footer>
 
-  <!-- ==============================
-       MAIN JAVASCRIPT
-       Carousel & Utility Scripts
-       ============================== -->
   <script src="main.js"></script>
 </body>
 </html>
