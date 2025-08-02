@@ -3,104 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BrickedMyPortfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #0f0f0f;
-      color: #f0f0f0;
-    }
-    header {
-      background-color: #1a1a1a;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav a {
-      color: #f0f0f0;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #00ffcc;
-    }
-    .hero {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: linear-gradient(135deg, #1a1a1a, #333);
-    }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-    }
-    .project-card {
-      background-color: #1f1f1f;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px #00ffcc33;
-    }
-    .project-card h3 {
-      margin-top: 0;
-      color: #00ffcc;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #1a1a1a;
-      color: #888;
-    }
-  </style>
+  <title>Iron Lantern Studios | BrickedMyPortfolio.com</title>
+  <meta
+    name="description"
+    content="Portfolio and game dev projects by Jason Harvey, founder of Iron Lantern Studios."
+  />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="media/favicon.ico" />
 </head>
+
 <body>
+  <!-- HEADER -->
   <header>
-    <h2>BrickedMyPortfolio</h2>
-    <nav>
-      <a href="index.html">Home</a>
+    <a href="index.html" class="logo-circle">
+      <img src="media/logo.png" alt="Iron Lantern Studios Logo" />
+    </a>
+    <nav class="nav-center">
       <a href="about.html">About</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="games.html">Games</a>
       <a href="shop.html">Shop</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <div class="brick-icon" onclick="crackScreen()" title="Break the screen">
+      <img src="media/brick-icon.png" alt="Brick Icon" />
+    </div>
   </header>
 
-  <section class="hero">
-    <h1>Welcome to BrickedMyPortfolio</h1>
-    <p>Showcasing my indie game dev journey, assets, and creative experiments.</p>
+  <!-- SITE TITLE -->
+  <h1 class="site-title">BrickedMyPortfolio.com</h1>
+
+  <!-- CAROUSEL SECTION -->
+  <section id="carousel">
+    <div class="carousel-box">
+      <div class="carousel-media">
+        <div class="carousel-arrow left" onclick="prevSlide()">&#60;</div>
+        <img src="media/wip1.jpg" id="carousel-image" alt="Work in Progress" />
+        <div class="carousel-arrow right" onclick="nextSlide()">&#62;</div>
+        <div class="carousel-dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+      <div class="carousel-description">
+        <h2>What I’m Working On</h2>
+        <p id="carousel-description">Working on AI pathfinding...</p>
+      </div>
+    </div>
   </section>
 
-  <section class="projects">
-    <div class="project-card">
-      <h3>Pixel Blaster</h3>
-      <p>Retro-style shooter built with Phaser.js. Fast-paced action and custom sprite work.</p>
-    </div>
-    <div class="project-card">
-      <h3>IR LED Controller</h3>
-      <p>Custom IR remote system with Bluetooth integration using Raspberry Pi Pico.</p>
-    </div>
-    <div class="project-card">
-      <h3>Mini Speaker Synth</h3>
-      <p>Audio experiment using microcontrollers and waveform manipulation.</p>
+  <!-- FEATURED GAMES -->
+  <section class="featured-games">
+    <h2>Featured Games</h2>
+    <div class="preview-card">
+      <img src="media/game2.jpg" alt="VoidRunner Preview" />
+      <div class="hover-box">
+        <h3>VoidRunner</h3>
+        <p>Fast-paced sci-fi FPS set in deep space</p>
+        <p>Tags: Shooter, Sci-fi</p>
+        <div class="reviews">★★★★★</div>
+      </div>
     </div>
   </section>
 
+  <!-- FEATURED ASSETS -->
+  <section class="featured-assets">
+    <h2>Featured Assets</h2>
+    <div class="preview-card">
+      <img src="media/asset2.jpg" alt="Stylized Trees Pack" />
+      <div class="hover-box">
+        <h4>Stylized Trees Pack</h4>
+        <p>Tags: Nature, Stylized</p>
+        <p>$9.99</p>
+        <a href="https://itch.io" class="btn-pink">Buy Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (with legal links) -->
   <footer>
-    <p>&copy; 2025 Jason | BrickedMyPortfolio.com</p>
+    <p>
+      © 2025 BrickedMyPortfolio.com | Iron Lantern Studios™ LLC. All rights
+      reserved.
+    </p>
+    <p>
+      <a href="mailto:Jason.harvey@brickedmyportfolio.com"
+        >Jason.harvey@brickedmyportfolio.com</a
+      >
+    </p>
+    <p>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms of Use</a>
+    </p>
   </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>
