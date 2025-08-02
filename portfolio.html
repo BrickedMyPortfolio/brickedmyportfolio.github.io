@@ -1,74 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio - brickedmyportfolio.com</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - brickedmyportfolio.com</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="header-left">
-      <a href="index.html" class="logo-circle" aria-label="Home">
-        <img src="media/logo.png" alt="Logo" />
-      </a>
+    <header>
+        <a href="index.html" class="logo-circle">🎮</a>
+        <nav class="nav-center">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="portfolio.html" class="current">Portfolio</a>
+            <a href="games.html">Games</a>
+            <a href="shop.html">Shop</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <button id="brick-icon"></button>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Portfolio</h1>
+        <p class="page-subtitle">My chaotic projects, broken and brilliant.</p>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="media/portfolio1.png" alt="Shader Project">
+                <div class="card-content">
+                    <h3>Advanced Shader Collection</h3>
+                    <p>Custom shaders for Unity and Unreal Engine featuring water, fire, and lighting effects.</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img src="media/portfolio2.png" alt="UI System">
+                <div class="card-content">
+                    <h3>Modular UI System</h3>
+                    <p>Flexible UI framework with animations, theming, and responsive design capabilities.</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img src="media/portfolio3.png" alt="Game Prototype">
+                <div class="card-content">
+                    <h3>Pixelated Nightmare</h3>
+                    <p>A glitchy 2D platformer with unintentional bugs and weird physics.</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img src="media/portfolio4.png" alt="Character Pack">
+                <div class="card-content">
+                    <h3>Broken Characters Pack</h3>
+                    <p>A collection of unfinished 3D models with a lot of personality.</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img src="media/portfolio5.png" alt="VR Demo">
+                <div class="card-content">
+                    <h3>Forever Loading VR</h3>
+                    <p>An eerie VR demo that never quite got off the ground.</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img src="media/portfolio6.png" alt="Engine Prototype">
+                <div class="card-content">
+                    <h3>Chaos Engine Prototype</h3>
+                    <p>Early prototype with fun bugs and broken mechanics.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <nav class="nav-center">
-      <a href="index.html">Home</a>
-      <a href="about.html">About Me</a>
-      <a href="portfolio.html" class="active">Portfolio</a>
-      <a href="games.html">Games</a>
-      <a href="shop.html">Shop</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <footer>
+        <div class="footer-links">
+            <a href="terms.html">Terms of Service</a>
+            <a href="privacy.html">Privacy Policy</a>
+        </div>
+        <div class="footer-social">
+            <a href="https://youtube.com" target="_blank">YouTube</a>
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="#" target="_blank">Discord</a>
+        </div>
+        <div class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</div>
+    </footer>
 
-    <div class="header-right">
-      <button id="brick-icon" aria-label="Break screen"></button>
-    </div>
-  </header>
-
-  <!-- Portfolio Section -->
-  <main class="portfolio-section">
-    <h1>Dev Projects & Prototypes</h1>
-    <div class="project-grid">
-
-      <div class="project-card">
-        <img src="media/placeholder1.png" alt="Project Thumbnail" />
-        <h2>Shader Toy Clone</h2>
-        <p>Custom fragment shader editor with real-time GLSL preview. Built using WebGL2 and monospaced love.</p>
-      </div>
-
-      <div class="project-card">
-        <img src="media/placeholder2.png" alt="Project Thumbnail" />
-        <h2>UI Animations</h2>
-        <p>Dynamic UI kits made for games and apps. Built with CSS + JS, ready for drag-and-drop.</p>
-      </div>
-
-      <div class="project-card">
-        <img src="media/placeholder3.png" alt="Project Thumbnail" />
-        <h2>Tooling Dev</h2>
-        <p>Prototype tools like pixel sorting, map generators, editor extensions — mostly broken, but they work.</p>
-      </div>
-
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <nav class="footer-links">
-      <a href="terms.html">Terms</a>
-      <a href="privacy.html">Privacy</a>
-    </nav>
-    <p class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</p>
-    <div class="footer-socials">
-      <a href="#">YouTube</a>
-      <a href="#">Twitter</a>
-      <a href="#">Discord</a>
-    </div>
-  </footer>
-
-  <script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
