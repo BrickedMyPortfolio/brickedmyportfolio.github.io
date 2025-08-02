@@ -3,104 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio | BrickedMyPortfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #0f0f0f;
-      color: #f0f0f0;
-    }
-    header {
-      background-color: #1a1a1a;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav a {
-      color: #f0f0f0;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #00ffcc;
-    }
-    .portfolio-section {
-      padding: 3rem 2rem;
-    }
-    .portfolio-section h1 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #00ffcc;
-      text-align: center;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .item {
-      background-color: #1f1f1f;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px #00ffcc33;
-    }
-    .item h3 {
-      margin-top: 0;
-      color: #00ffcc;
-    }
-    .item p {
-      color: #ccc;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #1a1a1a;
-      color: #888;
-    }
-  </style>
+  <title>Portfolio | Iron Lantern Studios™ | BrickedMyPortfolio.com</title>
+  <meta
+    name="description"
+    content="Browse dev prototypes, tech art, and UI/UX experiments by Iron Lantern Studios™."
+  />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="media/favicon.ico" />
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <h2>BrickedMyPortfolio</h2>
-    <nav>
-      <a href="index.html">Home</a>
+    <a href="index.html" class="logo-circle">
+      <img src="media/logo.png" alt="Iron Lantern Studios Logo" />
+    </a>
+    <nav class="nav-center">
       <a href="about.html">About</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="games.html">Games</a>
       <a href="shop.html">Shop</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <div class="brick-icon" onclick="crackScreen()" title="Break the screen">
+      <img src="media/brick-icon.png" alt="Brick Icon" />
+    </div>
   </header>
 
-  <section class="portfolio-section">
-    <h1>My Portfolio</h1>
-    <div class="grid">
-      <div class="item">
-        <h3>Sprite Pack: Neon Runner</h3>
-        <p>Custom pixel art sprites for a cyberpunk platformer. Includes character animations and tilesets.</p>
+  <!-- PAGE TITLE -->
+  <h1 class="site-title">Portfolio</h1>
+
+  <!-- PORTFOLIO GRID -->
+  <section class="portfolio-grid">
+    <div class="preview-card">
+      <img src="media/prototype1.jpg" alt="AI Pathfinding Demo" />
+      <div class="hover-box">
+        <h4>AI Pathfinding Demo</h4>
+        <p>Dynamic navmesh system with obstacle avoidance</p>
+        <p>Tags: AI, Systems</p>
       </div>
-      <div class="item">
-        <h3>IR Remote Hijack</h3>
-        <p>Reverse-engineered IR signals for controlling LED strips with custom remotes and Bluetooth fallback.</p>
+    </div>
+
+    <div class="preview-card">
+      <img src="media/shader1.jpg" alt="Stylized Water Shader" />
+      <div class="hover-box">
+        <h4>Stylized Water Shader</h4>
+        <p>Custom Shader Graph effect with depth-based foam</p>
+        <p>Tags: Shader, Stylized</p>
       </div>
-      <div class="item">
-        <h3>Audio Synth Module</h3>
-        <p>Mini speaker project using waveform generation and microcontroller timing for sound effects.</p>
-      </div>
-      <div class="item">
-        <h3>Linux on Pico</h3>
-        <p>Experimental setup exploring compatibility layers and lightweight Linux shells on Raspberry Pi Pico.</p>
+    </div>
+
+    <div class="preview-card">
+      <img src="media/ui1.jpg" alt="FPS HUD Mockup" />
+      <div class="hover-box">
+        <h4>FPS HUD Mockup</h4>
+        <p>Minimalist UI with health, ammo, and cooldown indicators</p>
+        <p>Tags: UI, Design</p>
       </div>
     </div>
   </section>
 
+  <!-- FOOTER (with legal links) -->
   <footer>
-    <p>&copy; 2025 Jason | BrickedMyPortfolio.com</p>
+    <p>
+      © 2025 BrickedMyPortfolio.com | Iron Lantern Studios™ LLC. All rights
+      reserved.
+    </p>
+    <p>
+      <a href="mailto:Jason.harvey@brickedmyportfolio.com"
+        >Jason.harvey@brickedmyportfolio.com</a
+      >
+    </p>
+    <p>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms of Use</a>
+    </p>
   </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>
