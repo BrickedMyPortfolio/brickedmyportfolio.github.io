@@ -1,64 +1,98 @@
-// script.js
+/* ==========================================================================
+   RESET & GLOBAL STYLES
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-// === Contact Form Validation ===
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector("form");
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      const name = form.querySelector("input[name='name']").value.trim();
-      const email = form.querySelector("input[name='email']").value.trim();
-      const message = form.querySelector("textarea[name='message']").value.trim();
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
 
-      if (!name || !email || !message) {
-        alert("Please fill out all fields before submitting.");
-        e.preventDefault();
-      }
-    });
-  }
-});
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333333;
+  background-color: #fafafa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-// === Game Frame Fullscreen Toggle ===
-document.querySelectorAll(".game-frame").forEach((frame) => {
-  frame.addEventListener("dblclick", () => {
-    if (frame.requestFullscreen) {
-      frame.requestFullscreen();
-    } else if (frame.webkitRequestFullscreen) {
-      frame.webkitRequestFullscreen();
-    } else if (frame.msRequestFullscreen) {
-      frame.msRequestFullscreen();
-    }
-  });
-});
+/* ==========================================================================
+   HEADER & NAVIGATION
+   ========================================================================== */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-// === Sprite Preview Hover (Shop or Portfolio) ===
-document.querySelectorAll(".product-card, .item").forEach((card) => {
-  card.addEventListener("mouseenter", () => {
-    card.style.boxShadow = "0 0 15px #00ffcc99";
-  });
-  card.addEventListener("mouseleave", () => {
-    card.style.boxShadow = "0 0 10px #00ffcc33";
-  });
-});
+.logo-circle {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #333333;
+}
 
-// === Navigation Highlight on Scroll (Optional) ===
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll("nav a");
+.logo-circle img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-window.addEventListener("scroll", () => {
-  let current = "";
-  sections.forEach((section) => {
-    const top = window.scrollY;
-    const offset = section.offsetTop - 100;
-    const height = section.offsetHeight;
-    if (top >= offset && top < offset + height) {
-      current = section.getAttribute("id");
-    }
-  });
+.nav-center {
+  display: flex;
+  gap: 1.5rem;
+}
 
-  navLinks.forEach((link) => {
-    link.classList.remove("active");
-    if (link.getAttribute("href").includes(current)) {
-      link.classList.add("active");
-    }
-  });
-});
+.nav-center a {
+  text-decoration: none;
+  color: #333333;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-center a:hover {
+  color: #e94560;
+}
+
+.brick-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+}
+
+.brick-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   PAGE TITLES
+   ========================================================================== */
+.site-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 2rem 0;
+  color: #e94560;
+}
+
+/* ==========================================================================
+   SECTION WRAPPERS
+   =================================================================
