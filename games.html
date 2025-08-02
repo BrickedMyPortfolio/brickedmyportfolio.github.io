@@ -2,117 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Games | brickedmyportfolio.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Games - brickedmyportfolio.com</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="media/favicon.ico" type="image/x-icon" />
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <div class="top-bar">
-      <div class="logo">
-        <a href="index.html"><img src="media/logo.png" alt="Logo" /></a>
-      </div>
-      <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="games.html" class="active">Games</a>
-        <a href="shop.html">Shop</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </nav>
-      <div class="brick-gag" id="brick">🪨</div>
+    <div class="header-left">
+      <a href="index.html" class="logo-circle" aria-label="Home">
+        <img src="media/logo.png" alt="Logo" />
+      </a>
+    </div>
+
+    <nav class="nav-center">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="games.html" class="active">Games</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="header-right">
+      <button id="brick-icon" aria-label="Break screen"></button>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-bg games-bg">
-        <h1>Play My Games</h1>
-        <p>Demos, prototypes, and full projects by Iron Lantern Studios™</p>
-      </div>
-    </section>
+  <!-- Games Section -->
+  <main class="games-section">
+    <h1>Game Previews</h1>
+    <div class="game-list">
 
-    <section class="game-gallery">
-      <h2>Available Titles</h2>
-      <div class="card-grid">
-        <div class="game-card">
-          <img src="media/game1.jpg" alt="Project Nova" />
-          <h3>Project Nova</h3>
-          <p>Fast-paced FPS with air dashes, sliding, and wall-running.</p>
-          <button class="play-btn">Play Demo</button>
-        </div>
-        <div class="game-card">
-          <img src="media/game2.jpg" alt="Iron Siege" />
-          <h3>Iron Siege</h3>
-          <p>RTS set in a crumbling world with real-time terrain deformation.</p>
-          <button class="play-btn">Play Demo</button>
-        </div>
-        <div class="game-card">
-          <img src="media/game3.jpg" alt="Mecha Strike" />
-          <h3>Mecha Strike</h3>
-          <p>Arena combat with modular mechs and team-based objectives.</p>
-          <button class="play-btn">Try Prototype</button>
-        </div>
+      <div class="game-card">
+        <img src="media/game1.png" alt="Game Thumbnail" />
+        <h2>Lost in Transmission</h2>
+        <p class="tags">Sci-Fi · Puzzle · Singleplayer</p>
+        <p class="desc">Decode alien frequencies in a vaporwave radio world. Features full audio-reactive visuals.</p>
+        <button class="expand-btn">Play Demo</button>
       </div>
-    </section>
 
-    <section class="dev-notes">
-      <h2>Developer Notes</h2>
-      <article>
-        <h3>How I Design Game Systems</h3>
-        <p>I focus on tactile movement, player feedback, and performance scalability. Every game starts with a movement prototype before content.</p>
-      </article>
-      <article>
-        <h3>Balancing Visuals and Speed</h3>
-        <p>All games here are designed to run well on low-end hardware without compromising visual readability or style.</p>
-      </article>
-      <article>
-        <h3>Multiplayer Goals</h3>
-        <p>Future releases will experiment with peer-to-peer matchmaking, rollback netcode, and modding support.</p>
-      </article>
-    </section>
-
-    <section class="carousel-container">
-      <h2>WIP Projects</h2>
-      <div class="carousel" id="game-carousel">
-        <button class="carousel-btn left" onclick="prevGameSlide()">&#10094;</button>
-        <div class="carousel-slides">
-          <div class="slide">
-            <img src="media/wip1.jpg" alt="WIP Game 1" />
-            <h3>Drone Tactics</h3>
-            <p>Turn-based strategy with hacking mechanics.</p>
-          </div>
-          <div class="slide">
-            <img src="media/wip2.jpg" alt="WIP Game 2" />
-            <h3>Cyber Arc</h3>
-            <p>Sidescrolling brawler with cyberpunk aesthetics.</p>
-          </div>
-          <div class="slide">
-            <img src="media/wip3.jpg" alt="WIP Game 3" />
-            <h3>Void Drift</h3>
-            <p>Spaceship survival in a glitchy black hole dimension.</p>
-          </div>
-        </div>
-        <button class="carousel-btn right" onclick="nextGameSlide()">&#10095;</button>
+      <div class="game-card">
+        <img src="media/game2.png" alt="Game Thumbnail" />
+        <h2>Hardwired Dungeon</h2>
+        <p class="tags">Roguelike · Pixel · Action</p>
+        <p class="desc">Fast-paced combat with perma-death. Built in Godot using ECS and shader FX.</p>
+        <button class="expand-btn">Learn More</button>
       </div>
-    </section>
+
+      <div class="game-card">
+        <img src="media/game3.png" alt="Game Thumbnail" />
+        <h2>404 Speedway</h2>
+        <p class="tags">Racing · Synthwave · Multiplayer</p>
+        <p class="desc">Race corrupted data packets through neon cyberspace. Split-screen and LAN supported.</p>
+        <button class="expand-btn">Watch Trailer</button>
+      </div>
+
+    </div>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <div class="footer-widgets">
-      <div class="about-widget">
-        <h4>About Iron Lantern Studios™</h4>
-        <p>Solo-dev projects by Jason, focusing on performant design and unique mechanics.</p>
-      </div>
-      <div class="footer-links">
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </div>
+    <nav class="footer-links">
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+    <p class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</p>
+    <div class="footer-socials">
+      <a href="#">YouTube</a>
+      <a href="#">Twitter</a>
+      <a href="#">Discord</a>
     </div>
-    <p class="copyright">&copy; 2025 Jason | Iron Lantern Studios™</p>
   </footer>
 
   <script src="main.js"></script>
