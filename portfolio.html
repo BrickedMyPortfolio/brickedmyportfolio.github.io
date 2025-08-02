@@ -1,84 +1,123 @@
+<!-- portfolio.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio | Iron Lantern Studios™ | BrickedMyPortfolio.com</title>
-  <meta
-    name="description"
-    content="Browse dev prototypes, tech art, and UI/UX experiments by Iron Lantern Studios™."
-  />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="media/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jason’s Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- HEADER -->
   <header>
-    <a href="index.html" class="logo-circle">
-      <img src="media/logo.png" alt="Iron Lantern Studios Logo" />
-    </a>
-    <nav class="nav-center">
-      <a href="about.html">About</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="games.html">Games</a>
-      <a href="shop.html">Shop</a>
-      <a href="contact.html">Contact</a>
+    <h1>Jason’s Portfolio</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </nav>
-    <div class="brick-icon" onclick="crackScreen()" title="Break the screen">
-      <img src="media/brick-icon.png" alt="Brick Icon" />
-    </div>
   </header>
 
-  <!-- PAGE TITLE -->
-  <h1 class="site-title">Portfolio</h1>
+  <main>
+    <!-- Category Filter -->
+    <section id="filter">
+      <button data-filter="all" class="filter-btn active">All</button>
+      <button data-filter="web" class="filter-btn">Web Development</button>
+      <button data-filter="mobile" class="filter-btn">Mobile Apps</button>
+      <button data-filter="data" class="filter-btn">Data Science</button>
+      <button data-filter="ux" class="filter-btn">UX/UI Design</button>
+    </section>
 
-  <!-- PORTFOLIO GRID -->
-  <section class="portfolio-grid">
-    <div class="preview-card">
-      <img src="media/prototype1.jpg" alt="AI Pathfinding Demo" />
-      <div class="hover-box">
-        <h4>AI Pathfinding Demo</h4>
-        <p>Dynamic navmesh system with obstacle avoidance</p>
-        <p>Tags: AI, Systems</p>
-      </div>
-    </div>
+    <!-- Featured Projects -->
+    <section id="featured-projects">
+      <h2>Featured Projects</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Project</th>
+            <th>Description</th>
+            <th>Technologies</th>
+            <th>Links</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="project-item" data-category="web">
+            <td>Project Alpha</td>
+            <td>Responsive app for real-time collaboration & file sharing</td>
+            <td>React, Node.js, Firebase</td>
+            <td>
+              <a href="#">Live Demo</a> /
+              <a href="#">GitHub</a>
+            </td>
+          </tr>
+          <tr class="project-item" data-category="mobile">
+            <td>Beta App</td>
+            <td>Cross-platform mobile gamified habit tracker</td>
+            <td>Flutter, Dart, SQLite</td>
+            <td>
+              <a href="#">App Store</a> /
+              <a href="#">Play Store</a>
+            </td>
+          </tr>
+          <tr class="project-item" data-category="data">
+            <td>DataViz Pro</td>
+            <td>Interactive dashboard for financial data analysis</td>
+            <td>Python, Dash, PostgreSQL</td>
+            <td>
+              <a href="#">View Demo</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-    <div class="preview-card">
-      <img src="media/shader1.jpg" alt="Stylized Water Shader" />
-      <div class="hover-box">
-        <h4>Stylized Water Shader</h4>
-        <p>Custom Shader Graph effect with depth-based foam</p>
-        <p>Tags: Shader, Stylized</p>
-      </div>
-    </div>
+    <!-- Other Notable Work -->
+    <section id="other-work">
+      <h2>Other Notable Work</h2>
+      <ul>
+        <li>
+          <strong>Portfolio Website Redesign</strong><br />
+          User research, wireframes, implementation with HTML5, CSS3, JS.
+        </li>
+        <li>
+          <strong>Chatbot Integration</strong><br />
+          Customer-support chatbot with NLP, cut response times by 40%.
+        </li>
+      </ul>
+    </section>
 
-    <div class="preview-card">
-      <img src="media/ui1.jpg" alt="FPS HUD Mockup" />
-      <div class="hover-box">
-        <h4>FPS HUD Mockup</h4>
-        <p>Minimalist UI with health, ammo, and cooldown indicators</p>
-        <p>Tags: UI, Design</p>
-      </div>
-    </div>
-  </section>
+    <!-- Case Studies -->
+    <section id="case-studies">
+      <h2>Case Studies</h2>
+      <article class="case-study">
+        <h3>Project Alpha Deep Dive</h3>
+        <p><strong>Role:</strong> Lead Front-end Developer</p>
+        <p><strong>Timeline:</strong> Jan 2024 – Apr 2024</p>
+        <ul>
+          <li>Real-time sync with WebSockets</li>
+          <li>Custom file-upload component</li>
+          <li>Accessibility compliance</li>
+        </ul>
+      </article>
+      <article class="case-study">
+        <h3>DataViz Pro Analysis</h3>
+        <p><strong>Role:</strong> Full-stack Engineer</p>
+        <p><strong>Timeline:</strong> Jun 2023 – Dec 2023</p>
+        <ul>
+          <li>Optimized query performance</li>
+          <li>Interactive charts with D3.js</li>
+          <li>Containerized, scalable deployment</li>
+        </ul>
+      </article>
+    </section>
+  </main>
 
-  <!-- FOOTER (with legal links) -->
   <footer>
-    <p>
-      © 2025 BrickedMyPortfolio.com | Iron Lantern Studios™ LLC. All rights
-      reserved.
-    </p>
-    <p>
-      <a href="mailto:Jason.harvey@brickedmyportfolio.com"
-        >Jason.harvey@brickedmyportfolio.com</a
-      >
-    </p>
-    <p>
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms of Use</a>
-    </p>
+    <p>© 2025 Jason. All rights reserved.</p>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
