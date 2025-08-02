@@ -2,104 +2,127 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>brickedmyportfolio.com</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="media/favicon.ico" type="image/x-icon" />
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <div class="top-bar">
-      <div class="logo">
+    <div class="header-left">
+      <a href="index.html" class="logo-circle" aria-label="Home">
         <img src="media/logo.png" alt="Logo" />
-      </div>
-      <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="games.html">Games</a>
-        <a href="shop.html">Shop</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </nav>
-      <div class="brick-gag" id="brick">🪨</div>
+      </a>
     </div>
-    <div class="site-title">
-      <h1>brickedmyportfolio.com</h1>
+
+    <nav class="nav-center">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="games.html">Games</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="header-right">
+      <button id="brick-icon" aria-label="Break screen"></button>
     </div>
   </header>
 
-  <main>
-    <section id="wip-carousel" class="carousel">
-      <div class="carousel-box">
-        <button class="carousel-btn left" onclick="prevSlide()">&#10094;</button>
-        <div class="media-box">
-          <img id="carousel-image" src="media/placeholder1.jpg" alt="WIP Media" />
-          <div class="carousel-dots" id="carousel-dots"></div>
-        </div>
-        <div class="description-box">
-          <h2>What I’m Working On</h2>
-          <p id="carousel-description">Loading project description...</p>
-        </div>
-        <button class="carousel-btn right" onclick="nextSlide()">&#10095;</button>
-      </div>
-    </section>
+  <!-- Homepage Title -->
+  <h1 class="site-title">brickedmyportfolio.com</h1>
+  <p class="site-subtitle">Welcome to the chaos. Not everything survived.</p>
 
-    <section id="featured-games">
-      <h2>Featured Games</h2>
-      <div class="card-grid">
-        <div class="game-card">
-          <img src="media/placeholder2.jpg" alt="Game 1" />
-          <h3>Project Nova</h3>
-          <p>Fast-paced FPS with movement tech.</p>
-          <button class="play-btn">Play</button>
-        </div>
-        <div class="game-card">
-          <img src="media/placeholder3.jpg" alt="Game 2" />
-          <h3>Iron Siege</h3>
-          <p>Top-down RTS with destructible terrain.</p>
-          <button class="play-btn">Play</button>
-        </div>
-        <div class="game-card">
-          <img src="media/placeholder4.jpg" alt="Game 3" />
-          <h3>Mecha Strike</h3>
-          <p>3v3 arena mech shooter prototype.</p>
-          <button class="play-btn">Play</button>
+  <!-- Carousel Section -->
+  <section class="carousel-container">
+    <h2 class="section-title">Work In Progress</h2>
+    <div class="carousel">
+      <div class="carousel-media">
+        <img src="media/carousel1.png" alt="Project Preview" />
+      </div>
+      <div class="carousel-description">
+        <h3>Placeholder Game Name</h3>
+        <p>Current things I’m doing</p>
+      </div>
+    </div>
+    <div class="carousel-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </section>
+
+  <!-- Featured Games -->
+  <section class="featured-games">
+    <h2 class="section-title">Featured Games</h2>
+    <div class="card-grid">
+      <div class="game-card">
+        <img src="media/game1.png" alt="Game 1" />
+        <div class="card-info">
+          <h3>Game Title 1</h3>
+          <p>Tags, reviews, etc.</p>
         </div>
       </div>
-    </section>
-
-    <section id="featured-assets">
-      <h2>Featured Assets</h2>
-      <div class="card-grid">
-        <div class="asset-card">
-          <img src="media/asset1.jpg" alt="Asset 1" />
-          <h3>Stylized UI Pack</h3>
-          <p>Neon-styled UI elements for sci-fi games.</p>
-        </div>
-        <div class="asset-card">
-          <img src="media/asset2.jpg" alt="Asset 2" />
-          <h3>Low-Poly Rocks</h3>
-          <p>Optimized rock models with PBR textures.</p>
-        </div>
-        <div class="asset-card">
-          <img src="media/asset3.jpg" alt="Asset 3" />
-          <h3>Combat Animations</h3>
-          <p>High-quality melee combat animation set.</p>
+      <div class="game-card">
+        <img src="media/game2.png" alt="Game 2" />
+        <div class="card-info">
+          <h3>Game Title 2</h3>
+          <p>Tags, reviews, etc.</p>
         </div>
       </div>
-    </section>
-  </main>
+      <div class="game-card">
+        <img src="media/game3.png" alt="Game 3" />
+        <div class="card-info">
+          <h3>Game Title 3</h3>
+          <p>Tags, reviews, etc.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Featured Assets -->
+  <section class="featured-assets">
+    <h2 class="section-title">Featured Assets</h2>
+    <div class="card-grid">
+      <div class="asset-card">
+        <img src="media/asset1.png" alt="Asset 1" />
+        <div class="card-info">
+          <h3>Asset Pack 1</h3>
+          <p>Tags, reviews, etc.</p>
+        </div>
+      </div>
+      <div class="asset-card">
+        <img src="media/asset2.png" alt="Asset 2" />
+        <div class="card-info">
+          <h3>Asset Pack 2</h3>
+          <p>Tags, reviews, etc.</p>
+        </div>
+      </div>
+      <div class="asset-card">
+        <img src="media/asset3.png" alt="Asset 3" />
+        <div class="card-info">
+          <h3>Asset Pack 3</h3>
+          <p>Tags, reviews, etc.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Jason | Iron Lantern Studios™</p>
-    <div class="socials">
-      <a href="#"><img src="media/youtube-icon.png" alt="YouTube" /></a>
-      <!-- Add more social links -->
+    <nav class="footer-links">
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+    <p class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</p>
+    <div class="footer-socials">
+      <a href="#">YouTube</a>
+      <a href="#">Twitter</a>
+      <a href="#">Discord</a>
     </div>
   </footer>
 
+  <!-- Overlay message (from brick icon) handled in JS -->
   <script src="main.js"></script>
 </body>
 </html>
