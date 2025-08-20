@@ -1,119 +1,2095 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop | BrickedMyPortfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #0f0f0f;
-      color: #f0f0f0;
-    }
-    header {
-      background-color: #1a1a1a;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav a {
-      color: #f0f0f0;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #00ffcc;
-    }
-    .shop-section {
-      padding: 3rem 2rem;
-    }
-    .shop-section h1 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #00ffcc;
-      text-align: center;
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .product-card {
-      background-color: #1f1f1f;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px #00ffcc33;
-    }
-    .product-card h3 {
-      margin-top: 0;
-      color: #00ffcc;
-    }
-    .product-card p {
-      color: #ccc;
-    }
-    .price {
-      font-weight: bold;
-      color: #00ffcc;
-      margin-top: 0.5rem;
-    }
-    .buy-link {
-      display: inline-block;
-      margin-top: 1rem;
-      color: #00ffcc;
-      text-decoration: underline;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #1a1a1a;
-      color: #888;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - brickedmyportfolio.com</title>
+    <style>
+        /* ===== BASE RESET & TYPOGRAPHY ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a0a1a 100%);
+            color: #eee;
+            font-family: "Courier New", monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* ===== ANIMATED STARFIELD BACKGROUND ===== */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .floating-star {
+            position: absolute;
+            color: #ffffff;
+            font-size: 12px;
+            opacity: 0.8;
+            animation: float 10s infinite linear;
+            pointer-events: none;
+        }
+
+        .floating-star.large {
+            font-size: 16px;
+            opacity: 1;
+        }
+
+        .floating-star.medium {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .floating-star.small {
+            font-size: 10px;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(-10px) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) translateX(20px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid #ff33aa;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 0 20px rgba(255, 51, 170, 0.5);
+        }
+
+        .logo-circle:hover {
+            transform: scale(1.2) rotate(360deg);
+            box-shadow: 0 0 30px rgba(255, 51, 170, 0.8);
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            padding: 12px 24px;
+            font-family: "Courier New", monospace;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        nav a:hover::before {
+            left: 100%;
+        }
+
+        nav a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 51, 170, 0.4);
+        }
+
+        nav a.current {
+            background: linear-gradient(45deg, #e62999, #9929cc);
+            transform: translateY(-2px);
+        }
+
+        .cart-icon {
+            position: relative;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            border: none;
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 51, 170, 0.4);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff33aa;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* ===== MAIN CONTENT WRAPPER ===== */
+        .main-content {
+            padding-top: 120px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .shop-hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: radial-gradient(circle at center, rgba(255, 51, 170, 0.1), transparent);
+        }
+
+        .shop-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff, #33aaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+            text-shadow: 0 0 30px rgba(255, 51, 170, 0.5);
+        }
+
+        @keyframes glow {
+            from { filter: brightness(1) hue-rotate(0deg); }
+            to { filter: brightness(1.2) hue-rotate(10deg); }
+        }
+
+        .shop-subtitle {
+            font-size: 1.3rem;
+            color: #ccc;
+            margin-bottom: 40px;
+        }
+
+        /* ===== FEATURED DEAL BANNER ===== */
+        .featured-deal {
+            background: linear-gradient(135deg, rgba(255, 51, 170, 0.2), rgba(170, 51, 255, 0.2));
+            border: 2px solid #ff33aa;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 1200px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-deal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .deal-badge {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .deal-title {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .deal-description {
+            font-size: 1.2rem;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        .deal-button {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .deal-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 51, 170, 0.6);
+        }
+
+        /* ===== FILTER SECTION ===== */
+        .filter-section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-filter-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 25px;
+            border: 2px solid #ff33aa;
+            border-radius: 25px;
+            background: rgba(26, 26, 26, 0.9);
+            color: #fff;
+            font-family: "Courier New", monospace;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 20px rgba(255, 51, 170, 0.5);
+            transform: scale(1.02);
+        }
+
+        .sort-dropdown {
+            padding: 15px 20px;
+            border: 2px solid #ff33aa;
+            border-radius: 25px;
+            background: rgba(26, 26, 26, 0.9);
+            color: #fff;
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sort-dropdown:focus {
+            box-shadow: 0 0 20px rgba(255, 51, 170, 0.5);
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 2px solid #ff33aa;
+            color: #ff33aa;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-family: "Courier New", monospace;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 51, 170, 0.4);
+        }
+
+        /* ===== SHOP GRID ===== */
+        .shop-section {
+            padding: 40px 20px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: rgba(26, 26, 26, 0.9);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: 1px solid rgba(255, 51, 170, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-20px) rotateX(5deg);
+            box-shadow: 0 30px 60px rgba(255, 51, 170, 0.3);
+            border-color: rgba(255, 51, 170, 0.5);
+        }
+
+        .product-card.hidden {
+            display: none;
+        }
+
+        .product-image-container {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: linear-gradient(45deg, #333, #555);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-new {
+            background: rgba(0, 255, 0, 0.9);
+            color: black;
+        }
+
+        .badge-sale {
+            background: rgba(255, 0, 0, 0.9);
+            color: white;
+        }
+
+        .badge-featured {
+            background: rgba(255, 215, 0, 0.9);
+            color: black;
+        }
+
+        .price-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #ff33aa;
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .price-original {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 0.9rem;
+            margin-right: 8px;
+        }
+
+        .quick-view-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .product-card:hover .quick-view-overlay {
+            opacity: 1;
+        }
+
+        .quick-view-btn {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .quick-view-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(255, 51, 170, 0.5);
+        }
+
+        .product-content {
+            padding: 25px;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .product-author {
+            color: #ff33aa;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .product-description {
+            color: #ccc;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .product-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .download-count {
+            color: #888;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .add-to-cart-btn {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 51, 170, 0.4);
+        }
+
+        .wishlist-btn {
+            background: transparent;
+            border: 2px solid #ff33aa;
+            color: #ff33aa;
+            padding: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            width: 45px;
+        }
+
+        .wishlist-btn:hover {
+            background: rgba(255, 51, 170, 0.1);
+            transform: scale(1.1);
+        }
+
+        .wishlist-btn.active {
+            background: #ff33aa;
+            color: white;
+        }
+
+        /* ===== CART SIDEBAR ===== */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(20px);
+            border-left: 2px solid #ff33aa;
+            z-index: 1001;
+            transition: right 0.4s ease;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 51, 170, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-title {
+            font-size: 1.5rem;
+            color: #ff33aa;
+            font-weight: bold;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .cart-close:hover {
+            background: rgba(255, 51, 170, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .cart-items {
+            padding: 20px;
+            min-height: 300px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 51, 170, 0.1);
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+            background: #333;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            color: #fff;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: #ff33aa;
+            font-weight: bold;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            padding: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .cart-item-remove:hover {
+            color: #ff33aa;
+            transform: scale(1.2);
+        }
+
+        .cart-empty {
+            text-align: center;
+            color: #888;
+            padding: 40px 0;
+        }
+
+        .cart-total {
+            padding: 20px;
+            border-top: 1px solid rgba(255, 51, 170, 0.3);
+            background: rgba(255, 51, 170, 0.05);
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .total-final {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff33aa;
+            border-top: 1px solid rgba(255, 51, 170, 0.3);
+            padding-top: 10px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 51, 170, 0.4);
+        }
+
+        /* ===== PRODUCT MODAL ===== */
+        .product-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1002;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .product-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: rgba(26, 26, 26, 0.98);
+            border-radius: 20px;
+            max-width: 900px;
+            max-height: 90vh;
+            width: 90%;
+            overflow-y: auto;
+            transform: scale(0.8) translateY(50px);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 51, 170, 0.5);
+            backdrop-filter: blur(20px);
+        }
+
+        .modal-content.show {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px 18px 0 0;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 51, 170, 0.9);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 25px rgba(255, 51, 170, 0.6);
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .modal-title {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-author {
+            color: #ff33aa;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .modal-price {
+            font-size: 2rem;
+            color: #ff33aa;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .modal-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .modal-features {
+            margin-bottom: 30px;
+        }
+
+        .features-title {
+            color: #ff33aa;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .features-list {
+            list-style: none;
+        }
+
+        .features-list li {
+            padding: 8px 0;
+            color: #ddd;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ff33aa;
+            font-weight: bold;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .modal-add-cart {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .modal-add-cart:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 51, 170, 0.5);
+        }
+
+        .modal-wishlist {
+            background: transparent;
+            border: 2px solid #ff33aa;
+            color: #ff33aa;
+            padding: 15px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .modal-wishlist:hover {
+            background: rgba(255, 51, 170, 0.1);
+            transform: scale(1.05);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(10, 10, 10, 0.9);
+            padding: 50px 20px 30px;
+            text-align: center;
+            border-top: 2px solid #ff33aa;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff33aa;
+            transform: translateY(-2px);
+        }
+
+        .footer-social {
+            margin-bottom: 30px;
+        }
+
+        .footer-social a {
+            color: #ff33aa;
+            text-decoration: none;
+            margin: 0 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #aa33ff;
+            transform: scale(1.1);
+        }
+
+        .copyright {
+            color: #ccc;
+            font-size: 1rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
+            .shop-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+
+            .search-filter-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .cart-sidebar {
+                width: 350px;
+                right: -350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .main-content {
+                padding-top: 160px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 12px;
+                padding: 10px 16px;
+            }
+
+            .shop-title {
+                font-size: 2.5rem;
+            }
+
+            .shop-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .filter-buttons {
+                gap: 10px;
+            }
+
+            .filter-btn {
+                font-size: 12px;
+                padding: 10px 16px;
+            }
+
+            .featured-deal {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .deal-title {
+                font-size: 2rem;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 20px;
+            }
+
+            .modal-body {
+                padding: 30px 20px;
+            }
+
+            .modal-title {
+                font-size: 1.8rem;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .shop-title {
+                font-size: 2rem;
+            }
+
+            .shop-hero {
+                padding: 60px 15px 40px;
+            }
+
+            .shop-section, .filter-section {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .product-content {
+                padding: 20px;
+            }
+
+            .search-input, .sort-dropdown {
+                font-size: 14px;
+                padding: 12px 20px;
+            }
+        }
+
+        /* ===== LOADING ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-card {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+
+        /* ===== NOTIFICATION TOAST ===== */
+        .toast {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            z-index: 1003;
+            transform: translateX(400px);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(255, 51, 170, 0.4);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h2>BrickedMyPortfolio</h2>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="games.html">Games</a>
-      <a href="shop.html">Shop</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+    <!-- Animated Starfield Background -->
+    <div class="bg-animation" id="bg-animation"></div>
 
-  <section class="shop-section">
-    <h1>Shop My Assets</h1>
-    <div class="product-grid">
-      <div class="product-card">
-        <h3>Neon Runner Sprite Pack</h3>
-        <p>Cyberpunk-themed character sprites, tilesets, and effects. Perfect for platformers.</p>
-        <p class="price">$5.00</p>
-        <a class="buy-link" href="downloads/neonrunner-sprites.zip">Download Pack</a>
-      </div>
-      <div class="product-card">
-        <h3>8-Bit Sound FX Bundle</h3>
-        <p>Classic arcade-style sound effects for jumps, hits, coins, and more.</p>
-        <p class="price">$3.00</p>
-        <a class="buy-link" href="downloads/8bit-sfx.zip">Download Bundle</a>
-      </div>
-      <div class="product-card">
-        <h3>IR Remote Dev Kit</h3>
-        <p>Includes sample IR codes, microcontroller scripts, and schematics for custom LED control.</p>
-        <p class="price">Free</p>
-        <a class="buy-link" href="downloads/ir-dev-kit.zip">Download Kit</a>
-      </div>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo-circle">
+            H
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="games.html">Games</a>
+            <a href="shop.html" class="current">Shop</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <button class="cart-icon" id="cart-toggle">
+            🛒
+            <span class="cart-count" id="cart-count">0</span>
+        </button>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cart-close">×</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty">Your cart is empty</div>
+        </div>
+        <div class="cart-total" id="cart-total" style="display: none;">
+            <div class="total-row">
+                <span>Subtotal:</span>
+                <span id="subtotal">$0.00</span>
+            </div>
+            <div class="total-row">
+                <span>Tax (10%):</span>
+                <span id="tax">$0.00</span>
+            </div>
+            <div class="total-row total-final">
+                <span>Total:</span>
+                <span id="total">$0.00</span>
+            </div>
+            <button class="checkout-btn" id="checkout-btn">Proceed to Checkout</button>
+        </div>
     </div>
-  </section>
 
-  <footer>
-    <p>&copy; 2025 Jason | BrickedMyPortfolio.com</p>
-  </footer>
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="shop-hero">
+            <h1 class="shop-title">ASSET SHOP</h1>
+            <p class="shop-subtitle">Premium game assets, tools, and resources for developers</p>
+        </section>
+
+        <!-- Featured Deal Banner -->
+        <section class="featured-deal">
+            <div class="deal-badge">🔥 LIMITED TIME OFFER</div>
+            <h2 class="deal-title">Complete Asset Bundle</h2>
+            <p class="deal-description">Get all current and future asset packs for 50% off!</p>
+            <a href="#" class="deal-button">Grab the Deal - $49.99</a>
+        </section>
+
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <div class="search-filter-container">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Search assets..." id="search-input">
+                </div>
+                <select class="sort-dropdown" id="sort-dropdown">
+                    <option value="featured">Sort by Featured</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="newest">Newest First</option>
+                    <option value="popular">Most Popular</option>
+                    <option value="rating">Highest Rated</option>
+                </select>
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Assets</button>
+                <button class="filter-btn" data-filter="3d">3D Models</button>
+                <button class="filter-btn" data-filter="2d">2D Graphics</button>
+                <button class="filter-btn" data-filter="audio">Audio</button>
+                <button class="filter-btn" data-filter="scripts">Scripts</button>
+                <button class="filter-btn" data-filter="tools">Tools</button>
+                <button class="filter-btn" data-filter="templates">Templates</button>
+            </div>
+        </section>
+
+        <!-- Shop Grid -->
+        <section class="shop-section">
+            <div class="shop-grid" id="shop-grid">
+                <!-- Featured Product -->
+                <div class="product-card featured" data-category="3d featured" data-price="9.99" data-rating="5">
+                    <div class="product-image-container">
+                        <img src="media/PLACEHOLDER.jpg" alt="Road Prop Pack" class="product-image">
+                        <div class="product-badge badge-featured">Featured</div>
+                        <div class="price-tag">$9.99</div>
+                        <div class="quick-view-overlay">
+                            <button class="quick-view-btn" onclick="openProductModal(this)">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Road Prop Pack</h3>
+                        <p class="product-author">by IronLanternStudios</p>
+                        <p class="product-description">Complete collection of low-poly road props including signs, barriers, cones, and more. Perfect for racing games and urban environments.</p>
+                        <div class="product-tags">
+                            <span class="tag">3D</span>
+                            <span class="tag">Props</span>
+                            <span class="tag">Road</span>
+                            <span class="tag">Low Poly</span>
+                        </div>
+                        <div class="product-meta">
+                            <div class="product-rating">
+                                <span>⭐⭐⭐⭐⭐</span>
+                                <span>(47 reviews)</span>
+                            </div>
+                            <div class="download-count">1.2k downloads</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart-btn" onclick="addToCart(this)" data-id="road-props" data-title="Road Prop Pack" data-price="9.99" data-image="media/PLACEHOLDER.jpg">Add to Cart</button>
+                            <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Regular Products -->
+                <div class="product-card" data-category="2d gui" data-price="5.00" data-rating="4">
+                    <div class="product-image-container">
+                        <img src="media/PLACEHOLDER.jpg" alt="Roblox Menu GUI" class="product-image">
+                        <div class="product-badge badge-new">New</div>
+                        <div class="price-tag">$5.00</div>
+                        <div class="quick-view-overlay">
+                            <button class="quick-view-btn" onclick="openProductModal(this)">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Roblox Menu GUI</h3>
+                        <p class="product-author">by IronLanternStudios</p>
+                        <p class="product-description">Professional animated menu system for Roblox games with customizable themes and smooth transitions.</p>
+                        <div class="product-tags">
+                            <span class="tag">GUI</span>
+                            <span class="tag">Menu</span>
+                            <span class="tag">Animated</span>
+                            <span class="tag">Roblox</span>
+                        </div>
+                        <div class="product-meta">
+                            <div class="product-rating">
+                                <span>⭐⭐⭐⭐☆</span>
+                                <span>(23 reviews)</span>
+                            </div>
+                            <div class="download-count">856 downloads</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart-btn" onclick="addToCart(this)" data-id="roblox-gui" data-title="Roblox Menu GUI" data-price="5.00" data-image="media/PLACEHOLDER.jpg">Add to Cart</button>
+                            <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="3d vehicles" data-price="15.99" data-rating="5">
+                    <div class="product-image-container">
+                        <img src="media/PLACEHOLDER.jpg" alt="Low Poly Car Pack" class="product-image">
+                        <div class="price-tag"><span class="price-original">$19.99</span>$15.99</div>
+                        <div class="product-badge badge-sale">Sale</div>
+                        <div class="quick-view-overlay">
+                            <button class="quick-view-btn" onclick="openProductModal(this)">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Low Poly Car Pack</h3>
+                        <p class="product-author">by IronLanternStudios</p>
+                        <p class="product-description">Collection of 12 stylized low-poly vehicles including cars, trucks, and motorcycles with PBR textures.</p>
+                        <div class="product-tags">
+                            <span class="tag">3D</span>
+                            <span class="tag">Vehicles</span>
+                            <span class="tag">Low Poly</span>
+                            <span class="tag">PBR</span>
+                        </div>
+                        <div class="product-meta">
+                            <div class="product-rating">
+                                <span>⭐⭐⭐⭐⭐</span>
+                                <span>(89 reviews)</span>
+                            </div>
+                            <div class="download-count">2.1k downloads</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart-btn" onclick="addToCart(this)" data-id="car-pack" data-title="Low Poly Car Pack" data-price="15.99" data-image="media/PLACEHOLDER.jpg">Add to Cart</button>
+                            <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="audio music" data-price="12.99" data-rating="4">
+                    <div class="product-image-container">
+                        <img src="media/PLACEHOLDER.jpg" alt="Cyberpunk Music Pack" class="product-image">
+                        <div class="price-tag">$12.99</div>
+                        <div class="quick-view-overlay">
+                            <button class="quick-view-btn" onclick="openProductModal(this)">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Cyberpunk Music Pack</h3>
+                        <p class="product-author">by IronLanternStudios</p>
+                        <p class="product-description">Atmospheric cyberpunk soundtrack with 15 original tracks perfect for sci-fi and futuristic games.</p>
+                        <div class="product-tags">
+                            <span class="tag">Audio</span>
+                            <span class="tag">Music</span>
+                            <span class="tag">Cyberpunk</span>
+                            <span class="tag">Atmospheric</span>
+                        </div>
+                        <div class="product-meta">
+                            <div class="product-rating">
+                                <span>⭐⭐⭐⭐☆</span>
+                                <span>(34 reviews)</span>
+                            </div>
+                            <div class="download-count">567 downloads</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart-btn" onclick="addToCart(this)" data-id="cyberpunk-music" data-title="Cyberpunk Music Pack" data-price="12.99" data-image="media/PLACEHOLDER.jpg">Add to Cart</button>
+                            <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="scripts tools" data-price="8.99" data-rating="5">
+                    <div class="product-image-container">
+                        <img src="media/PLACEHOLDER.jpg" alt="Unity Save System" class="product-image">
+                        <div class="price-tag">$8.99</div>
+                        <div class="quick-view-overlay">
+                            <button class="quick-view-btn" onclick="openProductModal(this)">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Unity Save System</h3>
+                        <p class="product-author">by IronLanternStudios</p>
+                        <p class="product-description">Complete save/load system for Unity with encryption, cloud backup support, and easy integration.</p>
+                        <div class="product-tags">
+                            <span class="tag">Scripts</span>
+                            <span class="tag">Unity</span>
+                            <span class="tag">Save System</span>
+                            <span class="tag">C#</span>
+                        </div>
+                        <div class="product-meta">
+                            <div class="product-rating">
+                                <span>⭐⭐⭐⭐⭐</span>
+                                <span>(67 reviews)</span>
+                            </div>
+                            <div class="download-count">1.8k downloads</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart-btn" onclick="addToCart(this)" data-id="save-system" data-title="Unity Save System" data-price="8.99" data-image="media/PLACEHOLDER.jpg">Add to Cart</button>
+                            <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="2d ui" data-price="6.99" data-rating="4">
+                    <div class="product-image-container">
+                        <img src="media/PLACEHOLDER.jpg" alt="Fantasy UI Kit" class="product-image">
+                        <div class="price-tag">$6.99</div>
+                        <div class="quick-view-overlay">
+                            <button class="quick-view-btn" onclick="openProductModal(this)">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Fantasy UI Kit</h3>
+                        <p class="product-author">by IronLanternStudios</p>
+                        <p class="product-description">Medieval fantasy UI elements including buttons, panels, icons, and frames in high resolution PNG format.</p>
+                        <div class="product-tags">
+                            <span class="tag">2D</span>
+                            <span class="tag">UI</span>
+                            <span class="tag">Fantasy</span>
+                            <span class="tag">Medieval</span>
+                        </div>
+                        <div class="product-meta">
+                            <div class="product-rating">
+                                <span>⭐⭐⭐⭐☆</span>
+                                <span>(41 reviews)</span>
+                            </div>
+                            <div class="download-count">923 downloads</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart-btn" onclick="addToCart(this)" data-id="fantasy-ui" data-title="Fantasy UI Kit" data-price="6.99" data-image="media/PLACEHOLDER.jpg">Add to Cart</button>
+                            <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="templates game" data-price="24.99" data-rating="5">
+                    <div class="product-image-container">
+                        <img src="media/PLACEHOLDER.jpg" alt="Platformer Template" class="product-image">
+                        <div class="price-tag">$24.99</div>
+                        <div class="quick-view-overlay">
+                            <button class="quick-view-btn" onclick="openProductModal(this)">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Complete Platformer Template</h3>
+                        <p class="product-author">by IronLanternStudios</p>
+                        <p class="product-description">Full 2D platformer game template with player controller, enemies, power-ups, and level editor.</p>
+                        <div class="product-tags">
+                            <span class="tag">Templates</span>
+                            <span class="tag">Platformer</span>
+                            <span class="tag">Unity</span>
+                            <span class="tag">Complete</span>
+                        </div>
+                        <div class="product-meta">
+                            <div class="product-rating">
+                                <span>⭐⭐⭐⭐⭐</span>
+                                <span>(156 reviews)</span>
+                            </div>
+                            <div class="download-count">3.2k downloads</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart-btn" onclick="addToCart(this)" data-id="platformer-template" data-title="Complete Platformer Template" data-price="24.99" data-image="media/PLACEHOLDER.jpg">Add to Cart</button>
+                            <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="tools editor" data-price="18.99" data-rating="4">
+                    <div class="product-image-container">
+                        <img src="media/PLACEHOLDER.jpg" alt="Level Editor Tool" class="product-image">
+                        <div class="price-tag">$18.99</div>
+                        <div class="quick-view-overlay">
+                            <button class="quick-view-btn" onclick="openProductModal(this)">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Visual Level Editor</h3>
+                        <p class="product-author">by IronLanternStudios</p>
+                        <p class="product-description">Powerful in-game level editor with drag-and-drop functionality, perfect for user-generated content.</p>
+                        <div class="product-tags">
+                            <span class="tag">Tools</span>
+                            <span class="tag">Editor</span>
+                            <span class="tag">Unity</span>
+                            <span class="tag">Visual</span>
+                        </div>
+                        <div class="product-meta">
+                            <div class="product-rating">
+                                <span>⭐⭐⭐⭐☆</span>
+                                <span>(28 reviews)</span>
+                            </div>
+                            <div class="download-count">445 downloads</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart-btn" onclick="addToCart(this)" data-id="level-editor" data-title="Visual Level Editor" data-price="18.99" data-image="media/PLACEHOLDER.jpg">Add to Cart</button>
+                            <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="product-modal" id="product-modal">
+        <div class="modal-content" id="modal-content">
+            <div class="modal-header">
+                <img src="" alt="" class="modal-image" id="modal-image">
+                <button class="modal-close" id="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <h3 class="modal-title" id="modal-title">Product Title</h3>
+                <p class="modal-author" id="modal-author">by Author</p>
+                <p class="modal-price" id="modal-price">$0.00</p>
+                <p class="modal-description" id="modal-description">Product description goes here...</p>
+                <div class="modal-features">
+                    <h4 class="features-title">What's Included:</h4>
+                    <ul class="features-list" id="modal-features">
+                        <li>Feature 1</li>
+                        <li>Feature 2</li>
+                        <li>Feature 3</li>
+                    </ul>
+                </div>
+                <div class="modal-actions">
+                    <button class="modal-add-cart" id="modal-add-cart">Add to Cart</button>
+                    <button class="modal-wishlist" id="modal-wishlist">♡</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="terms.html">Terms of Service</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://youtube.com" target="_blank">YouTube</a>
+                <a href="#" target="_blank">Twitter</a>
+                <a href="#" target="_blank">Instagram</a>
+            </div>
+            <div class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== GLOBAL VARIABLES =====
+        let cart = [];
+        let wishlist = [];
+
+        // ===== STARFIELD ANIMATION =====
+        function createFloatingStars() {
+            const bgAnimation = document.getElementById('bg-animation');
+            const starCount = 50;
+            const starTypes = ['⭐', '✨', '🌟', '⭐', '✦', '✧'];
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'floating-star';
+                
+                star.innerHTML = starTypes[Math.floor(Math.random() * starTypes.length)];
+                
+                const sizes = ['small', 'medium', 'large'];
+                const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+                star.classList.add(randomSize);
+                
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 10 + 's';
+                star.style.animationDuration = (8 + Math.random() * 6) + 's';
+                
+                bgAnimation.appendChild(star);
+            }
+        }
+
+        // ===== FILTER FUNCTIONALITY =====
+        function initializeFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+            const searchInput = document.getElementById('search-input');
+            const sortDropdown = document.getElementById('sort-dropdown');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    const filter = button.getAttribute('data-filter');
+                    filterProducts(filter, searchInput.value, sortDropdown.value);
+                });
+            });
+            
+            searchInput.addEventListener('input', (e) => {
+                const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+                filterProducts(activeFilter, e.target.value, sortDropdown.value);
+            });
+            
+            sortDropdown.addEventListener('change', (e) => {
+                const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+                filterProducts(activeFilter, searchInput.value, e.target.value);
+            });
+        }
+
+        function filterProducts(categoryFilter, searchTerm, sortBy) {
+            const productCards = Array.from(document.querySelectorAll('.product-card'));
+            let visibleCards = [];
+            
+            productCards.forEach(card => {
+                const categories = card.getAttribute('data-category');
+                const title = card.querySelector('.product-title').textContent.toLowerCase();
+                const description = card.querySelector('.product-description').textContent.toLowerCase();
+                const author = card.querySelector('.product-author').textContent.toLowerCase();
+                
+                const matchesCategory = categoryFilter === 'all' || categories.includes(categoryFilter);
+                const matchesSearch = !searchTerm || 
+                    title.includes(searchTerm.toLowerCase()) || 
+                    description.includes(searchTerm.toLowerCase()) || 
+                    author.includes(searchTerm.toLowerCase());
+                
+                if (matchesCategory && matchesSearch) {
+                    card.classList.remove('hidden');
+                    card.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                    visibleCards.push(card);
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            
+            // Sort visible cards
+            if (sortBy !== 'featured') {
+                sortProducts(visibleCards, sortBy);
+            }
+        }
+
+        function sortProducts(cards, sortBy) {
+            const container = document.getElementById('shop-grid');
+            
+            cards.sort((a, b) => {
+                switch (sortBy) {
+                    case 'price-low':
+                        return parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price'));
+                    case 'price-high':
+                        return parseFloat(b.getAttribute('data-price')) - parseFloat(a.getAttribute('data-price'));
+                    case 'rating':
+                        return parseFloat(b.getAttribute('data-rating')) - parseFloat(a.getAttribute('data-rating'));
+                    case 'newest':
+                        // For demo purposes, just reverse the order
+                        return 0;
+                    case 'popular':
+                        // For demo purposes, sort by downloads (would need data attribute)
+                        return 0;
+                    default:
+                        return 0;
+                }
+            });
+            
+            // Re-append sorted cards
+            cards.forEach(card => {
+                container.appendChild(card);
+            });
+        }
+
+        // ===== CART FUNCTIONALITY =====
+        function addToCart(button) {
+            const id = button.getAttribute('data-id');
+            const title = button.getAttribute('data-title');
+            const price = parseFloat(button.getAttribute('data-price'));
+            const image = button.getAttribute('data-image');
+            
+            // Check if item already in cart
+            const existingItem = cart.find(item => item.id === id);
+            if (existingItem) {
+                showToast('Item already in cart!');
+                return;
+            }
+            
+            const item = { id, title, price, image };
+            cart.push(item);
+            
+            updateCartUI();
+            showToast(`${title} added to cart!`);
+            
+            // Animate button
+            button.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+            }, 150);
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+            showToast('Item removed from cart');
+        }
+
+        function updateCartUI() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const subtotalEl = document.getElementById('subtotal');
+            const taxEl = document.getElementById('tax');
+            const totalEl = document.getElementById('total');
+            
+            cartCount.textContent = cart.length;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
+                cartTotal.style.display = 'none';
+            } else {
+                let subtotal = 0;
+                cartItems.innerHTML = cart.map(item => {
+                    subtotal += item.price;
+                    return `
+                        <div class="cart-item">
+                            <img src="${item.image}" alt="${item.title}" class="cart-item-image">
+                            <div class="cart-item-info">
+                                <div class="cart-item-title">${item.title}</div>
+                                <div class="cart-item-price">${item.price.toFixed(2)}</div>
+                            </div>
+                            <button class="cart-item-remove" onclick="removeFromCart('${item.id}')">×</button>
+                        </div>
+                    `;
+                }).join('');
+                
+                const tax = subtotal * 0.1;
+                const total = subtotal + tax;
+                
+                subtotalEl.textContent = `${subtotal.toFixed(2)}`;
+                taxEl.textContent = `${tax.toFixed(2)}`;
+                totalEl.textContent = `${total.toFixed(2)}`;
+                
+                cartTotal.style.display = 'block';
+            }
+        }
+
+        function toggleCart() {
+            const cartSidebar = document.getElementById('cart-sidebar');
+            cartSidebar.classList.toggle('open');
+        }
+
+        // ===== WISHLIST FUNCTIONALITY =====
+        function toggleWishlist(button) {
+            const card = button.closest('.product-card');
+            const id = card.querySelector('.add-to-cart-btn').getAttribute('data-id');
+            const title = card.querySelector('.product-title').textContent;
+            
+            if (button.classList.contains('active')) {
+                wishlist = wishlist.filter(item => item !== id);
+                button.classList.remove('active');
+                button.textContent = '♡';
+                showToast(`${title} removed from wishlist`);
+            } else {
+                wishlist.push(id);
+                button.classList.add('active');
+                button.textContent = '♥';
+                showToast(`${title} added to wishlist`);
+            }
+            
+            // Animate button
+            button.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        // ===== PRODUCT MODAL =====
+        function openProductModal(button) {
+            const card = button.closest('.product-card');
+            const modal = document.getElementById('product-modal');
+            const modalContent = document.getElementById('modal-content');
+            
+            const title = card.querySelector('.product-title').textContent;
+            const author = card.querySelector('.product-author').textContent;
+            const price = card.querySelector('.price-tag').textContent;
+            const image = card.querySelector('.product-image').src;
+            const description = card.querySelector('.product-description').textContent;
+            
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-author').textContent = author;
+            document.getElementById('modal-price').textContent = price;
+            document.getElementById('modal-image').src = image;
+            document.getElementById('modal-description').textContent = description;
+            
+            // Set up modal buttons
+            const addToCartBtn = card.querySelector('.add-to-cart-btn');
+            const modalAddCart = document.getElementById('modal-add-cart');
+            
+            modalAddCart.onclick = () => addToCart(addToCartBtn);
+            
+            // Generate features based on product type
+            const features = generateProductFeatures(title);
+            const featuresList = document.getElementById('modal-features');
+            featuresList.innerHTML = features.map(feature => `<li>${feature}</li>`).join('');
+            
+            modal.classList.add('show');
+            modalContent.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductModal() {
+            const modal = document.getElementById('product-modal');
+            const modalContent = document.getElementById('modal-content');
+            
+            modal.classList.remove('show');
+            modalContent.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        function generateProductFeatures(title) {
+            const featureMap = {
+                'Road Prop Pack': [
+                    'Over 50 unique road props and signs',
+                    'Low-poly optimized for mobile games',
+                    'PBR textures included (2K resolution)',
+                    'Unity and Unreal Engine compatible',
+                    'Customizable materials and colors'
+                ],
+                'Roblox Menu GUI': [
+                    'Fully animated menu transitions',
+                    'Customizable themes and colors',
+                    'Sound effects included',
+                    'Easy to integrate script',
+                    'Mobile-friendly responsive design'
+                ],
+                'Low Poly Car Pack': [
+                    '12 unique vehicle models',
+                    'Separate parts for customization',
+                    'PBR materials with multiple color variants',
+                    'Optimized for real-time rendering',
+                    'Includes motorcycles and trucks'
+                ]
+            };
+            
+            return featureMap[title] || [
+                'High-quality assets included',
+                'Professional grade materials',
+                'Easy integration and setup',
+                'Documentation and examples',
+                'Lifetime updates included'
+            ];
+        }
+
+        // ===== CHECKOUT SIMULATION =====
+        function simulateCheckout() {
+            if (cart.length === 0) {
+                showToast('Your cart is empty!');
+                return;
+            }
+            
+            // Create checkout overlay
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                backdrop-filter: blur(10px);
+            `;
+            
+            const checkoutText = document.createElement('div');
+            checkoutText.innerHTML = `
+                <div style="color: #ff33aa; font-size: 2rem; font-weight: bold; margin-bottom: 20px; text-align: center;">
+                    Processing Payment...
+                </div>
+                <div style="color: #ddd; font-size: 1.2rem; text-align: center; margin-bottom: 30px;">
+                    Total: ${document.getElementById('total').textContent}
+                </div>
+            `;
+            
+            const progressBar = document.createElement('div');
+            progressBar.style.cssText = `
+                width: 300px;
+                height: 10px;
+                background: #333;
+                border-radius: 5px;
+                overflow: hidden;
+                margin-bottom: 20px;
+            `;
+            
+            const progress = document.createElement('div');
+            progress.style.cssText = `
+                width: 0%;
+                height: 100%;
+                background: linear-gradient(45deg, #ff33aa, #aa33ff);
+                transition: width 0.1s ease;
+            `;
+            
+            progressBar.appendChild(progress);
+            overlay.appendChild(checkoutText);
+            overlay.appendChild(progressBar);
+            
+            const closeBtn = document.createElement('button');
+            closeBtn.textContent = 'Cancel';
+            closeBtn.style.cssText = `
+                background: transparent;
+                border: 2px solid #ff33aa;
+                color: #ff33aa;
+                padding: 10px 20px;
+                border-radius: 25px;
+                cursor: pointer;
+                font-family: "Courier New", monospace;
+                margin-top: 20px;
+            `;
+            closeBtn.onclick = () => document.body.removeChild(overlay);
+            
+            overlay.appendChild(closeBtn);
+            document.body.appendChild(overlay);
+            
+            // Animate progress
+            let width = 0;
+            const interval = setInterval(() => {
+                width += Math.random() * 15;
+                if (width >= 100) {
+                    width = 100;
+                    clearInterval(interval);
+                    
+                    setTimeout(() => {
+                        checkoutText.innerHTML = `
+                            <div style="color: #00ff00; font-size: 2rem; font-weight: bold; margin-bottom: 20px; text-align: center;">
+                                ✓ Payment Successful!
+                            </div>
+                            <div style="color: #ddd; font-size: 1.2rem; text-align: center;">
+                                Your assets will be available for download shortly.
+                            </div>
+                        `;
+                        
+                        setTimeout(() => {
+                            cart = [];
+                            updateCartUI();
+                            toggleCart();
+                            document.body.removeChild(overlay);
+                            showToast('Thank you for your purchase!');
+                        }, 3000);
+                    }, 500);
+                }
+                progress.style.width = width + '%';
+            }, 100);
+        }
+
+        // ===== TOAST NOTIFICATIONS =====
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ===== PARALLAX SCROLLING =====
+        function addParallaxEffect() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const heroSection = document.querySelector('.shop-hero');
+                
+                if (heroSection) {
+                    heroSection.style.transform = `translateY(${scrolled * 0.3}px)`;
+                }
+                
+                const stars = document.querySelectorAll('.floating-star');
+                stars.forEach((star, index) => {
+                    const speed = (index % 3 + 1) * 0.05;
+                    star.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.02}deg)`;
+                });
+            });
+        }
+
+        // ===== CARD ANIMATIONS =====
+        function addCardInteractions() {
+            const productCards = document.querySelectorAll('.product-card');
+            
+            productCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-20px) rotateX(5deg) rotateY(2deg)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+                });
+            });
+        }
+
+        // ===== EASTER EGG - SECRET DISCOUNT =====
+        let secretCode = [];
+        const secretSequence = ['s', 'h', 'o', 'p'];
+        
+        function initSecretCode() {
+            document.addEventListener('keydown', function(e) {
+                secretCode.push(e.key.toLowerCase());
+                if (secretCode.length > secretSequence.length) {
+                    secretCode.shift();
+                }
+                
+                if (JSON.stringify(secretCode) === JSON.stringify(secretSequence)) {
+                    // Apply secret discount
+                    const productCards = document.querySelectorAll('.product-card');
+                    productCards.forEach(card => {
+                        const priceTag = card.querySelector('.price-tag');
+                        if (priceTag && !priceTag.textContent.includes('SECRET')) {
+                            const originalPrice = priceTag.textContent;
+                            priceTag.innerHTML = `<span class="price-original">${originalPrice}</span>SECRET 50% OFF!`;
+                            priceTag.style.background = 'linear-gradient(45deg, #ff33aa, #aa33ff)';
+                            priceTag.style.color = 'white';
+                        }
+                    });
+                    
+                    showToast('🎉 SECRET DISCOUNT ACTIVATED! 50% OFF EVERYTHING!');
+                    secretCode = [];
+                }
+            });
+        }
+
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all features
+            createFloatingStars();
+            initializeFilters();
+            addCardInteractions();
+            addParallaxEffect();
+            initSecretCode();
+            
+            // Cart functionality
+            document.getElementById('cart-toggle').addEventListener('click', toggleCart);
+            document.getElementById('cart-close').addEventListener('click', toggleCart);
+            document.getElementById('checkout-btn').addEventListener('click', simulateCheckout);
+            
+            // Modal functionality
+            document.getElementById('modal-close').addEventListener('click', closeProductModal);
+            document.getElementById('product-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'product-modal') {
+                    closeProductModal();
+                }
+            });
+            
+            // Escape key to close modal
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeProductModal();
+                    if (document.getElementById('cart-sidebar').classList.contains('open')) {
+                        toggleCart();
+                    }
+                }
+            });
+            
+            // Featured deal button
+            document.querySelector('.deal-button').addEventListener('click', (e) => {
+                e.preventDefault();
+                showToast('Bundle deal coming soon! 🔥');
+            });
+            
+            // Add loading animation
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 1s ease-in-out';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // ===== GLOBAL FUNCTIONS FOR ONCLICK ATTRIBUTES =====
+        window.addToCart = addToCart;
+        window.toggleWishlist = toggleWishlist;
+        window.openProductModal = openProductModal;
+        window.removeFromCart = removeFromCart;
+    </script>
 </body>
 </html>
