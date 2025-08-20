@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BrickedMyPortfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0f0f0f;
+      color: #f0f0f0;
+    }
+    header {
+      background-color: #1a1a1a;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: #f0f0f0;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #00ffcc;
+    }
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #1a1a1a, #333);
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .project-card {
+      background-color: #1f1f1f;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #00ffcc33;
+    }
+    .project-card h3 {
+      margin-top: 0;
+      color: #00ffcc;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #1a1a1a;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>BrickedMyPortfolio</h2>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="games.html">Games</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to BrickedMyPortfolio</h1>
+    <p>Showcasing my indie game dev journey, assets, and creative experiments.</p>
+  </section>
+
+  <section class="projects">
+    <div class="project-card">
+      <h3>Pixel Blaster</h3>
+      <p>Retro-style shooter built with Phaser.js. Fast-paced action and custom sprite work.</p>
+    </div>
+    <div class="project-card">
+      <h3>IR LED Controller</h3>
+      <p>Custom IR remote system with Bluetooth integration using Raspberry Pi Pico.</p>
+    </div>
+    <div class="project-card">
+      <h3>Mini Speaker Synth</h3>
+      <p>Audio experiment using microcontrollers and waveform manipulation.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Jason | BrickedMyPortfolio.com</p>
+  </footer>
+</body>
+</html>

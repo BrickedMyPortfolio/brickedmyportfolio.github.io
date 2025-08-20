@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop | BrickedMyPortfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0f0f0f;
+      color: #f0f0f0;
+    }
+    header {
+      background-color: #1a1a1a;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: #f0f0f0;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #00ffcc;
+    }
+    .shop-section {
+      padding: 3rem 2rem;
+    }
+    .shop-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #00ffcc;
+      text-align: center;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      background-color: #1f1f1f;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #00ffcc33;
+    }
+    .product-card h3 {
+      margin-top: 0;
+      color: #00ffcc;
+    }
+    .product-card p {
+      color: #ccc;
+    }
+    .price {
+      font-weight: bold;
+      color: #00ffcc;
+      margin-top: 0.5rem;
+    }
+    .buy-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #00ffcc;
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #1a1a1a;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>BrickedMyPortfolio</h2>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="games.html">Games</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="shop-section">
+    <h1>Shop My Assets</h1>
+    <div class="product-grid">
+      <div class="product-card">
+        <h3>Neon Runner Sprite Pack</h3>
+        <p>Cyberpunk-themed character sprites, tilesets, and effects. Perfect for platformers.</p>
+        <p class="price">$5.00</p>
+        <a class="buy-link" href="downloads/neonrunner-sprites.zip">Download Pack</a>
+      </div>
+      <div class="product-card">
+        <h3>8-Bit Sound FX Bundle</h3>
+        <p>Classic arcade-style sound effects for jumps, hits, coins, and more.</p>
+        <p class="price">$3.00</p>
+        <a class="buy-link" href="downloads/8bit-sfx.zip">Download Bundle</a>
+      </div>
+      <div class="product-card">
+        <h3>IR Remote Dev Kit</h3>
+        <p>Includes sample IR codes, microcontroller scripts, and schematics for custom LED control.</p>
+        <p class="price">Free</p>
+        <a class="buy-link" href="downloads/ir-dev-kit.zip">Download Kit</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Jason | BrickedMyPortfolio.com</p>
+  </footer>
+</body>
+</html>
