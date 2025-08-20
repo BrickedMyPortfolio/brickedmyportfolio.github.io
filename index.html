@@ -1,106 +1,1199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BrickedMyPortfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #0f0f0f;
-      color: #f0f0f0;
-    }
-    header {
-      background-color: #1a1a1a;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav a {
-      color: #f0f0f0;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #00ffcc;
-    }
-    .hero {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: linear-gradient(135deg, #1a1a1a, #333);
-    }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-    }
-    .project-card {
-      background-color: #1f1f1f;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px #00ffcc33;
-    }
-    .project-card h3 {
-      margin-top: 0;
-      color: #00ffcc;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #1a1a1a;
-      color: #888;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>brickedmyportfolio.com</title>
+    <style>
+        /* ===== BASE RESET & TYPOGRAPHY ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a0a1a 100%);
+            color: #eee;
+            font-family: "Courier New", monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* ===== ANIMATED STARFIELD BACKGROUND ===== */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .floating-star {
+            position: absolute;
+            color: #ffffff;
+            font-size: 12px;
+            opacity: 0.8;
+            animation: float 10s infinite linear;
+            pointer-events: none;
+        }
+
+        .floating-star.large {
+            font-size: 16px;
+            opacity: 1;
+        }
+
+        .floating-star.medium {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .floating-star.small {
+            font-size: 10px;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(-10px) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) translateX(20px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid #ff33aa;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 0 20px rgba(255, 51, 170, 0.5);
+        }
+
+        .logo-circle:hover {
+            transform: scale(1.2) rotate(360deg);
+            box-shadow: 0 0 30px rgba(255, 51, 170, 0.8);
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            padding: 12px 24px;
+            font-family: "Courier New", monospace;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        nav a:hover::before {
+            left: 100%;
+        }
+
+        nav a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 51, 170, 0.4);
+        }
+
+        nav a.current {
+            background: linear-gradient(45deg, #e62999, #9929cc);
+            transform: translateY(-2px);
+        }
+
+        /* ===== MAIN CONTENT WRAPPER ===== */
+        .main-content {
+            padding-top: 120px; /* Space for fixed header */
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: radial-gradient(circle at center, rgba(255, 51, 170, 0.1), transparent);
+        }
+
+        .glitch-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff, #33aaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+            text-shadow: 0 0 30px rgba(255, 51, 170, 0.5);
+        }
+
+        @keyframes glow {
+            from { filter: brightness(1) hue-rotate(0deg); }
+            to { filter: brightness(1.2) hue-rotate(10deg); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: #ccc;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .cta-button {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-primary {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            box-shadow: 0 8px 25px rgba(255, 51, 170, 0.4);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: #ff33aa;
+            border: 2px solid #ff33aa;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .cta-primary:hover {
+            box-shadow: 0 15px 35px rgba(255, 51, 170, 0.6);
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255, 51, 170, 0.1);
+        }
+
+        /* ===== CAROUSEL STYLING ===== */
+        .carousel-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .carousel-container {
+            position: relative;
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 51, 170, 0.3);
+        }
+
+        .carousel-content {
+            display: flex;
+            align-items: center;
+            padding: 50px;
+            gap: 50px;
+            min-height: 400px;
+        }
+
+        .carousel-media {
+            flex: 1;
+            position: relative;
+            max-width: 500px;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            background: linear-gradient(45deg, #333, #555);
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-image:hover {
+            transform: scale(1.02);
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(255, 51, 170, 0.4);
+            z-index: 10;
+        }
+
+        .carousel-arrow:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 30px rgba(255, 51, 170, 0.6);
+        }
+
+        .carousel-arrow.left {
+            left: -30px;
+        }
+
+        .carousel-arrow.right {
+            right: -30px;
+        }
+
+        .carousel-description {
+            flex: 1;
+        }
+
+        .carousel-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ff33aa;
+        }
+
+        .carousel-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 30px;
+        }
+
+        .dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .dot.active {
+            background: #ff33aa;
+            box-shadow: 0 0 20px rgba(255, 51, 170, 0.6);
+            transform: scale(1.3);
+        }
+
+        .dot:hover {
+            background: #ff33aa;
+            transform: scale(1.1);
+        }
+
+        /* ===== FEATURED CARDS ===== */
+        .featured-section {
+            padding: 80px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: rgba(26, 26, 26, 0.9);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: 1px solid rgba(255, 51, 170, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-20px) rotateX(5deg);
+            box-shadow: 0 30px 60px rgba(255, 51, 170, 0.3);
+            border-color: rgba(255, 51, 170, 0.5);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: linear-gradient(45deg, #333, #555);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .card-description {
+            color: #ccc;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .card-rating {
+            color: #aaa;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .card-button {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .card-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 51, 170, 0.4);
+        }
+
+        /* ===== CARD POPUP/OVERLAY STYLES ===== */
+        .card-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .card-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .card-expanded {
+            background: rgba(26, 26, 26, 0.95);
+            border-radius: 20px;
+            max-width: 800px;
+            max-height: 90vh;
+            width: 90%;
+            overflow-y: auto;
+            transform: scale(0.8) translateY(50px);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 51, 170, 0.5);
+            backdrop-filter: blur(20px);
+        }
+
+        .card-expanded.show {
+            transform: scale(1) translateY(0);
+        }
+
+        .expanded-header {
+            position: relative;
+        }
+
+        .expanded-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 18px 18px 0 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 51, 170, 0.9);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 51, 170, 0.4);
+        }
+
+        .close-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 25px rgba(255, 51, 170, 0.6);
+        }
+
+        .expanded-content {
+            padding: 40px;
+        }
+
+        .expanded-title {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .expanded-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .expanded-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .expanded-tags .tag {
+            font-size: 1rem;
+            padding: 8px 16px;
+        }
+
+        .expanded-rating {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .expanded-price {
+            font-size: 1.3rem;
+            color: #ff33aa;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .expanded-link {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            box-shadow: 0 8px 25px rgba(255, 51, 170, 0.4);
+        }
+
+        .expanded-link:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 51, 170, 0.6);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(10, 10, 10, 0.9);
+            padding: 50px 20px 30px;
+            text-align: center;
+            border-top: 2px solid #ff33aa;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff33aa;
+            transform: translateY(-2px);
+        }
+
+        .footer-social {
+            margin-bottom: 30px;
+        }
+
+        .footer-social a {
+            color: #ff33aa;
+            text-decoration: none;
+            margin: 0 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #aa33ff;
+            transform: scale(1.1);
+        }
+
+        .copyright {
+            color: #ccc;
+            font-size: 1rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .main-content {
+                padding-top: 160px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 12px;
+                padding: 10px 16px;
+            }
+
+            .glitch-title {
+                font-size: 2.5rem;
+            }
+
+            .carousel-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 30px;
+            }
+
+            .carousel-arrow.left {
+                left: 10px;
+            }
+
+            .carousel-arrow.right {
+                right: 10px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card-expanded {
+                width: 95%;
+                max-height: 95vh;
+            }
+
+            .expanded-content {
+                padding: 30px 20px;
+            }
+
+            .expanded-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .glitch-title {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 60px 15px;
+            }
+
+            .carousel-section, .featured-section {
+                padding: 60px 15px;
+            }
+
+            .carousel-content {
+                padding: 30px 20px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h2>BrickedMyPortfolio</h2>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="games.html">Games</a>
-      <a href="shop.html">Shop</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+    <!-- Animated Starfield Background -->
+    <div class="bg-animation" id="bg-animation"></div>
 
-  <section class="hero">
-    <h1>Welcome to BrickedMyPortfolio</h1>
-    <p>Showcasing my indie game dev journey, assets, and creative experiments.</p>
-  </section>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo-circle">
+            H
+        </a>
+        <nav>
+            <a href="index.html" class="current">Home</a>
+            <a href="about.html">About</a>
+            <a href="games.html">Games</a>
+            <a href="shop.html">Shop</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
 
-  <section class="projects">
-    <div class="project-card">
-      <h3>Pixel Blaster</h3>
-      <p>Retro-style shooter built with Phaser.js. Fast-paced action and custom sprite work.</p>
-    </div>
-    <div class="project-card">
-      <h3>IR LED Controller</h3>
-      <p>Custom IR remote system with Bluetooth integration using Raspberry Pi Pico.</p>
-    </div>
-    <div class="project-card">
-      <h3>Mini Speaker Synth</h3>
-      <p>Audio experiment using microcontrollers and waveform manipulation.</p>
-    </div>
-  </section>
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="glitch-title">BRICKEDMYPORTFOLIO</h1>
+            <p class="hero-subtitle">Join me on my journey as a Game Dev</p>
+            <div class="cta-buttons">
+                <a href="games.html" class="cta-button cta-primary">Explore Games</a>
+                <a href="about.html" class="cta-button cta-secondary">My Story</a>
+            </div>
+        </section>
 
-  <footer>
-    <p>&copy; 2025 Jason | BrickedMyPortfolio.com</p>
-  </footer>
+        <!-- What I'm Working On Carousel -->
+        <section class="carousel-section">
+            <h2 class="section-title">Current Projects</h2>
+            <div class="carousel-container">
+                <div class="carousel-content">
+                    <div class="carousel-media">
+                        <img src="media/PLACEHOLDER.jpg" alt="Current Project" class="carousel-image" id="carousel-image">
+                        <button class="carousel-arrow left" id="carousel-left">‹</button>
+                        <button class="carousel-arrow right" id="carousel-right">›</button>
+                    </div>
+                    <div class="carousel-description">
+                        <h3 class="carousel-title" id="carousel-title">Crazy Taxi</h3>
+                        <p class="carousel-text" id="carousel-desc">Currently working on the assets</p>
+                    </div>
+                </div>
+                <div class="carousel-dots" id="carousel-dots">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Games -->
+        <section class="featured-section">
+            <h2 class="section-title">Featured Games</h2>
+            <div class="cards-grid">
+                <div class="feature-card game-card" data-title="Crazy Taxi" data-link="https://store.steampowered.com/app/123456" data-price="FREE">
+                    <img src="media/PLACEHOLDER.jpg" alt="Crazy Taxi" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Crazy Taxi</h3>
+                        <p class="card-description">WIP</p>
+                        <div class="card-tags">
+                            <span class="tag">Action</span>
+                            <span class="tag">Indie</span>
+                            <span class="tag">Fun</span>
+                        </div>
+                        <p class="card-rating">⭐⭐⭐⭐⭐ "The Developer is amazing."</p>
+                        <a href="#" class="card-button">Play Now</a>
+                    </div>
+                </div>
+
+                <div class="feature-card game-card" data-title="Placeholder" data-link="https://jayswan.itch.io/placeholder" data-price="$9.99">
+                    <img src="media/PLACEHOLDER.jpg" alt="Placeholder" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Mirrored Life</h3>
+                        <p class="card-description">WIP</p>
+                        <div class="card-tags">
+                            <span class="tag">Casual</span>
+                            <span class="tag">Fantasy</span>
+                            <span class="tag">Story-Driven</span>
+                        </div>
+                        <p class="card-rating">⭐⭐⭐⭐☆ "Great story."</p>
+                        <a href="#" class="card-button">Play Now</a>
+                    </div>
+                </div>
+
+                <div class="feature-card game-card" data-title="Placeholder" data-link="https://store.steampowered.com/app/789012" data-price="$19.99">
+                    <img src="media/PLACEHOLDER.jpg" alt="Placeholder" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">The Last Draft</h3>
+                        <p class="card-description">WIP</p>
+                        <div class="card-tags">
+                            <span class="tag">Adventure</span>
+                            <span class="tag">Mystery</span>
+                            <span class="tag">Story-Driven</span>
+                        </div>
+                        <p class="card-rating">⭐⭐⭐⭐⭐ "Heartbreaking"</p>
+                        <a href="#" class="card-button">Play Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Assets -->
+        <section class="featured-section">
+            <h2 class="section-title">Featured Assets</h2>
+            <div class="cards-grid">
+                <div class="feature-card asset-card" data-title="Road Prop Pack" data-link="https://doodler57.gumroad.com/l/PlaceholderAsset1" data-price="$9.99">
+                    <img src="media/PLACEHOLDER.jpg" alt="Road Prop Pack" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Road Prop Pack</h3>
+                        <p class="card-description">Low poly road props.</p>
+                        <div class="card-tags">
+                            <span class="tag">3D</span>
+                            <span class="tag">Props</span>
+                            <span class="tag">Road</span>
+                        </div>
+                        <p class="card-rating">⭐⭐⭐⭐⭐ "This time I didn't crash because of this asset pack."</p>
+                        <a href="#" class="card-button">Purchase</a>
+                    </div>
+                </div>
+
+                <div class="feature-card asset-card" data-title="Roblox Menu GUI" data-link="https://doodler57.gumroad.com/l/PlaceholderAsset1" data-price="$5.00">
+                    <img src="media/PLACEHOLDER.jpg" alt="Roblox Menu GUI" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Roblox Menu GUI</h3>
+                        <p class="card-description">A full menu gui system for Roblox.</p>
+                        <div class="card-tags">
+                            <span class="tag">GUI</span>
+                            <span class="tag">Menu</span>
+                            <span class="tag">Animated</span>
+                        </div>
+                        <p class="card-rating">⭐⭐⭐⭐☆ "PLEASE MARRY ME!"</p>
+                        <a href="#" class="card-button">Purchase</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Card Popup Overlay -->
+    <div class="card-overlay" id="card-overlay">
+        <div class="card-expanded" id="card-expanded">
+            <div class="expanded-header">
+                <img src="" alt="" class="expanded-image" id="expanded-image">
+                <button class="close-btn" id="close-btn">×</button>
+            </div>
+            <div class="expanded-content">
+                <h3 class="expanded-title" id="expanded-title"></h3>
+                <p class="expanded-description" id="expanded-description"></p>
+                <div class="expanded-tags" id="expanded-tags"></div>
+                <p class="expanded-rating" id="expanded-rating"></p>
+                <p class="expanded-price" id="expanded-price"></p>
+                <a href="#" class="expanded-link" id="expanded-link" target="_blank">Play Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="terms.html">Terms of Service</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://youtube.com" target="_blank">YouTube</a>
+                <a href="#" target="_blank">Twitter</a>
+                <a href="#" target="_blank">Instagram</a>
+            </div>
+            <div class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== STARFIELD ANIMATION =====
+        function createFloatingStars() {
+            const bgAnimation = document.getElementById('bg-animation');
+            const starCount = 50;
+            const starTypes = ['⭐', '✨', '🌟', '⭐', '✦', '✧'];
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'floating-star';
+                
+                // Random star type
+                star.innerHTML = starTypes[Math.floor(Math.random() * starTypes.length)];
+                
+                // Random size class
+                const sizes = ['small', 'medium', 'large'];
+                const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+                star.classList.add(randomSize);
+                
+                // Random position
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                
+                // Random animation timing
+                star.style.animationDelay = Math.random() * 10 + 's';
+                star.style.animationDuration = (8 + Math.random() * 6) + 's';
+                
+                bgAnimation.appendChild(star);
+            }
+        }
+
+        // ===== CAROUSEL FUNCTIONALITY =====
+        let currentSlideIndex = 0;
+        const carouselData = [
+            {
+                image: "media/PLACEHOLDER.jpg",
+                title: "Crazy Taxi",
+                description: "Currently working on the assets which will be sold as an asset pack"
+            },
+            {
+                image: "media/PLACEHOLDER.jpg", 
+                title: "Placeholder",
+                description: "No current game"
+            },
+            {
+                image: "media/PLACEHOLDER.jpg",
+                title: "Placeholder",
+                description: "No current asset"
+            }
+        ];
+
+        function updateCarousel() {
+            const image = document.getElementById('carousel-image');
+            const title = document.getElementById('carousel-title');
+            const desc = document.getElementById('carousel-desc');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (image && title && desc) {
+                image.src = carouselData[currentSlideIndex].image;
+                title.textContent = carouselData[currentSlideIndex].title;
+                desc.textContent = carouselData[currentSlideIndex].description;
+            }
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlideIndex);
+            });
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % carouselData.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + carouselData.length) % carouselData.length;
+            updateCarousel();
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index - 1;
+            updateCarousel();
+        }
+
+        // ===== CARD EXPANSION FUNCTIONALITY =====
+        function expandCard(card) {
+            const overlay = document.getElementById('card-overlay');
+            const expanded = document.getElementById('card-expanded');
+            const title = card.querySelector('.card-title').textContent;
+            const img = card.querySelector('.card-image').src;
+            const description = card.querySelector('.card-description').textContent;
+            const tags = card.querySelector('.card-tags');
+            const rating = card.querySelector('.card-rating');
+            const price = card.dataset.price;
+            const link = card.dataset.link;
+            
+            document.getElementById('expanded-title').textContent = title;
+            document.getElementById('expanded-image').src = img;
+            document.getElementById('expanded-description').textContent = description;
+            
+            if (tags) {
+                document.getElementById('expanded-tags').innerHTML = tags.innerHTML;
+            }
+            
+            if (rating) {
+                document.getElementById('expanded-rating').textContent = rating.textContent;
+            }
+            
+            if (price) {
+                document.getElementById('expanded-price').textContent = price;
+            }
+            
+            const expandedLink = document.getElementById('expanded-link');
+            if (link && expandedLink) {
+                expandedLink.href = link;
+                expandedLink.textContent = card.classList.contains('game-card') ? 'Play Now' : 'Buy Now';
+            }
+            
+            overlay.classList.add('show');
+            expanded.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeExpandedCard() {
+            const overlay = document.getElementById('card-overlay');
+            const expanded = document.getElementById('card-expanded');
+            
+            overlay.classList.remove('show');
+            expanded.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        // ===== CARD INTERACTIONS =====
+        function addCardHoverEffects() {
+            const cards = document.querySelectorAll('.feature-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-20px) rotateX(5deg) rotateY(2deg)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+                });
+            });
+        }
+
+        // ===== AUTO-CAROUSEL =====
+        function startAutoCarousel() {
+            setInterval(() => {
+                nextSlide();
+            }, 6000); // Change slide every 6 seconds
+        }
+
+        // ===== PARALLAX SCROLLING =====
+        function addParallaxEffect() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.hero');
+                if (parallax) {
+                    parallax.style.transform = `translateY(${scrolled * 0.3}px)`;
+                }
+                
+                // Animate floating stars on scroll
+                const stars = document.querySelectorAll('.floating-star');
+                stars.forEach((star, index) => {
+                    const speed = (index % 3 + 1) * 0.05;
+                    star.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.02}deg)`;
+                });
+            });
+        }
+
+        // ===== EVENT LISTENERS =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize starfield animation
+            createFloatingStars();
+            
+            // Carousel controls
+            const leftArrow = document.getElementById('carousel-left');
+            const rightArrow = document.getElementById('carousel-right');
+            
+            if (leftArrow) leftArrow.addEventListener('click', prevSlide);
+            if (rightArrow) rightArrow.addEventListener('click', nextSlide);
+            
+            // Card click events for popups
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    // Prevent card expansion if clicking on the card button
+                    if (!e.target.classList.contains('card-button')) {
+                        expandCard(card);
+                    }
+                });
+            });
+            
+            // Close expanded card events
+            const overlay = document.getElementById('card-overlay');
+            const closeBtn = document.getElementById('close-btn');
+            
+            if (overlay) {
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) {
+                        closeExpandedCard();
+                    }
+                });
+            }
+            
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeExpandedCard);
+            }
+            
+            // Escape key to close expanded card
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeExpandedCard();
+                }
+            });
+            
+            // Initialize interactive effects
+            addCardHoverEffects();
+            startAutoCarousel();
+            addParallaxEffect();
+            
+            // Add loading animation
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 1s ease-in-out';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // ===== EASTER EGG - KONAMI CODE =====
+        let konamiCode = [];
+        const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // Up, Up, Down, Down, Left, Right, Left, Right, B, A
+        
+        document.addEventListener('keydown', function(e) {
+            konamiCode.push(e.keyCode);
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode.shift();
+            }
+            
+            if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
+                // Trigger special effect - make stars sparkle more
+                document.body.style.filter = 'hue-rotate(180deg) brightness(1.2)';
+                const stars = document.querySelectorAll('.floating-star');
+                stars.forEach(star => {
+                    star.style.animationDuration = '2s';
+                    star.style.transform = 'scale(1.5)';
+                });
+                
+                setTimeout(() => {
+                    document.body.style.filter = 'none';
+                    stars.forEach(star => {
+                        star.style.animationDuration = '';
+                        star.style.transform = '';
+                    });
+                }, 3000);
+                konamiCode = [];
+            }
+        });
+    </script>
 </body>
 </html>
