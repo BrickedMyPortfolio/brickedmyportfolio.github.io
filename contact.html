@@ -1,122 +1,1427 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | BrickedMyPortfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #0f0f0f;
-      color: #f0f0f0;
-    }
-    header {
-      background-color: #1a1a1a;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav a {
-      color: #f0f0f0;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #00ffcc;
-    }
-    .contact-section {
-      padding: 3rem 2rem;
-      max-width: 600px;
-      margin: auto;
-    }
-    .contact-section h1 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #00ffcc;
-      text-align: center;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-    input, textarea {
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 4px;
-      background-color: #1f1f1f;
-      color: #f0f0f0;
-    }
-    input::placeholder, textarea::placeholder {
-      color: #888;
-    }
-    button {
-      padding: 0.8rem;
-      background-color: #00ffcc;
-      color: #0f0f0f;
-      font-weight: bold;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #00ccaa;
-    }
-    .social-links {
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .social-links a {
-      margin: 0 1rem;
-      color: #00ffcc;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #1a1a1a;
-      color: #888;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - brickedmyportfolio.com</title>
+    <style>
+        /* ===== BASE RESET & TYPOGRAPHY ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a0a1a 100%);
+            color: #eee;
+            font-family: "Courier New", monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* ===== ANIMATED STARFIELD BACKGROUND ===== */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .floating-star {
+            position: absolute;
+            color: #ffffff;
+            font-size: 12px;
+            opacity: 0.8;
+            animation: float 10s infinite linear;
+            pointer-events: none;
+        }
+
+        .floating-star.large {
+            font-size: 16px;
+            opacity: 1;
+        }
+
+        .floating-star.medium {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .floating-star.small {
+            font-size: 10px;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(-10px) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) translateX(20px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid #ff33aa;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 0 20px rgba(255, 51, 170, 0.5);
+        }
+
+        .logo-circle:hover {
+            transform: scale(1.2) rotate(360deg);
+            box-shadow: 0 0 30px rgba(255, 51, 170, 0.8);
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            padding: 12px 24px;
+            font-family: "Courier New", monospace;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        nav a:hover::before {
+            left: 100%;
+        }
+
+        nav a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 51, 170, 0.4);
+        }
+
+        nav a.current {
+            background: linear-gradient(45deg, #e62999, #9929cc);
+            transform: translateY(-2px);
+        }
+
+        /* ===== MAIN CONTENT WRAPPER ===== */
+        .main-content {
+            padding-top: 120px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .contact-hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: radial-gradient(circle at center, rgba(255, 51, 170, 0.1), transparent);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff, #33aaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+            text-shadow: 0 0 30px rgba(255, 51, 170, 0.5);
+        }
+
+        @keyframes glow {
+            from { filter: brightness(1) hue-rotate(0deg); }
+            to { filter: brightness(1.2) hue-rotate(10deg); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: #ddd;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* ===== CONTACT FORM SECTION ===== */
+        .contact-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-form-wrapper {
+            background: rgba(26, 26, 26, 0.9);
+            border-radius: 25px;
+            padding: 50px;
+            border: 2px solid rgba(255, 51, 170, 0.3);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-form-wrapper:hover {
+            border-color: rgba(255, 51, 170, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(255, 51, 170, 0.1);
+        }
+
+        .form-title {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 18px 20px;
+            background: rgba(10, 10, 10, 0.8);
+            border: 2px solid rgba(255, 51, 170, 0.2);
+            border-radius: 15px;
+            color: #fff;
+            font-family: "Courier New", monospace;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+            resize: vertical;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: #ff33aa;
+            box-shadow: 0 0 20px rgba(255, 51, 170, 0.3);
+            background: rgba(10, 10, 10, 0.9);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #888;
+            transition: opacity 0.3s ease;
+        }
+
+        .form-input:focus::placeholder,
+        .form-textarea:focus::placeholder {
+            opacity: 0;
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            max-height: 300px;
+        }
+
+        .form-submit {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 25px;
+            font-family: "Courier New", monospace;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(255, 51, 170, 0.4);
+        }
+
+        .form-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .form-submit:hover::before {
+            left: 100%;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255, 51, 170, 0.6);
+        }
+
+        .form-submit:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        /* ===== CONTACT INFO SECTION ===== */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .contact-card {
+            background: rgba(26, 26, 26, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid rgba(255, 51, 170, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card:hover {
+            border-color: #ff33aa;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 51, 170, 0.2);
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 51, 170, 0.05), transparent);
+            transition: left 0.6s;
+        }
+
+        .contact-card:hover::before {
+            left: 100%;
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-card-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .contact-card-content {
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .contact-card a {
+            color: #ff33aa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .contact-card a:hover {
+            color: #aa33ff;
+            transform: scale(1.05);
+        }
+
+        /* ===== SOCIAL LINKS SECTION ===== */
+        .social-section {
+            padding: 80px 20px;
+            text-align: center;
+            background: rgba(255, 51, 170, 0.02);
+        }
+
+        .social-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 2rem;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 10px 25px rgba(255, 51, 170, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #aa33ff, #33aaff);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
+        }
+
+        .social-link:hover {
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 20px 40px rgba(255, 51, 170, 0.5);
+        }
+
+        .social-link span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-description {
+            color: #ddd;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq-section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .faq-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .faq-item {
+            background: rgba(26, 26, 26, 0.9);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 2px solid rgba(255, 51, 170, 0.2);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255, 51, 170, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            color: #ff33aa;
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            color: #ff33aa;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: rgba(10, 10, 10, 0.3);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 25px 30px;
+        }
+
+        .faq-answer-content {
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        /* ===== SUCCESS MESSAGE ===== */
+        .success-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(45deg, #00ff88, #00cc66);
+            color: white;
+            padding: 30px 50px;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            z-index: 10000;
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .success-message.show {
+            opacity: 1;
+            visibility: visible;
+            animation: successPulse 0.6s ease-out;
+        }
+
+        @keyframes successPulse {
+            0% { transform: translate(-50%, -50%) scale(0.8); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(10, 10, 10, 0.9);
+            padding: 50px 20px 30px;
+            text-align: center;
+            border-top: 2px solid #ff33aa;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff33aa;
+            transform: translateY(-2px);
+        }
+
+        .footer-social {
+            margin-bottom: 30px;
+        }
+
+        .footer-social a {
+            color: #ff33aa;
+            text-decoration: none;
+            margin: 0 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #aa33ff;
+            transform: scale(1.1);
+        }
+
+        .copyright {
+            color: #ccc;
+            font-size: 1rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-form-wrapper {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .main-content {
+                padding-top: 160px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 12px;
+                padding: 10px 16px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .contact-hero {
+                padding: 60px 20px;
+            }
+
+            .contact-section,
+            .social-section,
+            .faq-section {
+                padding: 60px 20px;
+            }
+
+            .contact-form-wrapper {
+                padding: 30px 25px;
+            }
+
+            .form-title {
+                font-size: 2rem;
+            }
+
+            .social-links {
+                gap: 20px;
+            }
+
+            .social-link {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+
+            .faq-question {
+                padding: 20px 25px;
+                font-size: 1rem;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 20px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .contact-hero {
+                padding: 40px 15px;
+            }
+
+            .contact-section,
+            .social-section,
+            .faq-section {
+                padding: 50px 15px;
+            }
+
+            .contact-form-wrapper {
+                padding: 25px 20px;
+            }
+
+            .form-title {
+                font-size: 1.8rem;
+            }
+
+            .contact-card {
+                padding: 25px 20px;
+            }
+
+            .social-links {
+                gap: 15px;
+            }
+
+            .social-link {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h2>BrickedMyPortfolio</h2>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="games.html">Games</a>
-      <a href="shop.html">Shop</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+    <!-- Animated Starfield Background -->
+    <div class="bg-animation" id="bg-animation"></div>
 
-  <section class="contact-section">
-    <h1>Contact Me</h1>
-    <form action="mailto:your.email@example.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo-circle">
+            H
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="games.html">Games</a>
+            <a href="shop.html">Shop</a>
+            <a href="contact.html" class="current">Contact</a>
+        </nav>
+    </header>
 
-    <div class="social-links">
-      <p>Or find me on:</p>
-      <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-      <a href="https://twitter.com/yourhandle" target="_blank">Twitter</a>
-      <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="contact-hero">
+            <h1 class="hero-title">Let's Connect</h1>
+            <p class="hero-subtitle">
+                Have a project in mind? Need custom assets? Want to collaborate? I'd love to hear from you! 
+                Whether it's a quick question or a complex project discussion, don't hesitate to reach out.
+            </p>
+        </section>
+
+        <!-- Contact Form & Info -->
+        <section class="contact-section">
+            <div class="contact-container">
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper">
+                    <h2 class="form-title">Send Me a Message</h2>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <input 
+                                type="text" 
+                                class="form-input" 
+                                name="name" 
+                                placeholder="Your Name" 
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <input 
+                                type="email" 
+                                class="form-input" 
+                                name="email" 
+                                placeholder="Your Email" 
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <input 
+                                type="text" 
+                                class="form-input" 
+                                name="subject" 
+                                placeholder="Subject" 
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <textarea 
+                                class="form-textarea" 
+                                name="message" 
+                                placeholder="Tell me about your project or question..." 
+                                required
+                            ></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h3 class="contact-card-title">Email Me</h3>
+                        <div class="contact-card-content">
+                            For business inquiries, collaborations, or general questions:<br>
+                            <a href="mailto:harrison@brickedmyportfolio.com">harrison@brickedmyportfolio.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">💬</div>
+                        <h3 class="contact-card-title">Discord</h3>
+                        <div class="contact-card-content">
+                            Chat with me directly on Discord for quick questions:<br>
+                            <a href="#" onclick="copyToClipboard('Harrison#1234')">Harrison#1234</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">🎮</div>
+                        <h3 class="contact-card-title">Game Development</h3>
+                        <div class="contact-card-content">
+                            Looking for custom game development, Unity consulting, or asset creation? 
+                            I specialize in bringing creative visions to life.
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">⚡</div>
+                        <h3 class="contact-card-title">Response Time</h3>
+                        <div class="contact-card-content">
+                            I typically respond within 24-48 hours. For urgent matters, 
+                            Discord is your best bet for a quicker response!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Links -->
+        <section class="social-section">
+            <h2 class="social-title">Follow My Journey</h2>
+            <div class="social-links">
+                <a href="https://youtube.com" target="_blank" class="social-link" title="YouTube">
+                    <span>🎥</span>
+                </a>
+                <a href="#" target="_blank" class="social-link" title="Twitter">
+                    <span>🐦</span>
+                </a>
+                <a href="#" target="_blank" class="social-link" title="Instagram">
+                    <span>📷</span>
+                </a>
+                <a href="#" target="_blank" class="social-link" title="GitHub">
+                    <span>💻</span>
+                </a>
+                <a href="#" target="_blank" class="social-link" title="Steam">
+                    <span>🎮</span>
+                </a>
+                <a href="#" target="_blank" class="social-link" title="Itch.io">
+                    <span>🕹️</span>
+                </a>
+            </div>
+            <p class="social-description">
+                Stay updated with my latest projects, development insights, and behind-the-scenes content. 
+                I love sharing my journey and connecting with fellow developers and gamers!
+            </p>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What types of projects do you work on?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        I specialize in Unity game development, custom asset creation, Roblox development, 
+                        and interactive experiences. From mobile games to PC titles, I love bringing 
+                        creative ideas to life through code and design.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How much do you charge for custom development?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Project costs vary greatly depending on scope, complexity, and timeline. 
+                        I offer competitive rates and am happy to provide a detailed quote after 
+                        discussing your specific requirements. Contact me for a free consultation!
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do you create custom assets?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Absolutely! I create 3D models, UI elements, game mechanics, and complete asset packs. 
+                        Check out my existing work in the Shop section, and feel free to request custom assets 
+                        tailored to your specific needs.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can you help with Roblox development?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Yes! I have extensive experience with Roblox Studio, Lua scripting, and creating 
+                        engaging Roblox experiences. From game mechanics to UI systems, I can help 
+                        bring your Roblox vision to life.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How long does a typical project take?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Timeline depends on project complexity. Simple assets might take 1-3 days, 
+                        while complete games can take weeks to months. I always provide realistic 
+                        timelines upfront and keep you updated throughout the development process.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do you offer ongoing support and updates?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Yes! I provide ongoing support for all my projects. This includes bug fixes, 
+                        minor updates, and technical assistance. For major feature additions, 
+                        we can discuss additional development work.
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-  </section>
 
-  <footer>
-    <p>&copy; 2025 Jason | BrickedMyPortfolio.com</p>
-  </footer>
+    <!-- Success Message -->
+    <div class="success-message" id="success-message">
+        ✅ Message sent successfully! I'll get back to you soon.
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="terms.html">Terms of Service</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://youtube.com" target="_blank">YouTube</a>
+                <a href="#" target="_blank">Twitter</a>
+                <a href="#" target="_blank">Instagram</a>
+            </div>
+            <div class="copyright">© 2025 brickedmyportfolio.com | IronLanternStudios</div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== STARFIELD ANIMATION =====
+        function createFloatingStars() {
+            const bgAnimation = document.getElementById('bg-animation');
+            const starCount = 50;
+            const starTypes = ['⭐', '✨', '🌟', '⭐', '✦', '✧'];
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'floating-star';
+                
+                star.innerHTML = starTypes[Math.floor(Math.random() * starTypes.length)];
+                
+                const sizes = ['small', 'medium', 'large'];
+                const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+                star.classList.add(randomSize);
+                
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 10 + 's';
+                star.style.animationDuration = (8 + Math.random() * 6) + 's';
+                
+                bgAnimation.appendChild(star);
+            }
+        }
+
+        // ===== FORM HANDLING =====
+        function handleFormSubmission() {
+            const form = document.getElementById('contact-form');
+            const successMessage = document.getElementById('success-message');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(form);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const subject = formData.get('subject');
+                const message = formData.get('message');
+                
+                // Simulate form submission (replace with actual form handling)
+                setTimeout(() => {
+                    // Show success message
+                    successMessage.classList.add('show');
+                    
+                    // Hide success message after 3 seconds
+                    setTimeout(() => {
+                        successMessage.classList.remove('show');
+                    }, 3000);
+                    
+                    // Reset form
+                    form.reset();
+                }, 1000);
+                
+                // Add loading state to submit button
+                const submitButton = form.querySelector('.form-submit');
+                const originalText = submitButton.textContent;
+                submitButton.textContent = 'Sending...';
+                submitButton.disabled = true;
+                
+                setTimeout(() => {
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                }, 1000);
+            });
+        }
+
+        // ===== FAQ FUNCTIONALITY =====
+        function initializeFAQ() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active', !isActive);
+                });
+            });
+        }
+
+        // ===== COPY TO CLIPBOARD =====
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Show temporary success indicator
+                const tempMessage = document.createElement('div');
+                tempMessage.textContent = 'Copied to clipboard!';
+                tempMessage.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: linear-gradient(45deg, #00ff88, #00cc66);
+                    color: white;
+                    padding: 15px 25px;
+                    border-radius: 10px;
+                    font-weight: bold;
+                    z-index: 10000;
+                    animation: slideInRight 0.3s ease-out;
+                `;
+                
+                document.body.appendChild(tempMessage);
+                
+                setTimeout(() => {
+                    tempMessage.style.animation = 'slideOutRight 0.3s ease-in';
+                    setTimeout(() => {
+                        document.body.removeChild(tempMessage);
+                    }, 300);
+                }, 2000);
+            }).catch(() => {
+                // Fallback for older browsers
+                const tempInput = document.createElement('input');
+                tempInput.value = text;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+            });
+        }
+
+        // ===== FORM INPUT ANIMATIONS =====
+        function addFormAnimations() {
+            const formInputs = document.querySelectorAll('.form-input, .form-textarea');
+            
+            formInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.parentElement.style.transform = 'translateY(-2px)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.style.transform = 'scale(1)';
+                    this.parentElement.style.transform = 'translateY(0)';
+                });
+                
+                // Add typing effect
+                input.addEventListener('input', function() {
+                    if (this.value.length > 0) {
+                        this.style.borderColor = '#ff33aa';
+                        this.style.boxShadow = '0 0 15px rgba(255, 51, 170, 0.2)';
+                    } else {
+                        this.style.borderColor = 'rgba(255, 51, 170, 0.2)';
+                        this.style.boxShadow = 'none';
+                    }
+                });
+            });
+        }
+
+        // ===== SOCIAL LINK ANIMATIONS =====
+        function addSocialAnimations() {
+            const socialLinks = document.querySelectorAll('.social-link');
+            
+            socialLinks.forEach((link, index) => {
+                // Staggered hover effect
+                link.addEventListener('mouseenter', function() {
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1.2) rotate(10deg) translateY(-5px)';
+                    }, index * 50);
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) rotate(0deg) translateY(0)';
+                });
+                
+                // Add floating animation
+                setInterval(() => {
+                    const offset = Math.sin(Date.now() * 0.001 + index) * 3;
+                    if (!link.matches(':hover')) {
+                        link.style.transform = `translateY(${offset}px)`;
+                    }
+                }, 50);
+            });
+        }
+
+        // ===== CONTACT CARD ANIMATIONS =====
+        function addContactCardAnimations() {
+            const contactCards = document.querySelectorAll('.contact-card');
+            
+            contactCards.forEach((card, index) => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) rotateX(5deg)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) rotateX(0)';
+                });
+                
+                // Add subtle floating animation
+                setInterval(() => {
+                    const offset = Math.sin(Date.now() * 0.0008 + index) * 2;
+                    if (!card.matches(':hover')) {
+                        card.style.transform = `translateY(${offset}px)`;
+                    }
+                }, 100);
+            });
+        }
+
+        // ===== PARALLAX SCROLLING =====
+        function addParallaxEffect() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.contact-hero');
+                
+                if (hero) {
+                    hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+                }
+                
+                // Animate floating stars on scroll
+                const stars = document.querySelectorAll('.floating-star');
+                stars.forEach((star, index) => {
+                    const speed = (index % 3 + 1) * 0.05;
+                    star.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.02}deg)`;
+                });
+            });
+        }
+
+        // ===== SCROLL ANIMATIONS =====
+        function addScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Add initial hidden state and observe elements
+            const animatedElements = document.querySelectorAll('.contact-card, .faq-item, .social-link');
+            animatedElements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(el);
+            });
+        }
+
+        // ===== FORM VALIDATION =====
+        function addFormValidation() {
+            const form = document.getElementById('contact-form');
+            const inputs = form.querySelectorAll('.form-input, .form-textarea');
+            
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.hasAttribute('required') && !this.value.trim()) {
+                        this.style.borderColor = '#ff3333';
+                        this.style.boxShadow = '0 0 15px rgba(255, 51, 51, 0.3)';
+                    } else if (this.type === 'email' && this.value && !isValidEmail(this.value)) {
+                        this.style.borderColor = '#ff3333';
+                        this.style.boxShadow = '0 0 15px rgba(255, 51, 51, 0.3)';
+                    } else {
+                        this.style.borderColor = '#ff33aa';
+                        this.style.boxShadow = '0 0 15px rgba(255, 51, 170, 0.2)';
+                    }
+                });
+            });
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // ===== TYPING EFFECT FOR PLACEHOLDERS =====
+        function addTypingEffect() {
+            const textarea = document.querySelector('.form-textarea');
+            const originalPlaceholder = textarea.placeholder;
+            const typingText = "Tell me about your project or question...";
+            
+            textarea.addEventListener('focus', function() {
+                if (this.value === '') {
+                    this.placeholder = '';
+                    let i = 0;
+                    const typeInterval = setInterval(() => {
+                        this.placeholder = typingText.slice(0, i);
+                        i++;
+                        if (i > typingText.length) {
+                            clearInterval(typeInterval);
+                        }
+                    }, 50);
+                }
+            });
+            
+            textarea.addEventListener('blur', function() {
+                if (this.value === '') {
+                    this.placeholder = originalPlaceholder;
+                }
+            });
+        }
+
+        // ===== EASTER EGG - KONAMI CODE =====
+        let konamiCode = [];
+        const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // Up, Up, Down, Down, Left, Right, Left, Right, B, A
+        
+        function initKonamiCode() {
+            document.addEventListener('keydown', function(e) {
+                konamiCode.push(e.keyCode);
+                if (konamiCode.length > konamiSequence.length) {
+                    konamiCode.shift();
+                }
+                
+                if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
+                    // Activate rainbow mode
+                    document.body.style.filter = 'hue-rotate(0deg)';
+                    
+                    let hue = 0;
+                    const rainbowInterval = setInterval(() => {
+                        document.body.style.filter = `hue-rotate(${hue}deg) brightness(1.1)`;
+                        hue += 5;
+                        if (hue >= 360) hue = 0;
+                    }, 50);
+                    
+                    // Show rainbow message
+                    const message = document.createElement('div');
+                    message.innerHTML = '🌈 RAINBOW MODE ACTIVATED! 🌈';
+                    message.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: linear-gradient(45deg, #ff0080, #00ff80, #8000ff);
+                        color: white;
+                        padding: 25px 50px;
+                        border-radius: 20px;
+                        font-size: 2rem;
+                        font-weight: bold;
+                        z-index: 10000;
+                        animation: rainbowPulse 1s ease-in-out infinite alternate;
+                        box-shadow: 0 20px 40px rgba(255, 0, 128, 0.5);
+                        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+                    `;
+                    document.body.appendChild(message);
+                    
+                    setTimeout(() => {
+                        clearInterval(rainbowInterval);
+                        document.body.style.filter = 'none';
+                        document.body.removeChild(message);
+                    }, 8000);
+                    
+                    konamiCode = [];
+                }
+            });
+        }
+
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all features
+            createFloatingStars();
+            handleFormSubmission();
+            initializeFAQ();
+            addFormAnimations();
+            addSocialAnimations();
+            addContactCardAnimations();
+            addParallaxEffect();
+            addScrollAnimations();
+            addFormValidation();
+            addTypingEffect();
+            initKonamiCode();
+            
+            // Add loading animation
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 1s ease-in-out';
+                document.body.style.opacity = '1';
+            }, 100);
+
+            // Smooth scrolling for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        // ===== ADD RAINBOW PULSE ANIMATION =====
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rainbowPulse {
+                from { transform: translate(-50%, -50%) scale(1); }
+                to { transform: translate(-50%, -50%) scale(1.05); }
+            }
+            
+            @keyframes slideInRight {
+                from { transform: translateX(100%); }
+                to { transform: translateX(0); }
+            }
+            
+            @keyframes slideOutRight {
+                from { transform: translateX(0); }
+                to { transform: translateX(100%); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Make copyToClipboard function globally accessible
+        window.copyToClipboard = copyToClipboard;
+    </script>
 </body>
 </html>
