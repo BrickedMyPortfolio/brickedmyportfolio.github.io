@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop - brickedmyportfolio.com</title>
+    <!-- Gumroad Embed Script -->
+    <script src="https://gumroad.com/js/gumroad-embed.js"></script>
     <style>
         /* ===== BASE RESET & TYPOGRAPHY ===== */
         * {
@@ -155,44 +157,6 @@
             transform: translateY(-2px);
         }
 
-        .cart-icon {
-            position: relative;
-            background: linear-gradient(45deg, #ff33aa, #aa33ff);
-            border: none;
-            color: white;
-            padding: 12px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 18px;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cart-icon:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(255, 51, 170, 0.4);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #ff33aa;
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
         /* ===== MAIN CONTENT WRAPPER ===== */
         .main-content {
             padding-top: 120px;
@@ -280,25 +244,6 @@
             margin-bottom: 20px;
         }
 
-        .deal-button {
-            background: linear-gradient(45deg, #ff33aa, #aa33ff);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .deal-button:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(255, 51, 170, 0.6);
-        }
-
         /* ===== FILTER SECTION ===== */
         .filter-section {
             padding: 40px 20px;
@@ -308,15 +253,17 @@
 
         .search-filter-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             margin-bottom: 30px;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .search-bar {
-            flex: 1;
             max-width: 400px;
+            flex: 1;
+            min-width: 250px;
         }
 
         .search-input {
@@ -335,23 +282,6 @@
         .search-input:focus {
             box-shadow: 0 0 20px rgba(255, 51, 170, 0.5);
             transform: scale(1.02);
-        }
-
-        .sort-dropdown {
-            padding: 15px 20px;
-            border: 2px solid #ff33aa;
-            border-radius: 25px;
-            background: rgba(26, 26, 26, 0.9);
-            color: #fff;
-            font-family: "Courier New", monospace;
-            font-size: 14px;
-            outline: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .sort-dropdown:focus {
-            box-shadow: 0 0 20px rgba(255, 51, 170, 0.5);
         }
 
         .filter-buttons {
@@ -398,15 +328,16 @@
             gap: 30px;
         }
 
+        /* ===== PRODUCT CARD STYLING ===== */
         .product-card {
             background: rgba(26, 26, 26, 0.9);
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
             border: 1px solid rgba(255, 51, 170, 0.2);
             backdrop-filter: blur(10px);
             position: relative;
+            animation: fadeInUp 0.6s ease-out forwards;
         }
 
         .product-card:hover {
@@ -419,22 +350,20 @@
             display: none;
         }
 
-        .product-image-container {
+        .product-header {
             position: relative;
-            height: 220px;
+            height: 200px;
             overflow: hidden;
-        }
-
-        .product-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
             background: linear-gradient(45deg, #333, #555);
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .product-card:hover .product-image {
-            transform: scale(1.05);
+        .product-placeholder {
+            color: #888;
+            font-size: 3rem;
+            text-align: center;
         }
 
         .product-badge {
@@ -454,70 +383,14 @@
             color: black;
         }
 
-        .badge-sale {
-            background: rgba(255, 0, 0, 0.9);
-            color: white;
-        }
-
         .badge-featured {
             background: rgba(255, 215, 0, 0.9);
             color: black;
         }
 
-        .price-tag {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(0, 0, 0, 0.8);
-            color: #ff33aa;
-            padding: 8px 15px;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .price-original {
-            text-decoration: line-through;
-            color: #888;
-            font-size: 0.9rem;
-            margin-right: 8px;
-        }
-
-        .quick-view-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .product-card:hover .quick-view-overlay {
-            opacity: 1;
-        }
-
-        .quick-view-btn {
-            background: linear-gradient(45deg, #ff33aa, #aa33ff);
-            border: none;
+        .badge-popular {
+            background: rgba(255, 51, 170, 0.9);
             color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-        }
-
-        .quick-view-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 25px rgba(255, 51, 170, 0.5);
         }
 
         .product-content {
@@ -582,377 +455,62 @@
             color: #888;
         }
 
-        .product-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .add-to-cart-btn {
-            background: linear-gradient(45deg, #ff33aa, #aa33ff);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            flex: 1;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        .add-to-cart-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 51, 170, 0.4);
-        }
-
-        .wishlist-btn {
-            background: transparent;
-            border: 2px solid #ff33aa;
-            color: #ff33aa;
-            padding: 10px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-            width: 45px;
-        }
-
-        .wishlist-btn:hover {
-            background: rgba(255, 51, 170, 0.1);
-            transform: scale(1.1);
-        }
-
-        .wishlist-btn.active {
-            background: #ff33aa;
-            color: white;
-        }
-
-        /* ===== CART SIDEBAR ===== */
-        .cart-sidebar {
-            position: fixed;
-            top: 0;
-            right: -400px;
-            width: 400px;
-            height: 100vh;
-            background: rgba(26, 26, 26, 0.98);
-            backdrop-filter: blur(20px);
-            border-left: 2px solid #ff33aa;
-            z-index: 1001;
-            transition: right 0.4s ease;
-            overflow-y: auto;
-        }
-
-        .cart-sidebar.open {
-            right: 0;
-        }
-
-        .cart-header {
-            padding: 20px;
-            border-bottom: 1px solid rgba(255, 51, 170, 0.3);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cart-title {
-            font-size: 1.5rem;
-            color: #ff33aa;
-            font-weight: bold;
-        }
-
-        .cart-close {
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 5px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .cart-close:hover {
-            background: rgba(255, 51, 170, 0.2);
-            transform: rotate(90deg);
-        }
-
-        .cart-items {
-            padding: 20px;
-            min-height: 300px;
-        }
-
-        .cart-item {
-            display: flex;
-            gap: 15px;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255, 51, 170, 0.1);
-        }
-
-        .cart-item-image {
-            width: 60px;
-            height: 60px;
-            border-radius: 10px;
-            object-fit: cover;
-            background: #333;
-        }
-
-        .cart-item-info {
-            flex: 1;
-        }
-
-        .cart-item-title {
-            color: #fff;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        .cart-item-price {
-            color: #ff33aa;
-            font-weight: bold;
-        }
-
-        .cart-item-remove {
-            background: none;
-            border: none;
-            color: #888;
-            cursor: pointer;
-            padding: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .cart-item-remove:hover {
-            color: #ff33aa;
-            transform: scale(1.2);
-        }
-
-        .cart-empty {
-            text-align: center;
-            color: #888;
-            padding: 40px 0;
-        }
-
-        .cart-total {
-            padding: 20px;
-            border-top: 1px solid rgba(255, 51, 170, 0.3);
-            background: rgba(255, 51, 170, 0.05);
-        }
-
-        .total-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .total-final {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #ff33aa;
-            border-top: 1px solid rgba(255, 51, 170, 0.3);
-            padding-top: 10px;
-        }
-
-        .checkout-btn {
-            width: 100%;
-            background: linear-gradient(45deg, #ff33aa, #aa33ff);
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 25px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
+        /* ===== GUMROAD EMBED STYLING ===== */
+        .gumroad-embed-container {
             margin-top: 20px;
-        }
-
-        .checkout-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 51, 170, 0.4);
-        }
-
-        /* ===== PRODUCT MODAL ===== */
-        .product-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1002;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .product-modal.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: rgba(26, 26, 26, 0.98);
-            border-radius: 20px;
-            max-width: 900px;
-            max-height: 90vh;
-            width: 90%;
-            overflow-y: auto;
-            transform: scale(0.8) translateY(50px);
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 51, 170, 0.5);
-            backdrop-filter: blur(20px);
-        }
-
-        .modal-content.show {
-            transform: scale(1) translateY(0);
-        }
-
-        .modal-header {
             position: relative;
-            height: 300px;
-            overflow: hidden;
         }
 
-        .modal-image {
+        .gumroad-product-embed {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 18px 18px 0 0;
         }
 
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 51, 170, 0.9);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
+        /* Override Gumroad's default styling to match our theme */
+        .gumroad-product-embed iframe {
+            border-radius: 15px !important;
+            border: 2px solid rgba(255, 51, 170, 0.3) !important;
+            transition: all 0.3s ease !important;
         }
 
-        .modal-close:hover {
-            transform: scale(1.1) rotate(90deg);
-            box-shadow: 0 8px 25px rgba(255, 51, 170, 0.6);
+        .product-card:hover .gumroad-product-embed iframe {
+            border-color: rgba(255, 51, 170, 0.6) !important;
+            box-shadow: 0 10px 25px rgba(255, 51, 170, 0.3) !important;
         }
 
-        .modal-body {
-            padding: 40px;
-        }
-
-        .modal-title {
-            font-size: 2.2rem;
-            color: #fff;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #ff33aa, #aa33ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .modal-author {
-            color: #ff33aa;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .modal-price {
-            font-size: 2rem;
-            color: #ff33aa;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .modal-description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #ddd;
-            margin-bottom: 30px;
-        }
-
-        .modal-features {
-            margin-bottom: 30px;
-        }
-
-        .features-title {
-            color: #ff33aa;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .features-list {
-            list-style: none;
-        }
-
-        .features-list li {
-            padding: 8px 0;
-            color: #ddd;
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .features-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #ff33aa;
-            font-weight: bold;
-        }
-
-        .modal-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .modal-add-cart {
+        /* Custom loading state for Gumroad embeds */
+        .gumroad-loading {
             background: linear-gradient(45deg, #ff33aa, #aa33ff);
             color: white;
             border: none;
             padding: 15px 30px;
             border-radius: 25px;
             font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            flex: 1;
-            font-size: 1.1rem;
+            font-family: "Courier New", monospace;
             text-transform: uppercase;
-        }
-
-        .modal-add-cart:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 51, 170, 0.5);
-        }
-
-        .modal-wishlist {
-            background: transparent;
-            border: 2px solid #ff33aa;
-            color: #ff33aa;
-            padding: 15px 20px;
-            border-radius: 25px;
-            cursor: pointer;
+            width: 100%;
+            cursor: not-allowed;
+            opacity: 0.7;
             transition: all 0.3s ease;
-            font-size: 1.2rem;
         }
 
-        .modal-wishlist:hover {
-            background: rgba(255, 51, 170, 0.1);
-            transform: scale(1.05);
+        .gumroad-product-embed a {
+            display: block !important;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff) !important;
+            color: white !important;
+            border: none !important;
+            padding: 15px 30px !important;
+            border-radius: 25px !important;
+            font-weight: bold !important;
+            font-family: "Courier New", monospace !important;
+            text-transform: uppercase !important;
+            text-decoration: none !important;
+            text-align: center !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .gumroad-product-embed a:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 20px rgba(255, 51, 170, 0.4) !important;
         }
 
         /* ===== FOOTER ===== */
@@ -1014,16 +572,6 @@
             .shop-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
-
-            .search-filter-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .cart-sidebar {
-                width: 350px;
-                right: -350px;
-            }
         }
 
         @media (max-width: 768px) {
@@ -1073,28 +621,6 @@
             .deal-title {
                 font-size: 2rem;
             }
-
-            .cart-sidebar {
-                width: 100%;
-                right: -100%;
-            }
-
-            .modal-content {
-                width: 95%;
-                margin: 20px;
-            }
-
-            .modal-body {
-                padding: 30px 20px;
-            }
-
-            .modal-title {
-                font-size: 1.8rem;
-            }
-
-            .modal-actions {
-                flex-direction: column;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1115,7 +641,7 @@
                 padding: 20px;
             }
 
-            .search-input, .sort-dropdown {
+            .search-input {
                 font-size: 14px;
                 padding: 12px 20px;
             }
@@ -1125,10 +651,6 @@
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        .product-card {
-            animation: fadeInUp 0.6s ease-out forwards;
         }
 
         .product-card:nth-child(1) { animation-delay: 0.1s; }
@@ -1158,6 +680,13 @@
         .toast.show {
             transform: translateX(0);
         }
+
+        /* ===== BUNDLE DEAL STYLING ===== */
+        .bundle-embed {
+            transform: scale(1.05);
+            border: 3px solid #ffd700 !important;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5) !important;
+        }
     </style>
 </head>
 <body>
@@ -1176,37 +705,7 @@
             <a href="shop.html" class="current">Shop</a>
             <a href="contact.html">Contact</a>
         </nav>
-        <button class="cart-icon" id="cart-toggle">
-            🛒
-            <span class="cart-count" id="cart-count">0</span>
-        </button>
     </header>
-
-    <!-- Cart Sidebar -->
-    <div class="cart-sidebar" id="cart-sidebar">
-        <div class="cart-header">
-            <h3 class="cart-title">Your Cart</h3>
-            <button class="cart-close" id="cart-close">×</button>
-        </div>
-        <div class="cart-items" id="cart-items">
-            <div class="cart-empty">Your cart is empty</div>
-        </div>
-        <div class="cart-total" id="cart-total" style="display: none;">
-            <div class="total-row">
-                <span>Subtotal:</span>
-                <span id="subtotal">$0.00</span>
-            </div>
-            <div class="total-row">
-                <span>Tax (10%):</span>
-                <span id="tax">$0.00</span>
-            </div>
-            <div class="total-row total-final">
-                <span>Total:</span>
-                <span id="total">$0.00</span>
-            </div>
-            <button class="checkout-btn" id="checkout-btn">Proceed to Checkout</button>
-        </div>
-    </div>
 
     <!-- Main Content Wrapper -->
     <div class="main-content">
@@ -1221,7 +720,12 @@
             <div class="deal-badge">🔥 LIMITED TIME OFFER</div>
             <h2 class="deal-title">Complete Asset Bundle</h2>
             <p class="deal-description">Get all current and future asset packs for 50% off!</p>
-            <a href="#" class="deal-button">Grab the Deal - $49.99</a>
+            <!-- Bundle Deal Gumroad Embed -->
+            <div class="gumroad-embed-container">
+                <div class="gumroad-product-embed bundle-embed">
+                    <a href="https://ironlanternstudios.gumroad.com/l/CompleteBundle">Get Bundle Deal - $49.99</a>
+                </div>
+            </div>
         </section>
 
         <!-- Filter Section -->
@@ -1230,14 +734,6 @@
                 <div class="search-bar">
                     <input type="text" class="search-input" placeholder="Search assets..." id="search-input">
                 </div>
-                <select class="sort-dropdown" id="sort-dropdown">
-                    <option value="featured">Sort by Featured</option>
-                    <option value="price-low">Price: Low to High</option>
-                    <option value="price-high">Price: High to Low</option>
-                    <option value="newest">Newest First</option>
-                    <option value="popular">Most Popular</option>
-                    <option value="rating">Highest Rated</option>
-                </select>
             </div>
             <div class="filter-buttons">
                 <button class="filter-btn active" data-filter="all">All Assets</button>
@@ -1254,14 +750,10 @@
         <section class="shop-section">
             <div class="shop-grid" id="shop-grid">
                 <!-- Featured Product -->
-                <div class="product-card featured" data-category="3d featured" data-price="9.99" data-rating="5">
-                    <div class="product-image-container">
-                        <img src="media/PLACEHOLDER.jpg" alt="Road Prop Pack" class="product-image">
+                <div class="product-card featured" data-category="3d props road">
+                    <div class="product-header">
+                        <div class="product-placeholder">🛣️</div>
                         <div class="product-badge badge-featured">Featured</div>
-                        <div class="price-tag">$9.99</div>
-                        <div class="quick-view-overlay">
-                            <button class="quick-view-btn" onclick="openProductModal(this)">Quick View</button>
-                        </div>
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">Road Prop Pack</h3>
@@ -1280,22 +772,19 @@
                             </div>
                             <div class="download-count">1.2k downloads</div>
                         </div>
-                        <div class="product-actions">
-                            <button class="add-to-cart-btn" onclick="addToCart(this)" data-id="road-props" data-title="Road Prop Pack" data-price="9.99" data-image="media/PLACEHOLDER.jpg">Add to Cart</button>
-                            <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
+                        <div class="gumroad-embed-container">
+                            <div class="gumroad-product-embed">
+                                <a href="https://ironlanternstudios.gumroad.com/l/RoadPropPack">Buy Now - $9.99</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Regular Products -->
-                <div class="product-card" data-category="2d gui" data-price="5.00" data-rating="4">
-                    <div class="product-image-container">
-                        <img src="media/PLACEHOLDER.jpg" alt="Roblox Menu GUI" class="product-image">
+                <!-- Roblox GUI -->
+                <div class="product-card" data-category="2d gui roblox">
+                    <div class="product-header">
+                        <div class="product-placeholder">🎮</div>
                         <div class="product-badge badge-new">New</div>
-                        <div class="price-tag">$5.00</div>
-                        <div class="quick-view-overlay">
-                            <button class="quick-view-btn" onclick="openProductModal(this)">Quick View</button>
-                        </div>
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">Roblox Menu GUI</h3>
@@ -1314,21 +803,19 @@
                             </div>
                             <div class="download-count">856 downloads</div>
                         </div>
-                        <div class="product-actions">
-                            <button class="add-to-cart-btn" onclick="addToCart(this)" data-id="roblox-gui" data-title="Roblox Menu GUI" data-price="5.00" data-image="media/PLACEHOLDER.jpg">Add to Cart</button>
-                            <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
+                        <div class="gumroad-embed-container">
+                            <div class="gumroad-product-embed">
+                                <a href="https://ironlanternstudios.gumroad.com/l/RobloxMenuGUI">Buy Now - $5.00</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card" data-category="3d vehicles" data-price="15.99" data-rating="5">
-                    <div class="product-image-container">
-                        <img src="media/PLACEHOLDER.jpg" alt="Low Poly Car Pack" class="product-image">
-                        <div class="price-tag"><span class="price-original">$19.99</span>$15.99</div>
-                        <div class="product-badge badge-sale">Sale</div>
-                        <div class="quick-view-overlay">
-                            <button class="quick-view-btn" onclick="openProductModal(this)">Quick View</button>
-                        </div>
+                <!-- Car Pack -->
+                <div class="product-card" data-category="3d vehicles cars">
+                    <div class="product-header">
+                        <div class="product-placeholder">🚗</div>
+                        <div class="product-badge badge-popular">Popular</div>
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">Low Poly Car Pack</h3>
@@ -1347,20 +834,18 @@
                             </div>
                             <div class="download-count">2.1k downloads</div>
                         </div>
-                        <div class="product-actions">
-                            <button class="add-to-cart-btn" onclick="addToCart(this)" data-id="car-pack" data-title="Low Poly Car Pack" data-price="15.99" data-image="media/PLACEHOLDER.jpg">Add to Cart</button>
-                            <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
+                        <div class="gumroad-embed-container">
+                            <div class="gumroad-product-embed">
+                                <a href="https://ironlanternstudios.gumroad.com/l/LowPolyCarPack">Buy Now - $15.99</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card" data-category="audio music" data-price="12.99" data-rating="4">
-                    <div class="product-image-container">
-                        <img src="media/PLACEHOLDER.jpg" alt="Cyberpunk Music Pack" class="product-image">
-                        <div class="price-tag">$12.99</div>
-                        <div class="quick-view-overlay">
-                            <button class="quick-view-btn" onclick="openProductModal(this)">Quick View</button>
-                        </div>
+                <!-- Music Pack -->
+                <div class="product-card" data-category="audio music cyberpunk">
+                    <div class="product-header">
+                        <div class="product-placeholder">🎵</div>
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">Cyberpunk Music Pack</h3>
@@ -1379,20 +864,18 @@
                             </div>
                             <div class="download-count">567 downloads</div>
                         </div>
-                        <div class="product-actions">
-                            <button class="add-to-cart-btn" onclick="addToCart(this)" data-id="cyberpunk-music" data-title="Cyberpunk Music Pack" data-price="12.99" data-image="media/PLACEHOLDER.jpg">Add to Cart</button>
-                            <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
+                        <div class="gumroad-embed-container">
+                            <div class="gumroad-product-embed">
+                                <a href="https://ironlanternstudios.gumroad.com/l/CyberpunkMusicPack">Buy Now - $12.99</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card" data-category="scripts tools" data-price="8.99" data-rating="5">
-                    <div class="product-image-container">
-                        <img src="media/PLACEHOLDER.jpg" alt="Unity Save System" class="product-image">
-                        <div class="price-tag">$8.99</div>
-                        <div class="quick-view-overlay">
-                            <button class="quick-view-btn" onclick="openProductModal(this)">Quick View</button>
-                        </div>
+                <!-- Unity Save System -->
+                <div class="product-card" data-category="scripts unity tools">
+                    <div class="product-header">
+                        <div class="product-placeholder">💾</div>
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">Unity Save System</h3>
@@ -1411,20 +894,18 @@
                             </div>
                             <div class="download-count">1.8k downloads</div>
                         </div>
-                        <div class="product-actions">
-                            <button class="add-to-cart-btn" onclick="addToCart(this)" data-id="save-system" data-title="Unity Save System" data-price="8.99" data-image="media/PLACEHOLDER.jpg">Add to Cart</button>
-                            <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
+                        <div class="gumroad-embed-container">
+                            <div class="gumroad-product-embed">
+                                <a href="https://ironlanternstudios.gumroad.com/l/UnitySaveSystem">Buy Now - $8.99</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card" data-category="2d ui" data-price="6.99" data-rating="4">
-                    <div class="product-image-container">
-                        <img src="media/PLACEHOLDER.jpg" alt="Fantasy UI Kit" class="product-image">
-                        <div class="price-tag">$6.99</div>
-                        <div class="quick-view-overlay">
-                            <button class="quick-view-btn" onclick="openProductModal(this)">Quick View</button>
-                        </div>
+                <!-- Fantasy UI Kit -->
+                <div class="product-card" data-category="2d ui fantasy">
+                    <div class="product-header">
+                        <div class="product-placeholder">⚔️</div>
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">Fantasy UI Kit</h3>
@@ -1443,20 +924,19 @@
                             </div>
                             <div class="download-count">923 downloads</div>
                         </div>
-                        <div class="product-actions">
-                            <button class="add-to-cart-btn" onclick="addToCart(this)" data-id="fantasy-ui" data-title="Fantasy UI Kit" data-price="6.99" data-image="media/PLACEHOLDER.jpg">Add to Cart</button>
-                            <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
+                        <div class="gumroad-embed-container">
+                            <div class="gumroad-product-embed">
+                                <a href="https://ironlanternstudios.gumroad.com/l/FantasyUIKit">Buy Now - $6.99</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card" data-category="templates game" data-price="24.99" data-rating="5">
-                    <div class="product-image-container">
-                        <img src="media/PLACEHOLDER.jpg" alt="Platformer Template" class="product-image">
-                        <div class="price-tag">$24.99</div>
-                        <div class="quick-view-overlay">
-                            <button class="quick-view-btn" onclick="openProductModal(this)">Quick View</button>
-                        </div>
+                <!-- Platformer Template -->
+                <div class="product-card" data-category="templates unity platformer">
+                    <div class="product-header">
+                        <div class="product-placeholder">🏃</div>
+                        <div class="product-badge badge-featured">Featured</div>
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">Complete Platformer Template</h3>
@@ -1475,20 +955,18 @@
                             </div>
                             <div class="download-count">3.2k downloads</div>
                         </div>
-                        <div class="product-actions">
-                            <button class="add-to-cart-btn" onclick="addToCart(this)" data-id="platformer-template" data-title="Complete Platformer Template" data-price="24.99" data-image="media/PLACEHOLDER.jpg">Add to Cart</button>
-                            <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
+                        <div class="gumroad-embed-container">
+                            <div class="gumroad-product-embed">
+                                <a href="https://ironlanternstudios.gumroad.com/l/PlatformerTemplate">Buy Now - $24.99</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card" data-category="tools editor" data-price="18.99" data-rating="4">
-                    <div class="product-image-container">
-                        <img src="media/PLACEHOLDER.jpg" alt="Level Editor Tool" class="product-image">
-                        <div class="price-tag">$18.99</div>
-                        <div class="quick-view-overlay">
-                            <button class="quick-view-btn" onclick="openProductModal(this)">Quick View</button>
-                        </div>
+                <!-- Level Editor -->
+                <div class="product-card" data-category="tools unity editor">
+                    <div class="product-header">
+                        <div class="product-placeholder">🔧</div>
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">Visual Level Editor</h3>
@@ -1507,42 +985,46 @@
                             </div>
                             <div class="download-count">445 downloads</div>
                         </div>
-                        <div class="product-actions">
-                            <button class="add-to-cart-btn" onclick="addToCart(this)" data-id="level-editor" data-title="Visual Level Editor" data-price="18.99" data-image="media/PLACEHOLDER.jpg">Add to Cart</button>
-                            <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
+                        <div class="gumroad-embed-container">
+                            <div class="gumroad-product-embed">
+                                <a href="https://ironlanternstudios.gumroad.com/l/LevelEditor">Buy Now - $18.99</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pixel Art Pack -->
+                <div class="product-card" data-category="2d pixel art">
+                    <div class="product-header">
+                        <div class="product-placeholder">🎨</div>
+                        <div class="product-badge badge-new">New</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Retro Pixel Art Pack</h3>
+                        <p class="product-author">by IronLanternStudios</p>
+                        <p class="product-description">Nostalgic 16-bit style sprites, tiles, and animations perfect for retro-inspired indie games.</p>
+                        <div class="product-tags">
+                            <span class="tag">2D</span>
+                            <span class="tag">Pixel Art</span>
+                            <span class="tag">Retro</span>
+                            <span class="tag">Sprites</span>
+                        </div>
+                        <div class="product-meta">
+                            <div class="product-rating">
+                                <span>⭐⭐⭐⭐⭐</span>
+                                <span>(12 reviews)</span>
+                            </div>
+                            <div class="download-count">234 downloads</div>
+                        </div>
+                        <div class="gumroad-embed-container">
+                            <div class="gumroad-product-embed">
+                                <a href="https://ironlanternstudios.gumroad.com/l/PixelArtPack">Buy Now - $7.99</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    </div>
-
-    <!-- Product Modal -->
-    <div class="product-modal" id="product-modal">
-        <div class="modal-content" id="modal-content">
-            <div class="modal-header">
-                <img src="" alt="" class="modal-image" id="modal-image">
-                <button class="modal-close" id="modal-close">×</button>
-            </div>
-            <div class="modal-body">
-                <h3 class="modal-title" id="modal-title">Product Title</h3>
-                <p class="modal-author" id="modal-author">by Author</p>
-                <p class="modal-price" id="modal-price">$0.00</p>
-                <p class="modal-description" id="modal-description">Product description goes here...</p>
-                <div class="modal-features">
-                    <h4 class="features-title">What's Included:</h4>
-                    <ul class="features-list" id="modal-features">
-                        <li>Feature 1</li>
-                        <li>Feature 2</li>
-                        <li>Feature 3</li>
-                    </ul>
-                </div>
-                <div class="modal-actions">
-                    <button class="modal-add-cart" id="modal-add-cart">Add to Cart</button>
-                    <button class="modal-wishlist" id="modal-wishlist">♡</button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Toast Notification -->
@@ -1565,10 +1047,6 @@
     </footer>
 
     <script>
-        // ===== GLOBAL VARIABLES =====
-        let cart = [];
-        let wishlist = [];
-
         // ===== STARFIELD ANIMATION =====
         function createFloatingStars() {
             const bgAnimation = document.getElementById('bg-animation');
@@ -1597,9 +1075,7 @@
         // ===== FILTER FUNCTIONALITY =====
         function initializeFilters() {
             const filterButtons = document.querySelectorAll('.filter-btn');
-            const productCards = document.querySelectorAll('.product-card');
             const searchInput = document.getElementById('search-input');
-            const sortDropdown = document.getElementById('sort-dropdown');
             
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -1607,373 +1083,47 @@
                     button.classList.add('active');
                     
                     const filter = button.getAttribute('data-filter');
-                    filterProducts(filter, searchInput.value, sortDropdown.value);
+                    filterProducts(filter, searchInput.value);
                 });
             });
             
             searchInput.addEventListener('input', (e) => {
                 const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-                filterProducts(activeFilter, e.target.value, sortDropdown.value);
-            });
-            
-            sortDropdown.addEventListener('change', (e) => {
-                const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-                filterProducts(activeFilter, searchInput.value, e.target.value);
+                filterProducts(activeFilter, e.target.value);
             });
         }
 
-        function filterProducts(categoryFilter, searchTerm, sortBy) {
-            const productCards = Array.from(document.querySelectorAll('.product-card'));
-            let visibleCards = [];
+        function filterProducts(categoryFilter, searchTerm) {
+            const productCards = document.querySelectorAll('.product-card');
+            let visibleCount = 0;
             
             productCards.forEach(card => {
-                const categories = card.getAttribute('data-category');
+                const categories = card.getAttribute('data-category') || '';
                 const title = card.querySelector('.product-title').textContent.toLowerCase();
                 const description = card.querySelector('.product-description').textContent.toLowerCase();
-                const author = card.querySelector('.product-author').textContent.toLowerCase();
+                const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
                 
-                const matchesCategory = categoryFilter === 'all' || categories.includes(categoryFilter);
+                const matchesCategory = categoryFilter === 'all' || 
+                    categories.split(' ').some(cat => cat === categoryFilter);
+                
                 const matchesSearch = !searchTerm || 
                     title.includes(searchTerm.toLowerCase()) || 
-                    description.includes(searchTerm.toLowerCase()) || 
-                    author.includes(searchTerm.toLowerCase());
+                    description.includes(searchTerm.toLowerCase()) ||
+                    tags.includes(searchTerm.toLowerCase());
                 
                 if (matchesCategory && matchesSearch) {
                     card.classList.remove('hidden');
-                    card.style.animation = 'fadeInUp 0.6s ease-out forwards';
-                    visibleCards.push(card);
+                    card.style.animation = `fadeInUp 0.6s ease-out ${visibleCount * 0.1}s forwards`;
+                    visibleCount++;
                 } else {
                     card.classList.add('hidden');
                 }
             });
-            
-            // Sort visible cards
-            if (sortBy !== 'featured') {
-                sortProducts(visibleCards, sortBy);
+
+            // Show message if no products found
+            if (visibleCount === 0) {
+                showToast('No products found matching your criteria');
             }
-        }
-
-        function sortProducts(cards, sortBy) {
-            const container = document.getElementById('shop-grid');
-            
-            cards.sort((a, b) => {
-                switch (sortBy) {
-                    case 'price-low':
-                        return parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price'));
-                    case 'price-high':
-                        return parseFloat(b.getAttribute('data-price')) - parseFloat(a.getAttribute('data-price'));
-                    case 'rating':
-                        return parseFloat(b.getAttribute('data-rating')) - parseFloat(a.getAttribute('data-rating'));
-                    case 'newest':
-                        // For demo purposes, just reverse the order
-                        return 0;
-                    case 'popular':
-                        // For demo purposes, sort by downloads (would need data attribute)
-                        return 0;
-                    default:
-                        return 0;
-                }
-            });
-            
-            // Re-append sorted cards
-            cards.forEach(card => {
-                container.appendChild(card);
-            });
-        }
-
-        // ===== CART FUNCTIONALITY =====
-        function addToCart(button) {
-            const id = button.getAttribute('data-id');
-            const title = button.getAttribute('data-title');
-            const price = parseFloat(button.getAttribute('data-price'));
-            const image = button.getAttribute('data-image');
-            
-            // Check if item already in cart
-            const existingItem = cart.find(item => item.id === id);
-            if (existingItem) {
-                showToast('Item already in cart!');
-                return;
-            }
-            
-            const item = { id, title, price, image };
-            cart.push(item);
-            
-            updateCartUI();
-            showToast(`${title} added to cart!`);
-            
-            // Animate button
-            button.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                button.style.transform = 'scale(1)';
-            }, 150);
-        }
-
-        function removeFromCart(id) {
-            cart = cart.filter(item => item.id !== id);
-            updateCartUI();
-            showToast('Item removed from cart');
-        }
-
-        function updateCartUI() {
-            const cartCount = document.getElementById('cart-count');
-            const cartItems = document.getElementById('cart-items');
-            const cartTotal = document.getElementById('cart-total');
-            const subtotalEl = document.getElementById('subtotal');
-            const taxEl = document.getElementById('tax');
-            const totalEl = document.getElementById('total');
-            
-            cartCount.textContent = cart.length;
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
-                cartTotal.style.display = 'none';
-            } else {
-                let subtotal = 0;
-                cartItems.innerHTML = cart.map(item => {
-                    subtotal += item.price;
-                    return `
-                        <div class="cart-item">
-                            <img src="${item.image}" alt="${item.title}" class="cart-item-image">
-                            <div class="cart-item-info">
-                                <div class="cart-item-title">${item.title}</div>
-                                <div class="cart-item-price">${item.price.toFixed(2)}</div>
-                            </div>
-                            <button class="cart-item-remove" onclick="removeFromCart('${item.id}')">×</button>
-                        </div>
-                    `;
-                }).join('');
-                
-                const tax = subtotal * 0.1;
-                const total = subtotal + tax;
-                
-                subtotalEl.textContent = `${subtotal.toFixed(2)}`;
-                taxEl.textContent = `${tax.toFixed(2)}`;
-                totalEl.textContent = `${total.toFixed(2)}`;
-                
-                cartTotal.style.display = 'block';
-            }
-        }
-
-        function toggleCart() {
-            const cartSidebar = document.getElementById('cart-sidebar');
-            cartSidebar.classList.toggle('open');
-        }
-
-        // ===== WISHLIST FUNCTIONALITY =====
-        function toggleWishlist(button) {
-            const card = button.closest('.product-card');
-            const id = card.querySelector('.add-to-cart-btn').getAttribute('data-id');
-            const title = card.querySelector('.product-title').textContent;
-            
-            if (button.classList.contains('active')) {
-                wishlist = wishlist.filter(item => item !== id);
-                button.classList.remove('active');
-                button.textContent = '♡';
-                showToast(`${title} removed from wishlist`);
-            } else {
-                wishlist.push(id);
-                button.classList.add('active');
-                button.textContent = '♥';
-                showToast(`${title} added to wishlist`);
-            }
-            
-            // Animate button
-            button.style.transform = 'scale(1.3)';
-            setTimeout(() => {
-                button.style.transform = 'scale(1)';
-            }, 200);
-        }
-
-        // ===== PRODUCT MODAL =====
-        function openProductModal(button) {
-            const card = button.closest('.product-card');
-            const modal = document.getElementById('product-modal');
-            const modalContent = document.getElementById('modal-content');
-            
-            const title = card.querySelector('.product-title').textContent;
-            const author = card.querySelector('.product-author').textContent;
-            const price = card.querySelector('.price-tag').textContent;
-            const image = card.querySelector('.product-image').src;
-            const description = card.querySelector('.product-description').textContent;
-            
-            document.getElementById('modal-title').textContent = title;
-            document.getElementById('modal-author').textContent = author;
-            document.getElementById('modal-price').textContent = price;
-            document.getElementById('modal-image').src = image;
-            document.getElementById('modal-description').textContent = description;
-            
-            // Set up modal buttons
-            const addToCartBtn = card.querySelector('.add-to-cart-btn');
-            const modalAddCart = document.getElementById('modal-add-cart');
-            
-            modalAddCart.onclick = () => addToCart(addToCartBtn);
-            
-            // Generate features based on product type
-            const features = generateProductFeatures(title);
-            const featuresList = document.getElementById('modal-features');
-            featuresList.innerHTML = features.map(feature => `<li>${feature}</li>`).join('');
-            
-            modal.classList.add('show');
-            modalContent.classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeProductModal() {
-            const modal = document.getElementById('product-modal');
-            const modalContent = document.getElementById('modal-content');
-            
-            modal.classList.remove('show');
-            modalContent.classList.remove('show');
-            document.body.style.overflow = '';
-        }
-
-        function generateProductFeatures(title) {
-            const featureMap = {
-                'Road Prop Pack': [
-                    'Over 50 unique road props and signs',
-                    'Low-poly optimized for mobile games',
-                    'PBR textures included (2K resolution)',
-                    'Unity and Unreal Engine compatible',
-                    'Customizable materials and colors'
-                ],
-                'Roblox Menu GUI': [
-                    'Fully animated menu transitions',
-                    'Customizable themes and colors',
-                    'Sound effects included',
-                    'Easy to integrate script',
-                    'Mobile-friendly responsive design'
-                ],
-                'Low Poly Car Pack': [
-                    '12 unique vehicle models',
-                    'Separate parts for customization',
-                    'PBR materials with multiple color variants',
-                    'Optimized for real-time rendering',
-                    'Includes motorcycles and trucks'
-                ]
-            };
-            
-            return featureMap[title] || [
-                'High-quality assets included',
-                'Professional grade materials',
-                'Easy integration and setup',
-                'Documentation and examples',
-                'Lifetime updates included'
-            ];
-        }
-
-        // ===== CHECKOUT SIMULATION =====
-        function simulateCheckout() {
-            if (cart.length === 0) {
-                showToast('Your cart is empty!');
-                return;
-            }
-            
-            // Create checkout overlay
-            const overlay = document.createElement('div');
-            overlay.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.9);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                z-index: 10000;
-                backdrop-filter: blur(10px);
-            `;
-            
-            const checkoutText = document.createElement('div');
-            checkoutText.innerHTML = `
-                <div style="color: #ff33aa; font-size: 2rem; font-weight: bold; margin-bottom: 20px; text-align: center;">
-                    Processing Payment...
-                </div>
-                <div style="color: #ddd; font-size: 1.2rem; text-align: center; margin-bottom: 30px;">
-                    Total: ${document.getElementById('total').textContent}
-                </div>
-            `;
-            
-            const progressBar = document.createElement('div');
-            progressBar.style.cssText = `
-                width: 300px;
-                height: 10px;
-                background: #333;
-                border-radius: 5px;
-                overflow: hidden;
-                margin-bottom: 20px;
-            `;
-            
-            const progress = document.createElement('div');
-            progress.style.cssText = `
-                width: 0%;
-                height: 100%;
-                background: linear-gradient(45deg, #ff33aa, #aa33ff);
-                transition: width 0.1s ease;
-            `;
-            
-            progressBar.appendChild(progress);
-            overlay.appendChild(checkoutText);
-            overlay.appendChild(progressBar);
-            
-            const closeBtn = document.createElement('button');
-            closeBtn.textContent = 'Cancel';
-            closeBtn.style.cssText = `
-                background: transparent;
-                border: 2px solid #ff33aa;
-                color: #ff33aa;
-                padding: 10px 20px;
-                border-radius: 25px;
-                cursor: pointer;
-                font-family: "Courier New", monospace;
-                margin-top: 20px;
-            `;
-            closeBtn.onclick = () => document.body.removeChild(overlay);
-            
-            overlay.appendChild(closeBtn);
-            document.body.appendChild(overlay);
-            
-            // Animate progress
-            let width = 0;
-            const interval = setInterval(() => {
-                width += Math.random() * 15;
-                if (width >= 100) {
-                    width = 100;
-                    clearInterval(interval);
-                    
-                    setTimeout(() => {
-                        checkoutText.innerHTML = `
-                            <div style="color: #00ff00; font-size: 2rem; font-weight: bold; margin-bottom: 20px; text-align: center;">
-                                ✓ Payment Successful!
-                            </div>
-                            <div style="color: #ddd; font-size: 1.2rem; text-align: center;">
-                                Your assets will be available for download shortly.
-                            </div>
-                        `;
-                        
-                        setTimeout(() => {
-                            cart = [];
-                            updateCartUI();
-                            toggleCart();
-                            document.body.removeChild(overlay);
-                            showToast('Thank you for your purchase!');
-                        }, 3000);
-                    }, 500);
-                }
-                progress.style.width = width + '%';
-            }, 100);
-        }
-
-        // ===== TOAST NOTIFICATIONS =====
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
         }
 
         // ===== PARALLAX SCROLLING =====
@@ -2009,9 +1159,42 @@
             });
         }
 
-        // ===== EASTER EGG - SECRET DISCOUNT =====
+        // ===== TOAST NOTIFICATIONS =====
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ===== GUMROAD EMBED ENHANCEMENT =====
+        function enhanceGumroadEmbeds() {
+            // Add loading indicators
+            const gumroadEmbeds = document.querySelectorAll('.gumroad-product-embed');
+            
+            gumroadEmbeds.forEach(embed => {
+                const link = embed.querySelector('a');
+                if (link) {
+                    // Add loading state
+                    link.addEventListener('click', function(e) {
+                        if (this.getAttribute('href').startsWith('https://ironlanternstudios.gumroad.com')) {
+                            // Let Gumroad handle the click
+                            showToast('Opening Gumroad checkout...');
+                        }
+                    });
+                    
+                    // Enhance button appearance
+                    link.style.transition = 'all 0.3s ease';
+                }
+            });
+        }
+
+        // ===== EASTER EGG - DISCOUNT CODE =====
         let secretCode = [];
-        const secretSequence = ['s', 'h', 'o', 'p'];
+        const secretSequence = ['g', 'u', 'm', 'r', 'o', 'a', 'd'];
         
         function initSecretCode() {
             document.addEventListener('keydown', function(e) {
@@ -2021,21 +1204,76 @@
                 }
                 
                 if (JSON.stringify(secretCode) === JSON.stringify(secretSequence)) {
-                    // Apply secret discount
-                    const productCards = document.querySelectorAll('.product-card');
-                    productCards.forEach(card => {
-                        const priceTag = card.querySelector('.price-tag');
-                        if (priceTag && !priceTag.textContent.includes('SECRET')) {
-                            const originalPrice = priceTag.textContent;
-                            priceTag.innerHTML = `<span class="price-original">${originalPrice}</span>SECRET 50% OFF!`;
-                            priceTag.style.background = 'linear-gradient(45deg, #ff33aa, #aa33ff)';
-                            priceTag.style.color = 'white';
-                        }
-                    });
-                    
-                    showToast('🎉 SECRET DISCOUNT ACTIVATED! 50% OFF EVERYTHING!');
+                    // Show secret discount code
+                    showSpecialOffer();
                     secretCode = [];
                 }
+            });
+        }
+
+        function showSpecialOffer() {
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                backdrop-filter: blur(10px);
+                animation: fadeIn 0.5s ease;
+            `;
+            
+            overlay.innerHTML = `
+                <div style="color: #ff33aa; font-size: 3rem; font-weight: bold; margin-bottom: 20px; text-align: center; animation: glow 1s infinite alternate;">
+                    🎉 SECRET UNLOCKED! 🎉
+                </div>
+                <div style="color: #ddd; font-size: 1.5rem; text-align: center; margin-bottom: 30px;">
+                    Use code <span style="color: #ffff00; font-weight: bold; font-size: 2rem;">CYBER20</span> for 20% off!
+                </div>
+                <div style="color: #aaa; font-size: 1rem; text-align: center; margin-bottom: 30px;">
+                    Valid on all individual products. Enter at Gumroad checkout.
+                </div>
+                <button onclick="document.body.removeChild(this.parentElement)" 
+                        style="background: linear-gradient(45deg, #ff33aa, #aa33ff); color: white; border: none; 
+                               padding: 15px 40px; border-radius: 25px; font-weight: bold; cursor: pointer; 
+                               font-family: 'Courier New', monospace; text-transform: uppercase;">
+                    Awesome!
+                </button>
+            `;
+            
+            document.body.appendChild(overlay);
+            
+            // Auto-close after 10 seconds
+            setTimeout(() => {
+                if (document.body.contains(overlay)) {
+                    document.body.removeChild(overlay);
+                }
+            }, 10000);
+        }
+
+        // ===== SMOOTH SCROLLING FOR NAVIGATION =====
+        function addSmoothScrolling() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
             });
         }
 
@@ -2047,35 +1285,13 @@
             addCardInteractions();
             addParallaxEffect();
             initSecretCode();
+            enhanceGumroadEmbeds();
+            addSmoothScrolling();
             
-            // Cart functionality
-            document.getElementById('cart-toggle').addEventListener('click', toggleCart);
-            document.getElementById('cart-close').addEventListener('click', toggleCart);
-            document.getElementById('checkout-btn').addEventListener('click', simulateCheckout);
-            
-            // Modal functionality
-            document.getElementById('modal-close').addEventListener('click', closeProductModal);
-            document.getElementById('product-modal').addEventListener('click', (e) => {
-                if (e.target.id === 'product-modal') {
-                    closeProductModal();
-                }
-            });
-            
-            // Escape key to close modal
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closeProductModal();
-                    if (document.getElementById('cart-sidebar').classList.contains('open')) {
-                        toggleCart();
-                    }
-                }
-            });
-            
-            // Featured deal button
-            document.querySelector('.deal-button').addEventListener('click', (e) => {
-                e.preventDefault();
-                showToast('Bundle deal coming soon! 🔥');
-            });
+            // Welcome message
+            setTimeout(() => {
+                showToast('Welcome to the Asset Shop! 🛒');
+            }, 1000);
             
             // Add loading animation
             document.body.style.opacity = '0';
@@ -2085,11 +1301,34 @@
             }, 100);
         });
 
-        // ===== GLOBAL FUNCTIONS FOR ONCLICK ATTRIBUTES =====
-        window.addToCart = addToCart;
-        window.toggleWishlist = toggleWishlist;
-        window.openProductModal = openProductModal;
-        window.removeFromCart = removeFromCart;
+        // ===== GUMROAD INTEGRATION HELPERS =====
+        
+        // Listen for Gumroad events (if available)
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'gumroad_overlay_opened') {
+                showToast('Redirecting to secure checkout...');
+            }
+        });
+
+        // Enhance Gumroad buttons when they load
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                mutation.addedNodes.forEach(function(node) {
+                    if (node.nodeType === 1 && node.tagName === 'IFRAME') {
+                        // Gumroad iframe loaded
+                        const container = node.closest('.gumroad-product-embed');
+                        if (container) {
+                            container.style.opacity = '1';
+                        }
+                    }
+                });
+            });
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
     </script>
 </body>
 </html>
