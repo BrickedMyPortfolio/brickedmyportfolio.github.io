@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop - brickedmyportfolio.com</title>
-    <!-- Gumroad Embed Script -->
-    <script src="https://gumroad.com/js/gumroad-embed.js"></script>
     <style>
         /* ===== BASE RESET & TYPOGRAPHY ===== */
         * {
@@ -163,14 +161,14 @@
         }
 
         /* ===== HERO SECTION ===== */
-        .shop-hero {
+        .hero {
             text-align: center;
             padding: 80px 20px 60px;
             background: radial-gradient(circle at center, rgba(255, 51, 170, 0.1), transparent);
         }
 
-        .shop-title {
-            font-size: 4rem;
+        .page-title {
+            font-size: 3.5rem;
             font-weight: bold;
             margin-bottom: 20px;
             background: linear-gradient(45deg, #ff33aa, #aa33ff, #33aaff);
@@ -178,7 +176,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: glow 3s ease-in-out infinite alternate;
-            text-shadow: 0 0 30px rgba(255, 51, 170, 0.5);
         }
 
         @keyframes glow {
@@ -186,158 +183,70 @@
             to { filter: brightness(1.2) hue-rotate(10deg); }
         }
 
-        .shop-subtitle {
+        .page-subtitle {
             font-size: 1.3rem;
             color: #ccc;
             margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* ===== FEATURED DEAL BANNER ===== */
-        .featured-deal {
-            background: linear-gradient(135deg, rgba(255, 51, 170, 0.2), rgba(170, 51, 255, 0.2));
-            border: 2px solid #ff33aa;
-            border-radius: 20px;
-            padding: 30px;
-            margin: 40px auto;
-            max-width: 1200px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .featured-deal::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            animation: shine 3s infinite;
-        }
-
-        @keyframes shine {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .deal-badge {
-            background: linear-gradient(45deg, #ff33aa, #aa33ff);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-
-        .deal-title {
-            font-size: 2.5rem;
-            color: #fff;
-            margin-bottom: 10px;
-        }
-
-        .deal-description {
-            font-size: 1.2rem;
-            color: #ddd;
-            margin-bottom: 20px;
-        }
-
-        /* ===== FILTER SECTION ===== */
-        .filter-section {
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .search-filter-container {
+        /* ===== SHOP FILTERS ===== */
+        .shop-filters {
             display: flex;
             justify-content: center;
-            align-items: center;
-            margin-bottom: 30px;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .search-bar {
-            max-width: 400px;
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 15px 25px;
-            border: 2px solid #ff33aa;
-            border-radius: 25px;
-            background: rgba(26, 26, 26, 0.9);
-            color: #fff;
-            font-family: "Courier New", monospace;
-            font-size: 16px;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus {
-            box-shadow: 0 0 20px rgba(255, 51, 170, 0.5);
-            transform: scale(1.02);
-        }
-
-        .filter-buttons {
-            display: flex;
-            flex-wrap: wrap;
             gap: 15px;
-            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            padding: 0 20px;
         }
 
         .filter-btn {
-            background: transparent;
-            border: 2px solid #ff33aa;
-            color: #ff33aa;
+            background: rgba(26, 26, 26, 0.8);
+            color: #ccc;
+            border: 2px solid #444;
             padding: 12px 24px;
             border-radius: 25px;
             font-family: "Courier New", monospace;
             font-weight: bold;
-            font-size: 14px;
-            text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
-        .filter-btn.active,
-        .filter-btn:hover {
+        .filter-btn:hover,
+        .filter-btn.active {
             background: linear-gradient(45deg, #ff33aa, #aa33ff);
             color: white;
+            border-color: #ff33aa;
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(255, 51, 170, 0.4);
         }
 
         /* ===== SHOP GRID ===== */
         .shop-section {
-            padding: 40px 20px 80px;
+            padding: 40px 20px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .shop-grid {
+        .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 30px;
+            margin-top: 30px;
         }
 
-        /* ===== PRODUCT CARD STYLING ===== */
         .product-card {
             background: rgba(26, 26, 26, 0.9);
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
             border: 1px solid rgba(255, 51, 170, 0.2);
             backdrop-filter: blur(10px);
             position: relative;
-            animation: fadeInUp 0.6s ease-out forwards;
         }
 
         .product-card:hover {
@@ -346,51 +255,16 @@
             border-color: rgba(255, 51, 170, 0.5);
         }
 
-        .product-card.hidden {
-            display: none;
-        }
-
-        .product-header {
-            position: relative;
-            height: 200px;
-            overflow: hidden;
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
             background: linear-gradient(45deg, #333, #555);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transition: all 0.3s ease;
         }
 
-        .product-placeholder {
-            color: #888;
-            font-size: 3rem;
-            text-align: center;
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            backdrop-filter: blur(10px);
-        }
-
-        .badge-new {
-            background: rgba(0, 255, 0, 0.9);
-            color: black;
-        }
-
-        .badge-featured {
-            background: rgba(255, 215, 0, 0.9);
-            color: black;
-        }
-
-        .badge-popular {
-            background: rgba(255, 51, 170, 0.9);
-            color: white;
+        .product-card:hover .product-image {
+            transform: scale(1.05);
         }
 
         .product-content {
@@ -398,119 +272,133 @@
         }
 
         .product-title {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        .product-author {
-            color: #ff33aa;
-            font-size: 0.9rem;
+            font-size: 1.5rem;
             margin-bottom: 15px;
+            color: #fff;
             font-weight: bold;
         }
 
         .product-description {
             color: #ccc;
             margin-bottom: 20px;
-            font-size: 0.95rem;
+            font-size: 1rem;
             line-height: 1.6;
-            height: 60px;
-            overflow: hidden;
+            min-height: 50px;
         }
 
         .product-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
             margin-bottom: 20px;
         }
 
         .tag {
             background: linear-gradient(45deg, #ff33aa, #aa33ff);
             color: white;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.75rem;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
             font-weight: bold;
         }
 
-        .product-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .product-price {
+            font-size: 1.8rem;
+            color: #ff33aa;
+            font-weight: bold;
             margin-bottom: 20px;
-            color: #aaa;
-            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .product-price.free {
+            color: #33ff33;
         }
 
         .product-rating {
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            color: #aaa;
+            font-style: italic;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
-        .download-count {
-            color: #888;
-        }
-
-        /* ===== GUMROAD EMBED STYLING ===== */
-        .gumroad-embed-container {
-            margin-top: 20px;
-            position: relative;
-        }
-
-        .gumroad-product-embed {
-            width: 100%;
-        }
-
-        /* Override Gumroad's default styling to match our theme */
-        .gumroad-product-embed iframe {
-            border-radius: 15px !important;
-            border: 2px solid rgba(255, 51, 170, 0.3) !important;
-            transition: all 0.3s ease !important;
-        }
-
-        .product-card:hover .gumroad-product-embed iframe {
-            border-color: rgba(255, 51, 170, 0.6) !important;
-            box-shadow: 0 10px 25px rgba(255, 51, 170, 0.3) !important;
-        }
-
-        /* Custom loading state for Gumroad embeds */
-        .gumroad-loading {
-            background: linear-gradient(45deg, #ff33aa, #aa33ff);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-weight: bold;
-            font-family: "Courier New", monospace;
-            text-transform: uppercase;
-            width: 100%;
-            cursor: not-allowed;
-            opacity: 0.7;
-            transition: all 0.3s ease;
-        }
-
-        .gumroad-product-embed a {
-            display: block !important;
+        /* ===== GUMROAD BUTTON STYLING ===== */
+        .gumroad-button {
             background: linear-gradient(45deg, #ff33aa, #aa33ff) !important;
             color: white !important;
             border: none !important;
             padding: 15px 30px !important;
             border-radius: 25px !important;
-            font-weight: bold !important;
             font-family: "Courier New", monospace !important;
-            text-transform: uppercase !important;
-            text-decoration: none !important;
-            text-align: center !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
             transition: all 0.3s ease !important;
+            text-decoration: none !important;
+            display: block !important;
+            text-align: center !important;
+            width: 100% !important;
+            box-shadow: 0 8px 25px rgba(255, 51, 170, 0.4) !important;
+            font-size: 1.1rem !important;
+            text-transform: uppercase !important;
         }
 
-        .gumroad-product-embed a:hover {
-            transform: translateY(-2px) !important;
-            box-shadow: 0 8px 20px rgba(255, 51, 170, 0.4) !important;
+        .gumroad-button:hover {
+            transform: translateY(-3px) scale(1.02) !important;
+            box-shadow: 0 15px 35px rgba(255, 51, 170, 0.6) !important;
+        }
+
+        /* ===== PRODUCT BADGE ===== */
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 5;
+        }
+
+        .product-badge.new {
+            background: linear-gradient(45deg, #33ff33, #00cc99);
+        }
+
+        .product-badge.sale {
+            background: linear-gradient(45deg, #ff3333, #cc3300);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* ===== COMING SOON OVERLAY ===== */
+        .coming-soon {
+            position: relative;
+            opacity: 0.7;
+        }
+
+        .coming-soon::after {
+            content: "COMING SOON";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 51, 170, 0.9);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            backdrop-filter: blur(10px);
+            border: 2px solid #ff33aa;
+        }
+
+        .coming-soon .gumroad-button {
+            pointer-events: none;
+            opacity: 0.5;
         }
 
         /* ===== FOOTER ===== */
@@ -520,6 +408,7 @@
             text-align: center;
             border-top: 2px solid #ff33aa;
             backdrop-filter: blur(10px);
+            margin-top: 80px;
         }
 
         .footer-content {
@@ -569,8 +458,8 @@
 
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 1024px) {
-            .shop-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             }
         }
 
@@ -595,97 +484,41 @@
                 padding: 10px 16px;
             }
 
-            .shop-title {
+            .page-title {
                 font-size: 2.5rem;
             }
 
-            .shop-grid {
+            .products-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
 
-            .filter-buttons {
+            .shop-filters {
                 gap: 10px;
             }
 
             .filter-btn {
-                font-size: 12px;
-                padding: 10px 16px;
-            }
-
-            .featured-deal {
-                margin: 20px;
-                padding: 20px;
-            }
-
-            .deal-title {
-                font-size: 2rem;
+                padding: 10px 18px;
+                font-size: 0.9rem;
             }
         }
 
         @media (max-width: 480px) {
-            .shop-title {
+            .page-title {
                 font-size: 2rem;
             }
 
-            .shop-hero {
+            .hero {
                 padding: 60px 15px 40px;
             }
 
-            .shop-section, .filter-section {
-                padding-left: 15px;
-                padding-right: 15px;
+            .shop-section {
+                padding: 40px 15px;
             }
 
             .product-content {
                 padding: 20px;
             }
-
-            .search-input {
-                font-size: 14px;
-                padding: 12px 20px;
-            }
-        }
-
-        /* ===== LOADING ANIMATIONS ===== */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .product-card:nth-child(1) { animation-delay: 0.1s; }
-        .product-card:nth-child(2) { animation-delay: 0.2s; }
-        .product-card:nth-child(3) { animation-delay: 0.3s; }
-        .product-card:nth-child(4) { animation-delay: 0.4s; }
-        .product-card:nth-child(5) { animation-delay: 0.5s; }
-        .product-card:nth-child(6) { animation-delay: 0.6s; }
-
-        /* ===== NOTIFICATION TOAST ===== */
-        .toast {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: linear-gradient(45deg, #ff33aa, #aa33ff);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            z-index: 1003;
-            transform: translateX(400px);
-            transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(255, 51, 170, 0.4);
-        }
-
-        .toast.show {
-            transform: translateX(0);
-        }
-
-        /* ===== BUNDLE DEAL STYLING ===== */
-        .bundle-embed {
-            transform: scale(1.05);
-            border: 3px solid #ffd700 !important;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5) !important;
         }
     </style>
 </head>
@@ -710,325 +543,139 @@
     <!-- Main Content Wrapper -->
     <div class="main-content">
         <!-- Hero Section -->
-        <section class="shop-hero">
-            <h1 class="shop-title">ASSET SHOP</h1>
-            <p class="shop-subtitle">Premium game assets, tools, and resources for developers</p>
-        </section>
-
-        <!-- Featured Deal Banner -->
-        <section class="featured-deal">
-            <div class="deal-badge">🔥 LIMITED TIME OFFER</div>
-            <h2 class="deal-title">Complete Asset Bundle</h2>
-            <p class="deal-description">Get all current and future asset packs for 50% off!</p>
-            <!-- Bundle Deal Gumroad Embed -->
-            <div class="gumroad-embed-container">
-                <div class="gumroad-product-embed bundle-embed">
-                    <a href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset1">Get Bundle Deal - $49.99</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Filter Section -->
-        <section class="filter-section">
-            <div class="search-filter-container">
-                <div class="search-bar">
-                    <input type="text" class="search-input" placeholder="Search assets..." id="search-input">
-                </div>
-            </div>
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All Assets</button>
+        <section class="hero">
+            <h1 class="page-title">ASSET SHOP</h1>
+            <p class="page-subtitle">High-quality game assets, tools, and resources to power your projects</p>
+            
+            <!-- Shop Filters -->
+            <div class="shop-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="3d">3D Models</button>
-                <button class="filter-btn" data-filter="2d">2D Graphics</button>
-                <button class="filter-btn" data-filter="audio">Audio</button>
+                <button class="filter-btn" data-filter="gui">GUI/UI</button>
                 <button class="filter-btn" data-filter="scripts">Scripts</button>
-                <button class="filter-btn" data-filter="tools">Tools</button>
-                <button class="filter-btn" data-filter="templates">Templates</button>
+                <button class="filter-btn" data-filter="textures">Textures</button>
+                <button class="filter-btn" data-filter="free">Free</button>
             </div>
         </section>
 
-        <!-- Shop Grid -->
+        <!-- Shop Products -->
         <section class="shop-section">
-            <div class="shop-grid" id="shop-grid">
-                <!-- Featured Product -->
-                <div class="product-card featured" data-category="3d props road">
-                    <div class="product-header">
-                        <div class="product-placeholder">🛣️</div>
-                        <div class="product-badge badge-featured">Featured</div>
-                    </div>
+            <div class="products-grid">
+                <!-- Road Prop Pack -->
+                <div class="product-card" data-category="3d">
+                    <div class="product-badge new">NEW</div>
+                    <img src="media/PLACEHOLDER.jpg" alt="Road Prop Pack" class="product-image">
                     <div class="product-content">
                         <h3 class="product-title">Road Prop Pack</h3>
-                        <p class="product-author">by IronLanternStudios</p>
-                        <p class="product-description">Complete collection of low-poly road props including signs, barriers, cones, and more. Perfect for racing games and urban environments.</p>
+                        <p class="product-description">Complete collection of low-poly road props perfect for racing games, city builders, and open-world environments.</p>
                         <div class="product-tags">
-                            <span class="tag">3D</span>
-                            <span class="tag">Props</span>
-                            <span class="tag">Road</span>
+                            <span class="tag">3D Models</span>
                             <span class="tag">Low Poly</span>
+                            <span class="tag">Roads</span>
+                            <span class="tag">Props</span>
                         </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <span>⭐⭐⭐⭐⭐</span>
-                                <span>(47 reviews)</span>
-                            </div>
-                            <div class="download-count">1.2k downloads</div>
-                        </div>
-                        <div class="gumroad-embed-container">
-                            <div class="gumroad-product-embed">
-                                <a href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset1">Buy Now - $9.99</a>
-                            </div>
-                        </div>
+                        <div class="product-price">$9.99</div>
+                        <div class="product-rating">⭐⭐⭐⭐⭐ "This time I didn't crash because of this asset pack."</div>
+                        <a class="gumroad-button" href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset1" data-gumroad-overlay-checkout="true">Purchase Now</a>
                     </div>
                 </div>
 
-                <!-- Roblox GUI -->
-                <div class="product-card" data-category="2d gui roblox">
-                    <div class="product-header">
-                        <div class="product-placeholder">🎮</div>
-                        <div class="product-badge badge-new">New</div>
-                    </div>
+                <!-- Roblox Menu GUI -->
+                <div class="product-card" data-category="gui">
+                    <img src="media/PLACEHOLDER.jpg" alt="Roblox Menu GUI" class="product-image">
                     <div class="product-content">
                         <h3 class="product-title">Roblox Menu GUI</h3>
-                        <p class="product-author">by IronLanternStudios</p>
-                        <p class="product-description">Professional animated menu system for Roblox games with customizable themes and smooth transitions.</p>
+                        <p class="product-description">Professional animated menu system for Roblox games with smooth transitions and customizable components.</p>
                         <div class="product-tags">
                             <span class="tag">GUI</span>
-                            <span class="tag">Menu</span>
-                            <span class="tag">Animated</span>
                             <span class="tag">Roblox</span>
+                            <span class="tag">Animated</span>
+                            <span class="tag">Menu</span>
                         </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <span>⭐⭐⭐⭐☆</span>
-                                <span>(23 reviews)</span>
-                            </div>
-                            <div class="download-count">856 downloads</div>
-                        </div>
-                        <div class="gumroad-embed-container">
-                            <div class="gumroad-product-embed">
-                                <a href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset1">Buy Now - $5.00</a>
-                            </div>
-                        </div>
+                        <div class="product-price">$5.00</div>
+                        <div class="product-rating">⭐⭐⭐⭐☆ "PLEASE MARRY ME!"</div>
+                        <a class="gumroad-button" href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset1" data-gumroad-overlay-checkout="true">Purchase Now</a>
                     </div>
                 </div>
 
-                <!-- Car Pack -->
-                <div class="product-card" data-category="3d vehicles cars">
-                    <div class="product-header">
-                        <div class="product-placeholder">🚗</div>
-                        <div class="product-badge badge-popular">Popular</div>
-                    </div>
+                <!-- City Building Pack -->
+                <div class="product-card coming-soon" data-category="3d">
+                    <div class="product-badge">SOON</div>
+                    <img src="media/PLACEHOLDER.jpg" alt="City Building Pack" class="product-image">
                     <div class="product-content">
-                        <h3 class="product-title">Low Poly Car Pack</h3>
-                        <p class="product-author">by IronLanternStudios</p>
-                        <p class="product-description">Collection of 12 stylized low-poly vehicles including cars, trucks, and motorcycles with PBR textures.</p>
+                        <h3 class="product-title">City Building Pack</h3>
+                        <p class="product-description">Comprehensive set of modular city buildings perfect for urban environments and city simulation games.</p>
                         <div class="product-tags">
-                            <span class="tag">3D</span>
-                            <span class="tag">Vehicles</span>
-                            <span class="tag">Low Poly</span>
-                            <span class="tag">PBR</span>
+                            <span class="tag">3D Models</span>
+                            <span class="tag">Buildings</span>
+                            <span class="tag">Modular</span>
+                            <span class="tag">City</span>
                         </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <span>⭐⭐⭐⭐⭐</span>
-                                <span>(89 reviews)</span>
-                            </div>
-                            <div class="download-count">2.1k downloads</div>
-                        </div>
-                        <div class="gumroad-embed-container">
-                            <div class="gumroad-product-embed">
-                                <a href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset1">Buy Now - $15.99</a>
-                            </div>
-                        </div>
+                        <div class="product-price">$14.99</div>
+                        <div class="product-rating">Coming Soon!</div>
+                        <a class="gumroad-button" href="#" data-gumroad-overlay-checkout="true">Coming Soon</a>
                     </div>
                 </div>
 
-                <!-- Music Pack -->
-                <div class="product-card" data-category="audio music cyberpunk">
-                    <div class="product-header">
-                        <div class="product-placeholder">🎵</div>
-                    </div>
+                <!-- Free Starter Pack -->
+                <div class="product-card" data-category="free 3d">
+                    <div class="product-badge" style="background: linear-gradient(45deg, #33ff33, #00cc99);">FREE</div>
+                    <img src="media/PLACEHOLDER.jpg" alt="Free Starter Pack" class="product-image">
                     <div class="product-content">
-                        <h3 class="product-title">Cyberpunk Music Pack</h3>
-                        <p class="product-author">by IronLanternStudios</p>
-                        <p class="product-description">Atmospheric cyberpunk soundtrack with 15 original tracks perfect for sci-fi and futuristic games.</p>
+                        <h3 class="product-title">Free Starter Pack</h3>
+                        <p class="product-description">Get started with this collection of basic 3D models and textures. Perfect for beginners and prototyping.</p>
                         <div class="product-tags">
-                            <span class="tag">Audio</span>
-                            <span class="tag">Music</span>
-                            <span class="tag">Cyberpunk</span>
-                            <span class="tag">Atmospheric</span>
+                            <span class="tag">3D Models</span>
+                            <span class="tag">Textures</span>
+                            <span class="tag">Starter</span>
+                            <span class="tag">Basic</span>
                         </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <span>⭐⭐⭐⭐☆</span>
-                                <span>(34 reviews)</span>
-                            </div>
-                            <div class="download-count">567 downloads</div>
-                        </div>
-                        <div class="gumroad-embed-container">
-                            <div class="gumroad-product-embed">
-                                <a href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset1">Buy Now - $12.99</a>
-                            </div>
-                        </div>
+                        <div class="product-price free">FREE</div>
+                        <div class="product-rating">⭐⭐⭐⭐⭐ "Great way to get started!"</div>
+                        <a class="gumroad-button" href="https://ironlanternstudios.gumroad.com/l/FreePack" data-gumroad-overlay-checkout="true">Download Free</a>
                     </div>
                 </div>
 
-                <!-- Unity Save System -->
-                <div class="product-card" data-category="scripts unity tools">
-                    <div class="product-header">
-                        <div class="product-placeholder">💾</div>
-                    </div>
+                <!-- Script Collection -->
+                <div class="product-card coming-soon" data-category="scripts">
+                    <div class="product-badge">SOON</div>
+                    <img src="media/PLACEHOLDER.jpg" alt="Game Script Collection" class="product-image">
                     <div class="product-content">
-                        <h3 class="product-title">Unity Save System</h3>
-                        <p class="product-author">by IronLanternStudios</p>
-                        <p class="product-description">Complete save/load system for Unity with encryption, cloud backup support, and easy integration.</p>
+                        <h3 class="product-title">Game Script Collection</h3>
+                        <p class="product-description">Essential scripts for Unity and Unreal Engine including player controllers, inventory systems, and more.</p>
                         <div class="product-tags">
                             <span class="tag">Scripts</span>
                             <span class="tag">Unity</span>
-                            <span class="tag">Save System</span>
+                            <span class="tag">Unreal</span>
                             <span class="tag">C#</span>
                         </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <span>⭐⭐⭐⭐⭐</span>
-                                <span>(67 reviews)</span>
-                            </div>
-                            <div class="download-count">1.8k downloads</div>
-                        </div>
-                        <div class="gumroad-embed-container">
-                            <div class="gumroad-product-embed">
-                                <a href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset1">Buy Now - $8.99</a>
-                            </div>
-                        </div>
+                        <div class="product-price">$12.99</div>
+                        <div class="product-rating">Coming Soon!</div>
+                        <a class="gumroad-button" href="#" data-gumroad-overlay-checkout="true">Coming Soon</a>
                     </div>
                 </div>
 
-                <!-- Fantasy UI Kit -->
-                <div class="product-card" data-category="2d ui fantasy">
-                    <div class="product-header">
-                        <div class="product-placeholder">⚔️</div>
-                    </div>
+                <!-- Texture Pack -->
+                <div class="product-card coming-soon" data-category="textures">
+                    <div class="product-badge">SOON</div>
+                    <img src="media/PLACEHOLDER.jpg" alt="PBR Texture Pack" class="product-image">
                     <div class="product-content">
-                        <h3 class="product-title">Fantasy UI Kit</h3>
-                        <p class="product-author">by IronLanternStudios</p>
-                        <p class="product-description">Medieval fantasy UI elements including buttons, panels, icons, and frames in high resolution PNG format.</p>
+                        <h3 class="product-title">PBR Texture Pack</h3>
+                        <p class="product-description">High-resolution PBR textures for realistic materials including metal, concrete, wood, and fabric.</p>
                         <div class="product-tags">
-                            <span class="tag">2D</span>
-                            <span class="tag">UI</span>
-                            <span class="tag">Fantasy</span>
-                            <span class="tag">Medieval</span>
+                            <span class="tag">Textures</span>
+                            <span class="tag">PBR</span>
+                            <span class="tag">Materials</span>
+                            <span class="tag">High-Res</span>
                         </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <span>⭐⭐⭐⭐☆</span>
-                                <span>(41 reviews)</span>
-                            </div>
-                            <div class="download-count">923 downloads</div>
-                        </div>
-                        <div class="gumroad-embed-container">
-                            <div class="gumroad-product-embed">
-                                <a href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset1">Buy Now - $6.99</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Platformer Template -->
-                <div class="product-card" data-category="templates unity platformer">
-                    <div class="product-header">
-                        <div class="product-placeholder">🏃</div>
-                        <div class="product-badge badge-featured">Featured</div>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Complete Platformer Template</h3>
-                        <p class="product-author">by IronLanternStudios</p>
-                        <p class="product-description">Full 2D platformer game template with player controller, enemies, power-ups, and level editor.</p>
-                        <div class="product-tags">
-                            <span class="tag">Templates</span>
-                            <span class="tag">Platformer</span>
-                            <span class="tag">Unity</span>
-                            <span class="tag">Complete</span>
-                        </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <span>⭐⭐⭐⭐⭐</span>
-                                <span>(156 reviews)</span>
-                            </div>
-                            <div class="download-count">3.2k downloads</div>
-                        </div>
-                        <div class="gumroad-embed-container">
-                            <div class="gumroad-product-embed">
-                                <a href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset1">Buy Now - $24.99</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Level Editor -->
-                <div class="product-card" data-category="tools unity editor">
-                    <div class="product-header">
-                        <div class="product-placeholder">🔧</div>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Visual Level Editor</h3>
-                        <p class="product-author">by IronLanternStudios</p>
-                        <p class="product-description">Powerful in-game level editor with drag-and-drop functionality, perfect for user-generated content.</p>
-                        <div class="product-tags">
-                            <span class="tag">Tools</span>
-                            <span class="tag">Editor</span>
-                            <span class="tag">Unity</span>
-                            <span class="tag">Visual</span>
-                        </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <span>⭐⭐⭐⭐☆</span>
-                                <span>(28 reviews)</span>
-                            </div>
-                            <div class="download-count">445 downloads</div>
-                        </div>
-                        <div class="gumroad-embed-container">
-                            <div class="gumroad-product-embed">
-                                <a href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset1">Buy Now - $18.99</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pixel Art Pack -->
-                <div class="product-card" data-category="2d pixel art">
-                    <div class="product-header">
-                        <div class="product-placeholder">🎨</div>
-                        <div class="product-badge badge-new">New</div>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Retro Pixel Art Pack</h3>
-                        <p class="product-author">by IronLanternStudios</p>
-                        <p class="product-description">Nostalgic 16-bit style sprites, tiles, and animations perfect for retro-inspired indie games.</p>
-                        <div class="product-tags">
-                            <span class="tag">2D</span>
-                            <span class="tag">Pixel Art</span>
-                            <span class="tag">Retro</span>
-                            <span class="tag">Sprites</span>
-                        </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <span>⭐⭐⭐⭐⭐</span>
-                                <span>(12 reviews)</span>
-                            </div>
-                            <div class="download-count">234 downloads</div>
-                        </div>
-                        <div class="gumroad-embed-container">
-                            <div class="gumroad-product-embed">
-                                <a href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset1">Buy Now - $7.99</a>
-                            </div>
-                        </div>
+                        <div class="product-price">$8.99</div>
+                        <div class="product-rating">Coming Soon!</div>
+                        <a class="gumroad-button" href="#" data-gumroad-overlay-checkout="true">Coming Soon</a>
                     </div>
                 </div>
             </div>
         </section>
     </div>
-
-    <!-- Toast Notification -->
-    <div class="toast" id="toast"></div>
 
     <!-- Footer -->
     <footer>
@@ -1046,6 +693,9 @@
         </div>
     </footer>
 
+    <!-- Gumroad Script -->
+    <script src="https://gumroad.com/js/gumroad.js"></script>
+
     <script>
         // ===== STARFIELD ANIMATION =====
         function createFloatingStars() {
@@ -1057,14 +707,19 @@
                 const star = document.createElement('div');
                 star.className = 'floating-star';
                 
+                // Random star type
                 star.innerHTML = starTypes[Math.floor(Math.random() * starTypes.length)];
                 
+                // Random size class
                 const sizes = ['small', 'medium', 'large'];
                 const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
                 star.classList.add(randomSize);
                 
+                // Random position
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
+                
+                // Random animation timing
                 star.style.animationDelay = Math.random() * 10 + 's';
                 star.style.animationDuration = (8 + Math.random() * 6) + 's';
                 
@@ -1072,70 +727,60 @@
             }
         }
 
-        // ===== FILTER FUNCTIONALITY =====
-        function initializeFilters() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const searchInput = document.getElementById('search-input');
+        // ===== PRODUCT FILTERING =====
+        function filterProducts(category) {
+            const cards = document.querySelectorAll('.product-card');
+            const filterBtns = document.querySelectorAll('.filter-btn');
             
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    
-                    const filter = button.getAttribute('data-filter');
-                    filterProducts(filter, searchInput.value);
-                });
-            });
+            // Update active filter button
+            filterBtns.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-filter="${category}"]`).classList.add('active');
             
-            searchInput.addEventListener('input', (e) => {
-                const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-                filterProducts(activeFilter, e.target.value);
+            // Filter cards
+            cards.forEach(card => {
+                const cardCategories = card.dataset.category || '';
+                
+                if (category === 'all' || cardCategories.includes(category)) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
             });
         }
 
-        function filterProducts(categoryFilter, searchTerm) {
-            const productCards = document.querySelectorAll('.product-card');
-            let visibleCount = 0;
+        // ===== CARD HOVER EFFECTS =====
+        function addProductHoverEffects() {
+            const cards = document.querySelectorAll('.product-card:not(.coming-soon)');
             
-            productCards.forEach(card => {
-                const categories = card.getAttribute('data-category') || '';
-                const title = card.querySelector('.product-title').textContent.toLowerCase();
-                const description = card.querySelector('.product-description').textContent.toLowerCase();
-                const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-20px) rotateX(5deg) rotateY(2deg)';
+                });
                 
-                const matchesCategory = categoryFilter === 'all' || 
-                    categories.split(' ').some(cat => cat === categoryFilter);
-                
-                const matchesSearch = !searchTerm || 
-                    title.includes(searchTerm.toLowerCase()) || 
-                    description.includes(searchTerm.toLowerCase()) ||
-                    tags.includes(searchTerm.toLowerCase());
-                
-                if (matchesCategory && matchesSearch) {
-                    card.classList.remove('hidden');
-                    card.style.animation = `fadeInUp 0.6s ease-out ${visibleCount * 0.1}s forwards`;
-                    visibleCount++;
-                } else {
-                    card.classList.add('hidden');
-                }
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+                });
             });
-
-            // Show message if no products found
-            if (visibleCount === 0) {
-                showToast('No products found matching your criteria');
-            }
         }
 
         // ===== PARALLAX SCROLLING =====
         function addParallaxEffect() {
             window.addEventListener('scroll', () => {
                 const scrolled = window.pageYOffset;
-                const heroSection = document.querySelector('.shop-hero');
-                
-                if (heroSection) {
-                    heroSection.style.transform = `translateY(${scrolled * 0.3}px)`;
+                const parallax = document.querySelector('.hero');
+                if (parallax) {
+                    parallax.style.transform = `translateY(${scrolled * 0.2}px)`;
                 }
                 
+                // Animate floating stars on scroll
                 const stars = document.querySelectorAll('.floating-star');
                 stars.forEach((star, index) => {
                     const speed = (index % 3 + 1) * 0.05;
@@ -1144,156 +789,50 @@
             });
         }
 
-        // ===== CARD ANIMATIONS =====
-        function addCardInteractions() {
-            const productCards = document.querySelectorAll('.product-card');
+        // ===== LOADING ANIMATION =====
+        function addLoadingAnimation() {
+            const cards = document.querySelectorAll('.product-card');
             
-            productCards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.style.transform = 'translateY(-20px) rotateX(5deg) rotateY(2deg)';
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
-                });
-            });
-        }
-
-        // ===== TOAST NOTIFICATIONS =====
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
-        // ===== GUMROAD EMBED ENHANCEMENT =====
-        function enhanceGumroadEmbeds() {
-            // Add loading indicators
-            const gumroadEmbeds = document.querySelectorAll('.gumroad-product-embed');
-            
-            gumroadEmbeds.forEach(embed => {
-                const link = embed.querySelector('a');
-                if (link) {
-                    // Add loading state
-                    link.addEventListener('click', function(e) {
-                        if (this.getAttribute('href').startsWith('https://ironlanternstudios.gumroad.com')) {
-                            // Let Gumroad handle the click
-                            showToast('Opening Gumroad checkout...');
-                        }
-                    });
-                    
-                    // Enhance button appearance
-                    link.style.transition = 'all 0.3s ease';
-                }
-            });
-        }
-
-        // ===== EASTER EGG - DISCOUNT CODE =====
-        let secretCode = [];
-        const secretSequence = ['g', 'u', 'm', 'r', 'o', 'a', 'd'];
-        
-        function initSecretCode() {
-            document.addEventListener('keydown', function(e) {
-                secretCode.push(e.key.toLowerCase());
-                if (secretCode.length > secretSequence.length) {
-                    secretCode.shift();
-                }
-                
-                if (JSON.stringify(secretCode) === JSON.stringify(secretSequence)) {
-                    // Show secret discount code
-                    showSpecialOffer();
-                    secretCode = [];
-                }
-            });
-        }
-
-        function showSpecialOffer() {
-            const overlay = document.createElement('div');
-            overlay.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.9);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                z-index: 10000;
-                backdrop-filter: blur(10px);
-                animation: fadeIn 0.5s ease;
-            `;
-            
-            overlay.innerHTML = `
-                <div style="color: #ff33aa; font-size: 3rem; font-weight: bold; margin-bottom: 20px; text-align: center; animation: glow 1s infinite alternate;">
-                    🎉 SECRET UNLOCKED! 🎉
-                </div>
-                <div style="color: #ddd; font-size: 1.5rem; text-align: center; margin-bottom: 30px;">
-                    Use code <span style="color: #ffff00; font-weight: bold; font-size: 2rem;">CYBER20</span> for 20% off!
-                </div>
-                <div style="color: #aaa; font-size: 1rem; text-align: center; margin-bottom: 30px;">
-                    Valid on all individual products. Enter at Gumroad checkout.
-                </div>
-                <button onclick="document.body.removeChild(this.parentElement)" 
-                        style="background: linear-gradient(45deg, #ff33aa, #aa33ff); color: white; border: none; 
-                               padding: 15px 40px; border-radius: 25px; font-weight: bold; cursor: pointer; 
-                               font-family: 'Courier New', monospace; text-transform: uppercase;">
-                    Awesome!
-                </button>
-            `;
-            
-            document.body.appendChild(overlay);
-            
-            // Auto-close after 10 seconds
-            setTimeout(() => {
-                if (document.body.contains(overlay)) {
-                    document.body.removeChild(overlay);
-                }
-            }, 10000);
-        }
-
-        // ===== SMOOTH SCROLLING FOR NAVIGATION =====
-        function addSmoothScrolling() {
-            const links = document.querySelectorAll('a[href^="#"]');
-            
-            links.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
                     }
                 });
+            }, {
+                threshold: 0.1,
+                rootMargin: '50px'
+            });
+
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(card);
             });
         }
 
-        // ===== INITIALIZATION =====
+        // ===== EVENT LISTENERS =====
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize all features
+            // Initialize starfield animation
             createFloatingStars();
-            initializeFilters();
-            addCardInteractions();
+            
+            // Filter button events
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const category = btn.dataset.filter;
+                    filterProducts(category);
+                });
+            });
+            
+            // Initialize interactive effects
+            addProductHoverEffects();
             addParallaxEffect();
-            initSecretCode();
-            enhanceGumroadEmbeds();
-            addSmoothScrolling();
+            addLoadingAnimation();
             
-            // Welcome message
-            setTimeout(() => {
-                showToast('Welcome to the Asset Shop! 🛒');
-            }, 1000);
-            
-            // Add loading animation
+            // Add page loading animation
             document.body.style.opacity = '0';
             setTimeout(() => {
                 document.body.style.transition = 'opacity 1s ease-in-out';
@@ -1301,33 +840,208 @@
             }, 100);
         });
 
-        // ===== GUMROAD INTEGRATION HELPERS =====
-        
-        // Listen for Gumroad events (if available)
+        // ===== GUMROAD ENHANCED TRACKING =====
         window.addEventListener('message', function(event) {
-            if (event.data && event.data.type === 'gumroad_overlay_opened') {
-                showToast('Redirecting to secure checkout...');
+            if (event.origin === 'https://gumroad.com' && event.data.type === 'sale') {
+                // Track successful purchase
+                console.log('Purchase completed:', event.data);
+                
+                // You could add analytics tracking here
+                // gtag('event', 'purchase', { ... });
             }
         });
 
-        // Enhance Gumroad buttons when they load
-        const observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                mutation.addedNodes.forEach(function(node) {
-                    if (node.nodeType === 1 && node.tagName === 'IFRAME') {
-                        // Gumroad iframe loaded
-                        const container = node.closest('.gumroad-product-embed');
-                        if (container) {
-                            container.style.opacity = '1';
-                        }
+        // ===== SEARCH FUNCTIONALITY =====
+        function addSearchFilter() {
+            const searchInput = document.createElement('input');
+            searchInput.type = 'text';
+            searchInput.placeholder = 'Search assets...';
+            searchInput.style.cssText = `
+                background: rgba(26, 26, 26, 0.8);
+                border: 2px solid #444;
+                border-radius: 25px;
+                padding: 12px 20px;
+                color: #eee;
+                font-family: 'Courier New', monospace;
+                margin: 0 10px;
+                backdrop-filter: blur(10px);
+                transition: all 0.3s ease;
+            `;
+            
+            searchInput.addEventListener('focus', function() {
+                this.style.borderColor = '#ff33aa';
+                this.style.boxShadow = '0 0 20px rgba(255, 51, 170, 0.3)';
+            });
+            
+            searchInput.addEventListener('blur', function() {
+                this.style.borderColor = '#444';
+                this.style.boxShadow = 'none';
+            });
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const cards = document.querySelectorAll('.product-card');
+                
+                cards.forEach(card => {
+                    const title = card.querySelector('.product-title').textContent.toLowerCase();
+                    const description = card.querySelector('.product-description').textContent.toLowerCase();
+                    const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm) || tags.includes(searchTerm)) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
                     }
                 });
             });
-        });
+            
+            // Insert search bar before filters
+            const filtersContainer = document.querySelector('.shop-filters');
+            filtersContainer.parentNode.insertBefore(searchInput, filtersContainer);
+        }
 
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
+        // ===== PRICE SORTING =====
+        function addPriceSorting() {
+            const sortBtn = document.createElement('button');
+            sortBtn.className = 'filter-btn';
+            sortBtn.textContent = 'Sort by Price';
+            sortBtn.style.marginLeft = '20px';
+            
+            let sortAscending = true;
+            
+            sortBtn.addEventListener('click', () => {
+                const grid = document.querySelector('.products-grid');
+                const cards = Array.from(document.querySelectorAll('.product-card'));
+                
+                cards.sort((a, b) => {
+                    const priceA = parseFloat(a.querySelector('.product-price').textContent.replace(/[^0-9.]/g, '') || '0');
+                    const priceB = parseFloat(b.querySelector('.product-price').textContent.replace(/[^0-9.]/g, '') || '0');
+                    
+                    return sortAscending ? priceA - priceB : priceB - priceA;
+                });
+                
+                // Clear grid and re-append sorted cards
+                grid.innerHTML = '';
+                cards.forEach(card => grid.appendChild(card));
+                
+                // Update button text
+                sortBtn.textContent = sortAscending ? 'Price: Low to High' : 'Price: High to Low';
+                sortAscending = !sortAscending;
+                
+                // Re-add hover effects to newly sorted cards
+                addProductHoverEffects();
+            });
+            
+            document.querySelector('.shop-filters').appendChild(sortBtn);
+        }
+
+        // ===== WISHLIST FUNCTIONALITY =====
+        function addWishlistFeature() {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            
+            document.querySelectorAll('.product-card').forEach(card => {
+                const title = card.querySelector('.product-title').textContent;
+                const wishlistBtn = document.createElement('button');
+                wishlistBtn.innerHTML = '♡';
+                wishlistBtn.style.cssText = `
+                    position: absolute;
+                    top: 15px;
+                    left: 15px;
+                    background: rgba(26, 26, 26, 0.8);
+                    border: 2px solid #ff33aa;
+                    border-radius: 50%;
+                    width: 40px;
+                    height: 40px;
+                    color: #ff33aa;
+                    font-size: 18px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    z-index: 5;
+                `;
+                
+                if (wishlist.includes(title)) {
+                    wishlistBtn.innerHTML = '♥';
+                    wishlistBtn.style.background = '#ff33aa';
+                    wishlistBtn.style.color = 'white';
+                }
+                
+                wishlistBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    
+                    if (wishlist.includes(title)) {
+                        // Remove from wishlist
+                        const index = wishlist.indexOf(title);
+                        wishlist.splice(index, 1);
+                        wishlistBtn.innerHTML = '♡';
+                        wishlistBtn.style.background = 'rgba(26, 26, 26, 0.8)';
+                        wishlistBtn.style.color = '#ff33aa';
+                    } else {
+                        // Add to wishlist
+                        wishlist.push(title);
+                        wishlistBtn.innerHTML = '♥';
+                        wishlistBtn.style.background = '#ff33aa';
+                        wishlistBtn.style.color = 'white';
+                    }
+                    
+                    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                });
+                
+                card.appendChild(wishlistBtn);
+            });
+        }
+
+        // ===== INITIALIZE ENHANCED FEATURES =====
+        setTimeout(() => {
+            // Note: Commented out localStorage features as they're not supported in Claude artifacts
+            // addSearchFilter();
+            // addPriceSorting();
+            // addWishlistFeature();
+        }, 1000);
+
+        // ===== EASTER EGG - KONAMI CODE =====
+        let konamiCode = [];
+        const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // Up, Up, Down, Down, Left, Right, Left, Right, B, A
+        
+        document.addEventListener('keydown', function(e) {
+            konamiCode.push(e.keyCode);
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode.shift();
+            }
+            
+            if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
+                // Trigger special effect - temporary discount
+                const prices = document.querySelectorAll('.product-price:not(.free)');
+                prices.forEach(price => {
+                    if (!price.textContent.includes('SALE')) {
+                        const originalPrice = price.textContent;
+                        price.innerHTML = `<span style="text-decoration: line-through; opacity: 0.6;">${originalPrice}</span><br><span style="color: #33ff33;">50% OFF!</span>`;
+                    }
+                });
+                
+                // Add sale badges
+                document.querySelectorAll('.product-card:not(.coming-soon)').forEach(card => {
+                    if (!card.querySelector('.product-badge')) {
+                        const saleBadge = document.createElement('div');
+                        saleBadge.className = 'product-badge sale';
+                        saleBadge.textContent = 'FLASH SALE';
+                        card.appendChild(saleBadge);
+                    }
+                });
+                
+                setTimeout(() => {
+                    location.reload(); // Reset after 10 seconds
+                }, 10000);
+                
+                konamiCode = [];
+            }
         });
     </script>
 </body>
