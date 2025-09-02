@@ -235,162 +235,6 @@
             box-shadow: 0 8px 20px rgba(255, 51, 170, 0.4);
         }
 
-        /* ===== SHOP GRID ===== */
-        .shop-section {
-            padding: 0 20px 80px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .shop-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 30px;
-        }
-
-        .shop-card {
-            background: rgba(26, 26, 26, 0.9);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            border: 1px solid rgba(255, 51, 170, 0.2);
-            backdrop-filter: blur(10px);
-            position: relative;
-        }
-
-        .shop-card:hover {
-            transform: translateY(-15px) rotateX(5deg);
-            box-shadow: 0 25px 50px rgba(255, 51, 170, 0.3);
-            border-color: rgba(255, 51, 170, 0.5);
-        }
-
-        .card-image {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            background: linear-gradient(45deg, #333, #555);
-            transition: all 0.3s ease;
-        }
-
-        .shop-card:hover .card-image {
-            transform: scale(1.05);
-        }
-
-        .card-content {
-            padding: 25px;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        .card-description {
-            color: #ccc;
-            margin-bottom: 20px;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .card-price {
-            font-size: 1.8rem;
-            color: #ff33aa;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-
-        .tag {
-            background: linear-gradient(45deg, #ff33aa, #aa33ff);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .card-rating {
-            color: #aaa;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        /* ===== GUMROAD BUTTON STYLING ===== */
-        .gumroad-button {
-            background: linear-gradient(45deg, #ff33aa, #aa33ff) !important;
-            color: white !important;
-            border: none !important;
-            padding: 15px 30px !important;
-            border-radius: 30px !important;
-            font-weight: bold !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-            text-decoration: none !important;
-            display: inline-block !important;
-            text-transform: uppercase !important;
-            font-family: "Courier New", monospace !important;
-            font-size: 1rem !important;
-            box-shadow: 0 8px 25px rgba(255, 51, 170, 0.4) !important;
-            width: 100% !important;
-            text-align: center !important;
-        }
-
-        .gumroad-button:hover {
-            transform: translateY(-3px) scale(1.02) !important;
-            box-shadow: 0 15px 35px rgba(255, 51, 170, 0.6) !important;
-            text-decoration: none !important;
-        }
-
-        /* ===== FEATURED BADGE ===== */
-        .featured-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(45deg, #ffaa33, #ff3333);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        /* ===== SALE BADGE ===== */
-        .sale-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: linear-gradient(45deg, #33ff33, #33aa33);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            animation: bounce 1.5s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-5px); }
-            60% { transform: translateY(-3px); }
-        }
-
         /* ===== SEARCH & FILTER ===== */
         .search-filter-section {
             padding: 40px 20px;
@@ -441,6 +285,171 @@
         .sort-dropdown:focus {
             outline: none;
             border-color: #ff33aa;
+        }
+
+        /* ===== SHOP GRID ===== */
+        .shop-section {
+            padding: 0 20px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+        }
+
+        .shop-card {
+            background: rgba(26, 26, 26, 0.9);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: 1px solid rgba(255, 51, 170, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .shop-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 25px 50px rgba(255, 51, 170, 0.3);
+            border-color: rgba(255, 51, 170, 0.5);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: linear-gradient(45deg, #333, #555);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .shop-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .card-description {
+            color: #ccc;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .card-price {
+            font-size: 1.8rem;
+            color: #ff33aa;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tag {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .card-rating {
+            color: #aaa;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        /* ===== GUMROAD BUTTON STYLING ===== */
+        .gumroad-button {
+            background: linear-gradient(45deg, #ff33aa, #aa33ff) !important;
+            color: white !important;
+            border: none !important;
+            padding: 15px 30px !important;
+            border-radius: 30px !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+            text-transform: uppercase !important;
+            font-family: "Courier New", monospace !important;
+            font-size: 1rem !important;
+            box-shadow: 0 8px 25px rgba(255, 51, 170, 0.4) !important;
+            width: 100% !important;
+            text-align: center !important;
+            margin-top: auto !important;
+        }
+
+        .gumroad-button:hover {
+            transform: translateY(-3px) scale(1.02) !important;
+            box-shadow: 0 15px 35px rgba(255, 51, 170, 0.6) !important;
+            text-decoration: none !important;
+        }
+
+        /* ===== FEATURED BADGE ===== */
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, #ffaa33, #ff3333);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* ===== SALE BADGE ===== */
+        .sale-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(45deg, #33ff33, #33aa33);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-5px); }
+            60% { transform: translateY(-3px); }
         }
 
         /* ===== FOOTER ===== */
@@ -581,43 +590,6 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-
-        /* ===== CART INDICATOR ===== */
-        .cart-indicator {
-            position: fixed;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            background: linear-gradient(45deg, #ff33aa, #aa33ff);
-            color: white;
-            padding: 15px;
-            border-radius: 50%;
-            box-shadow: 0 5px 20px rgba(255, 51, 170, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 999;
-        }
-
-        .cart-indicator:hover {
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 8px 30px rgba(255, 51, 170, 0.7);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #ff3333;
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
@@ -688,7 +660,7 @@
                             <span class="tag">Racing</span>
                         </div>
                         <p class="card-rating">⭐⭐⭐⭐⭐ "This time I didn't crash because of this asset pack."</p>
-                        <a class="gumroad-button" href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset1" data-gumroad-overlay-checkout="true">Purchase on Gumroad</a>
+                        <a class="gumroad-button" href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset1" data-gumroad-overlay-checkout="true">Purchase</a>
                     </div>
                 </div>
 
@@ -706,7 +678,7 @@
                             <span class="tag">Roblox</span>
                         </div>
                         <p class="card-rating">⭐⭐⭐⭐☆ "PLEASE MARRY ME!"</p>
-                        <a class="gumroad-button" href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset2" data-gumroad-overlay-checkout="true">Purchase on Gumroad</a>
+                        <a class="gumroad-button" href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset2" data-gumroad-overlay-checkout="true">Purchase</a>
                     </div>
                 </div>
 
@@ -725,7 +697,7 @@
                             <span class="tag">Racing</span>
                         </div>
                         <p class="card-rating">⭐⭐⭐⭐⭐ "Great variety and quality!"</p>
-                        <a class="gumroad-button" href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset3" data-gumroad-overlay-checkout="true">Purchase on Gumroad</a>
+                        <a class="gumroad-button" href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset3" data-gumroad-overlay-checkout="true">Purchase</a>
                     </div>
                 </div>
 
@@ -743,7 +715,7 @@
                             <span class="tag">C#</span>
                         </div>
                         <p class="card-rating">⭐⭐⭐⭐☆ "Smooth as butter!"</p>
-                        <a class="gumroad-button" href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset4" data-gumroad-overlay-checkout="true">Purchase on Gumroad</a>
+                        <a class="gumroad-button" href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset4" data-gumroad-overlay-checkout="true">Purchase</a>
                     </div>
                 </div>
 
@@ -761,7 +733,7 @@
                             <span class="tag">Racing</span>
                         </div>
                         <p class="card-rating">⭐⭐⭐⭐⭐ "Realistic engine sounds!"</p>
-                        <a class="gumroad-button" href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset5" data-gumroad-overlay-checkout="true">Purchase on Gumroad</a>
+                        <a class="gumroad-button" href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset5" data-gumroad-overlay-checkout="true">Purchase</a>
                     </div>
                 </div>
 
@@ -779,17 +751,11 @@
                             <span class="tag">PBR</span>
                         </div>
                         <p class="card-rating">⭐⭐⭐⭐☆ "High quality textures!"</p>
-                        <a class="gumroad-button" href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset6" data-gumroad-overlay-checkout="true">Purchase on Gumroad</a>
+                        <a class="gumroad-button" href="https://ironlanternstudios.gumroad.com/l/PlaceholderAsset6" data-gumroad-overlay-checkout="true">Purchase</a>
                     </div>
                 </div>
             </div>
         </section>
-    </div>
-
-    <!-- Cart Indicator -->
-    <div class="cart-indicator" title="View Cart">
-        🛒
-        <div class="cart-count" id="cart-count">0</div>
     </div>
 
     <!-- Footer -->
@@ -854,7 +820,6 @@
                 categoryTabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
                 
-                const category = tab.dataset.category;
                 filterAndSort();
             });
         });
@@ -910,25 +875,6 @@
             });
         }
 
-        // ===== CART FUNCTIONALITY =====
-        let cartCount = 0;
-        const cartCountElement = document.getElementById('cart-count');
-
-        // Simulate adding to cart (Gumroad handles actual purchases)
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('gumroad-button')) {
-                // Animate cart indicator
-                const cartIndicator = document.querySelector('.cart-indicator');
-                cartIndicator.style.animation = 'bounce 0.6s ease';
-                setTimeout(() => {
-                    cartIndicator.style.animation = '';
-                }, 600);
-                
-                // Optional: Track clicks for analytics
-                console.log('Asset purchase initiated:', e.target.href);
-            }
-        });
-
         // ===== PARALLAX SCROLLING =====
         function addParallaxEffect() {
             window.addEventListener('scroll', () => {
@@ -960,18 +906,6 @@
                     this.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
                 });
             });
-        }
-
-        // ===== LOADING ANIMATIONS =====
-        function showLoadingAnimation() {
-            const shopGrid = document.getElementById('shop-grid');
-            shopGrid.style.opacity = '0.5';
-            shopGrid.style.pointerEvents = 'none';
-            
-            setTimeout(() => {
-                shopGrid.style.opacity = '1';
-                shopGrid.style.pointerEvents = 'auto';
-            }, 300);
         }
 
         // ===== SMOOTH SCROLL TO TOP =====
@@ -1085,7 +1019,7 @@
             }
             
             if (JSON.stringify(secretCode) === JSON.stringify(secretSequence)) {
-                showNotification('🎉 Secret discount code: SAVE20 - Use at checkout for 20% off!', 'success');
+                showNotification('Secret discount code: SAVE20 - Use at checkout for 20% off!', 'success');
                 
                 // Add sparkle effect to all cards
                 shopCards.forEach(card => {
@@ -1154,8 +1088,12 @@
                 const nav = document.querySelector('nav');
                 const header = document.querySelector('header');
                 
+                // Check if toggle already exists
+                if (header.querySelector('.menu-toggle')) return;
+                
                 // Create menu toggle button
                 const menuToggle = document.createElement('button');
+                menuToggle.className = 'menu-toggle';
                 menuToggle.innerHTML = '☰';
                 menuToggle.style.cssText = `
                     background: linear-gradient(45deg, #ff33aa, #aa33ff);
